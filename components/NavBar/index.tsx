@@ -11,6 +11,13 @@ const NavBar = () => {
     <Container>
       <button type="button">
         <Image src={Logo} alt={"Logo"} />
+
+        {/*
+        img {
+  max-width: 100%;
+  display: block;
+}
+        */}
       </button>
 
       <ToggleContainer isOn={isLightMode} onClick={toggleLightMode} />

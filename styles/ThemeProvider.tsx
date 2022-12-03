@@ -7,7 +7,8 @@ import {
 const lightTheme: DefaultTheme = {
   colors: {
     primary: "red",
-    background: "#EEE",
+    links: "#1a161b",
+    background: "#FFF",
     text: "#1a161b",
   },
   headerHeight: "50px",
@@ -16,6 +17,7 @@ const lightTheme: DefaultTheme = {
 const darkTheme: DefaultTheme = {
   colors: {
     primary: "red",
+    links: "#EEE",
     text: "#FFFFFF",
     background: "#1a161b",
   },

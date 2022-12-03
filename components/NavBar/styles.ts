@@ -11,7 +11,7 @@ const Container = styled.div`
 const ToggleContainer = styled.div<{ isOn: boolean }>`
   position: relative;
   width: 40px;
-  height: 20px;
+  height: 24px;
   background: lightgray;
   border-radius: 20px;
   border: 1px solid grey;
@@ -19,13 +19,13 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
   transition: all 200ms ease;
   ::after {
     position: absolute;
-    transition: all 200ms ease;
+    transition: all 2200ms ease;
     content: "";
-    top: 2px;
-    left: 2px;
+    top: 3px;
+    left: 4px;
     background: grey;
     width: 15px;
-    height: 15px;
+    height: 16px;
     border-radius: 100px;
   }
   ${({ theme, isOn }) =>
@@ -34,7 +34,7 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
       background: ${lighten(0.4, theme.colors.primary)};
       border-color: ${theme.colors.primary};
       ::after {
-        left: 22px;
+        left: 19px;
         background: ${theme.colors.primary};
       }
     `}

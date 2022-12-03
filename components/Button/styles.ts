@@ -13,6 +13,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   max-width: 200px;
   padding: 1rem;
+  font-size: 1.6rem;
   transition: all 300ms ease;
   :hover {
     background: ${({ theme }) => lighten(0.2, theme.colors.primary)};
