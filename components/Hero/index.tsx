@@ -10,11 +10,14 @@ import {
   RelativeWrapper,
 } from "./styles";
 import { useToggleLightMode } from "styles/ThemeProvider";
-import HeroSvgComponent from "components/Hero/components/HeroSvgComponent";
+import CirclesBackground from "components/Hero/components/CirclesBackground";
 import Computer from "./components/Computer";
+import Lamp from "components/Hero/components/Lamp";
 import LinkedIn from "components/Icons/LinkedIn";
 import Email from "components/Icons/Email";
 import GitHub from "components/Icons/GitHub";
+import Button from "components/Button";
+
 const Hero = () => {
   const { isLightMode, toggleLightMode } = useToggleLightMode();
 
@@ -26,9 +29,9 @@ const Hero = () => {
         <GitHub className="GitHub" />
       </SocialLinks>
       <InnerWrapper>
-        <HeroSvgComponent />
+        <CirclesBackground />
         <Computer />
-
+        <Lamp isLightOn={!isLightMode} />
         <Text>
           <h2>FrontEnd Developer</h2>
           <p>
@@ -37,7 +40,10 @@ const Hero = () => {
           </p>
         </Text>
       </InnerWrapper>
-      <Buttons>Buttons</Buttons>
+      <Buttons>
+        <Button>My Work</Button>
+        <Button>My Resume</Button>
+      </Buttons>
       {/* <NavBar />
 
 

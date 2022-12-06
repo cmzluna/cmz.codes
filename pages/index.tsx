@@ -1,9 +1,9 @@
 import Hero from "components/Hero";
+import About from "components/About";
 import ProjectsList from "components/ProjectsList";
 import Head from "next/head";
-import { useState } from "react";
-import Button from "../components/Button";
 import NavBar from "../components/NavBar";
+import Techtimonials from "components/Techtimonials";
 
 export default function Home() {
   return (
@@ -15,8 +15,15 @@ export default function Home() {
       </Head>
       <NavBar />
       <Hero />
-      <Button>Hello!</Button>
+      <About />
+
       <ProjectsList />
+      <p></p>
+      <p></p>
+      {/* <TechIcons /> */}
+      <p></p>
+      <p></p>
+      <Techtimonials />
     </div>
   );
 }

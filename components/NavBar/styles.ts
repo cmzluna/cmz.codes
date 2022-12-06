@@ -1,10 +1,25 @@
 import { lighten } from "polished";
 import styled, { css } from "styled-components";
+import Link from "next/link";
 
 const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  background: ${({ theme }) => theme.colors.background};
+`;
+
+const NavBarWrapper = styled.div`
+  z-index: 3;
+  display: flex;
+  width: 90%;
+  margin: 15px auto;
+  justify-content: space-around;
+  padding: 15px;
+  align-items: center;
+`;
+
+const NavLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.text};
   background: ${({ theme }) => theme.colors.background};
 `;
 
@@ -40,4 +55,4 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
     `}
 `;
 
-export { Container, ToggleContainer };
+export { Container, ToggleContainer, NavBarWrapper, NavLink };

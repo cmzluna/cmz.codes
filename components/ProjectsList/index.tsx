@@ -36,7 +36,7 @@ const data = [
 
 const ProjectsList = () => {
   return (
-    <List>
+    <List id="portfolio">
       {data.map((props) => {
         return <ProjectCard key={props.id} {...props} />;
       })}

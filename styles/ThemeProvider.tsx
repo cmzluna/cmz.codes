@@ -6,7 +6,7 @@ import {
 
 const lightTheme: DefaultTheme = {
   colors: {
-    primary: "red",
+    primary: "#b595bc",
     links: "#1a161b",
     background: "#FFF",
     text: "#1a161b",

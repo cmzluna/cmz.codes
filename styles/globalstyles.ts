@@ -9,7 +9,8 @@ const inter = Source_Sans_Pro({ weight: "400", subsets: ["latin"] });
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-family: ${inter.style.fontFamily}
+    font-family: ${inter.style.fontFamily};
+    font-size: 17px;
   }
   body {
     color: ${({ theme }) => theme.colors.text};

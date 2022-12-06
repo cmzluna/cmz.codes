@@ -3,7 +3,7 @@ interface Props {
   width?: string;
   height?: string;
 }
-const HeroSvgComponent = (props: Props) => (
+const CirclesBackground = (props: Props) => (
   <svg
     id="Capa_1"
     width="100%"
@@ -278,4 +278,4 @@ const HeroSvgComponent = (props: Props) => (
   </svg>
 );
 
-export default HeroSvgComponent;
+export default CirclesBackground;

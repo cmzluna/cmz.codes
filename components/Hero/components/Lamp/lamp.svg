@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 460 537" style="enable-background:new 0 0 460 537;" xml:space="preserve">
+<style type="text/css">
+	.st0{stroke:#AFAFAF;stroke-miterlimit:10;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:url(#SVGID_1_);}
+	.st3{fill:url(#SVGID_2_);stroke:#AFAFAF;stroke-miterlimit:10;}
+	.st4{opacity:0.5;fill:#FFFFFF;}
+</style>
+<g>
+	<g>
+		<rect x="244.6" y="0.2" class="st0" width="1.6" height="155"/>
+	</g>
+	<ellipse class="st1" cx="245" cy="210.6" rx="10.2" ry="12"/>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="243.6424" y1="-127.9405" x2="230.73" y2="511.2212">
+		<stop  offset="7.382531e-02" style="stop-color:#FFFF00"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+	</linearGradient>
+	<polygon class="st2" points="460,536.7 0.4,536.7 201.8,207.1 288.9,207.1 	"/>
+	<path d="M284.9,211.2h-79.1c-2.2,0-4-1.8-4-4v0c0-17.5,14.2-31.6,31.6-31.6h23.8c17.5,0,31.6,14.2,31.6,31.6v0
+		C288.9,209.4,287.1,211.2,284.9,211.2z"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="245.1667" y1="186.6028" x2="245.4543" y2="213.0546">
+		<stop  offset="0" style="stop-color:#000000"/>
+		<stop  offset="0.1962" style="stop-color:#040404;stop-opacity:0.8431"/>
+		<stop  offset="0.3697" style="stop-color:#0E0E0E;stop-opacity:0.7043"/>
+		<stop  offset="0.5346" style="stop-color:#202020;stop-opacity:0.5723"/>
+		<stop  offset="0.6944" style="stop-color:#3A3A3A;stop-opacity:0.4445"/>
+		<stop  offset="0.8488" style="stop-color:#5A5A5A;stop-opacity:0.3209"/>
+		<stop  offset="1" style="stop-color:#828282;stop-opacity:0.2"/>
+	</linearGradient>
+	<path class="st3" d="M259.7,175.6v-6.3c0-7.9-6.4-14.3-14.3-14.3c-7.9,0-14.3,6.4-14.3,14.3v6.3c-16.3,1.2-29.2,14.9-29.2,31.5v0
+		c0,2.2,1.8,4,4,4h79.1c2.2,0,4-1.8,4-4v0C288.9,190.5,276.1,176.8,259.7,175.6z"/>
+	<path class="st4" d="M251.2,179.2c0,0,28.9,3.6,32.3,28.3C282.3,206.3,270.1,184.6,251.2,179.2z"/>
+</g>
+</svg>

@@ -1,26 +1,21 @@
 import React from "react";
-import Image from "next/image";
-import Logo from "../../public/vercel.svg";
-import { Container, ToggleContainer } from "./styles";
+
+import { Container, NavBarWrapper, NavLink, ToggleContainer } from "./styles";
 import { useToggleLightMode } from "styles/ThemeProvider";
+import Link from "next/link";
 
 const NavBar = () => {
   const { isLightMode, toggleLightMode } = useToggleLightMode();
 
   return (
     <Container>
-      <button type="button">
-        <Image src={Logo} alt={"Logo"} />
-
-        {/*
-        img {
-  max-width: 100%;
-  display: block;
-}
-        */}
-      </button>
-
-      <ToggleContainer isOn={isLightMode} onClick={toggleLightMode} />
+      <NavBarWrapper>
+        <ToggleContainer isOn={isLightMode} onClick={toggleLightMode} />
+        <NavLink href="#about">About</NavLink>
+        <NavLink href="#portfolio">Portfolio</NavLink>
+        <NavLink href="#resume">Resumé</NavLink>
+        <NavLink href="#techtimonials">Techtimonials</NavLink>
+      </NavBarWrapper>
     </Container>
   );
 };

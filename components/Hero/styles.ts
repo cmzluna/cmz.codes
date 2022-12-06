@@ -7,7 +7,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   width: 100%;
   position: relative;
-  border: 2px solid red;
   @media (max-width: 870px) {
     flex-direction: column;
   }
@@ -16,7 +15,6 @@ const InnerWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  border: 4px dotted black;
   @media (max-width: 870px) {
   }
 `;
@@ -26,10 +24,10 @@ const NavBar = styled.div``;
 
 const Text = styled.div`
   position: absolute;
-  width: 300px;
+
   color: white;
-  border: 1px solid blue;
-  top: 25%;
+  font-size: 1.7rem;
+  top: 22%;
   left: 15%;
   z-index: 3;
 
@@ -40,22 +38,23 @@ const Text = styled.div`
 `;
 
 const Buttons = styled.div`
+  display: flex;
+
   position: absolute;
-  width: 200px;
-  height: 90px;
-  background-color: red;
-  border: 3px solid green;
+
   bottom: 30%;
-  left: 20%;
+  left: 14%;
   z-index: 2;
 
   @media (max-width: 870px) {
     position: relative;
+    left: 0;
+    justify-content: center;
   }
 `;
 
 const SocialLinks = styled.div`
-  align-items: center;
+  display: flex;
   position: absolute;
   min-width: 20%;
   height: 25%;
@@ -75,6 +74,16 @@ const SocialLinks = styled.div`
 
   @media (max-width: 870px) {
     position: relative;
+    justify-content: space-around;
+    > .LinkedIn {
+      position: static;
+    }
+    > .Email {
+      position: static;
+    }
+    > .GitHub {
+      position: static;
+    }
   }
 `;
 const RelativeWrapper = styled.div`
