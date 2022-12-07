@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const Container = styled.div`
   padding: 0;
-  border: 1px solid #e2e2e2;
+  border: 1px solid ${({ theme }) => theme.colors.background.secondary};
   border-radius: 0.7rem;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background.secondary};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,6 +33,22 @@ const Title = styled.figcaption`
   width: 100%;
 `;
 
+const IconsWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid blue;
+`;
+
 const Description = styled.p``;
 
-export { Container, FigureWrapper, ImageComponent, Title, Description };
+export {
+  Container,
+  FigureWrapper,
+  ImageComponent,
+  Title,
+  Description,
+  IconsWrapper,
+};

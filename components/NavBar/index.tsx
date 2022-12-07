@@ -7,6 +7,7 @@ import Link from "next/link";
 const NavBar = () => {
   const { isLightMode, toggleLightMode } = useToggleLightMode();
 
+  console.log("isLightMode ==> ", isLightMode);
   return (
     <Container>
       <NavBarWrapper>

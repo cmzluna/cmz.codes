@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Background,
-  NavBar,
-  Buttons,
-  SocialLinks,
-  InnerWrapper,
-  Text,
-  RelativeWrapper,
-} from "./styles";
+import { Container, Buttons, SocialLinks, InnerWrapper, Text } from "./styles";
 import { useToggleLightMode } from "styles/ThemeProvider";
 import CirclesBackground from "components/Hero/components/CirclesBackground";
 import Computer from "./components/Computer";

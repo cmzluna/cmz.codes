@@ -1,6 +1,14 @@
 import { lighten } from "polished";
 import styled, { css } from "styled-components";
 import Link from "next/link";
+import { BiMoon } from "react-icons/bi";
+import { renderToStaticMarkup } from "react-dom/server";
+import { createElement } from "react";
+
+const reactSvgComponentToMarkupString = (Component: any, props: any) =>
+  `data:image/svg+xml, ${encodeURIComponent(
+    renderToStaticMarkup(createElement(Component, props))
+  )}`;
 
 const Container = styled.div`
   display: flex;
@@ -25,28 +33,31 @@ const NavLink = styled(Link)`
 
 const ToggleContainer = styled.div<{ isOn: boolean }>`
   position: relative;
-  width: 40px;
-  height: 24px;
-  background: lightgray;
+  width: 50px;
+  height: 34px;
+  background: ${({ theme }) => lighten(0.2, theme.colors.primary)};
   border-radius: 20px;
   border: 1px solid grey;
   cursor: pointer;
   transition: all 200ms ease;
   ::after {
     position: absolute;
-    transition: all 2200ms ease;
-    content: "";
+    transition: all 600ms ease;
+    content: ${({ color, theme, isOn }) =>
+      `url(${reactSvgComponentToMarkupString(BiMoon, {
+        color: isOn ? "#000" : "yellow",
+        size: 22,
+      })})`};
     top: 3px;
-    left: 4px;
-    background: grey;
-    width: 15px;
-    height: 16px;
+    left: 5px;
+    width: 24px;
+    height: 24px;
     border-radius: 100px;
   }
   ${({ theme, isOn }) =>
     isOn &&
     css`
-      background: ${lighten(0.4, theme.colors.primary)};
+      background: ${lighten(0.2, theme.colors.primary)};
       border-color: ${theme.colors.primary};
       ::after {
         left: 19px;

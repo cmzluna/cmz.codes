@@ -8,18 +8,26 @@ const lightTheme: DefaultTheme = {
   colors: {
     primary: "#b595bc",
     links: "#1a161b",
-    background: "#FFF",
+    background: { primary: "#f1e5f6", secondary: "#d6cbdb" },
     text: "#1a161b",
+  },
+  icons: {
+    primary: "#7c7c7c",
+    secondary: "",
   },
   headerHeight: "50px",
 };
 
 const darkTheme: DefaultTheme = {
   colors: {
-    primary: "red",
+    primary: "#806088",
     links: "#EEE",
-    text: "#FFFFFF",
-    background: "#1a161b",
+    text: "#d1d1d1",
+    background: { primary: "#2e2830", secondary: "#473d4a" },
+  },
+  icons: {
+    primary: "#a3a3a3",
+    secondary: "",
   },
   headerHeight: "50px",
 };

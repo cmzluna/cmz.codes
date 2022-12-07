@@ -5,8 +5,12 @@ declare module "styled-components" {
     colors: {
       primary: string;
       links: string;
-      background: string;
+      background: { primary: string; secondary: string };
       text: string;
+    };
+    icons: {
+      primary: string;
+      secondary: string;
     };
     headerHeight: string;
   }

@@ -1,3 +1,4 @@
+import TechIcons from "components/TechIcons";
 import React from "react";
 import {
   Container,
@@ -5,7 +6,10 @@ import {
   FigureWrapper,
   Title,
   Description,
+  IconsWrapper,
 } from "./styles";
+import { SiHomeadvisor, SiGit } from "react-icons/si";
+import Button from "components/Button";
 
 interface Props {
   id: string;
@@ -13,9 +17,16 @@ interface Props {
   description: string;
   url: string;
   technologies: string[];
+  links: { repo: string; deploy: string };
 }
 
-const ProjectCard: React.FC<Props> = ({ id, name, description, url }) => {
+const ProjectCard: React.FC<Props> = ({
+  id,
+  name,
+  description,
+  url,
+  technologies,
+}) => {
   const img = `/projects/${name}.jpg`;
 
   return (
@@ -28,7 +39,11 @@ const ProjectCard: React.FC<Props> = ({ id, name, description, url }) => {
         </Title>
       </FigureWrapper>
       <Description>{description}</Description>
-      <a href={url}>Visit Website</a>
+      <IconsWrapper>
+        <TechIcons list={technologies} size={25} />
+        <Button>Hola</Button>
+        <Button>Chau</Button>
+      </IconsWrapper>
     </Container>
   );
 };
