@@ -1,7 +1,7 @@
 import ImportIcon from "utils/importIcon";
 import React from "react";
 
-import { Container, InnerWrapper, StyledImportedIcon } from "./styles";
+import { Container, InnerWrapper, StyledImportedIcon, Title } from "./styles";
 // import TechIcons from "components/TechIcons";
 
 interface Props {
@@ -13,10 +13,10 @@ const TechIcons = (props: Props) => {
 
   return (
     <Container>
-      <p>technologies: </p>
+      <Title>Technologies: </Title>
       <InnerWrapper id="technologies">
         {list.map((tech) => (
-          <StyledImportedIcon key={tech} name={tech} size={size} />
+          <StyledImportedIcon key={tech} name={tech} size={size} title={tech} />
         ))}
       </InnerWrapper>
     </Container>

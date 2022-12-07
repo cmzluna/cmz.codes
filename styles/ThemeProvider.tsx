@@ -6,13 +6,14 @@ import {
 
 const lightTheme: DefaultTheme = {
   colors: {
-    primary: "#b595bc",
+    primary: "#886591",
+    secondary: "#f2e5f5",
     links: "#1a161b",
-    background: { primary: "#f1e5f6", secondary: "#d6cbdb" },
+    background: { primary: "#d6cbdb", secondary: "#ece1f1", hover: "" },
     text: "#1a161b",
   },
   icons: {
-    primary: "#7c7c7c",
+    primary: "#886591",
     secondary: "",
   },
   headerHeight: "50px",
@@ -20,13 +21,14 @@ const lightTheme: DefaultTheme = {
 
 const darkTheme: DefaultTheme = {
   colors: {
-    primary: "#806088",
+    primary: "#9f78a9",
+    secondary: "#2f2b30",
     links: "#EEE",
     text: "#d1d1d1",
-    background: { primary: "#2e2830", secondary: "#473d4a" },
+    background: { primary: "#2e2830", secondary: "#473d4a", hover: "#65586a" },
   },
   icons: {
-    primary: "#a3a3a3",
+    primary: "#ad83b8",
     secondary: "",
   },
   headerHeight: "50px",

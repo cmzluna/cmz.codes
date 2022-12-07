@@ -3,14 +3,21 @@ import styled, { css } from "styled-components";
 import Image from "next/image";
 
 const Container = styled.div`
-  padding: 0;
+  padding: 10px;
   border: 1px solid ${({ theme }) => theme.colors.background.secondary};
   border-radius: 0.7rem;
   background-color: ${({ theme }) => theme.colors.background.secondary};
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 12px;
+  transition: all 500ms ease;
+  :hover {
+    background: ${({ theme }) => theme.colors.background.hover};
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 `;
 
 const FigureWrapper = styled.figure`
@@ -38,8 +45,7 @@ const IconsWrapper = styled.div`
   width: 100%;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  border: 1px solid blue;
+  justify-content: center;
 `;
 
 const Description = styled.p``;

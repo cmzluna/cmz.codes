@@ -8,16 +8,19 @@ import LinkedIn from "components/Icons/LinkedIn";
 import Email from "components/Icons/Email";
 import GitHub from "components/Icons/GitHub";
 import Button from "components/Button";
+import { useTheme } from "styled-components";
+import Link from "next/link";
 
 const Hero = () => {
   const { isLightMode, toggleLightMode } = useToggleLightMode();
+  const theme = useTheme();
 
   return (
     <Container>
       <SocialLinks>
-        <LinkedIn className="LinkedIn" />
-        <Email className="Email" />
-        <GitHub className="GitHub" />
+        <LinkedIn className="LinkedIn" width={35} fill={theme.colors.primary} />
+        <Email className="Email" width={35} fill={theme.colors.primary} />
+        <GitHub className="GitHub" width={35} fill={theme.colors.primary} />
       </SocialLinks>
       <InnerWrapper>
         <CirclesBackground />
@@ -32,8 +35,13 @@ const Hero = () => {
         </Text>
       </InnerWrapper>
       <Buttons>
-        <Button>My Work</Button>
-        <Button>My Resume</Button>
+        <Link href="#portfolio">
+          <Button>My Work</Button>
+        </Link>
+
+        <Link href="https://docs.google.com/document/d/1W4ym6tK3ZrtQtgvrFK8lOq-5QJRK9NoWVg6H2lgLwiA/edit?usp=sharing">
+          <Button color="#e1d2e5">My Resume</Button>
+        </Link>
       </Buttons>
       {/* <NavBar />
 

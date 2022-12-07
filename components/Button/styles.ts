@@ -6,7 +6,7 @@ const ButtonContainer = styled.div`
   background: ${({ theme }) => theme.colors.background};
   border-radius: 16px;
   border: 0.7px solid black;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ color, theme }) => color || theme.colors.text};
   cursor: pointer;
   display: flex;
   font-weight: bold;
@@ -15,10 +15,11 @@ const ButtonContainer = styled.div`
   max-width: 200px;
   padding: 1rem 1.6rem;
   font-size: 1.2rem;
-  transition: all 300ms ease;
+  transition: all 500ms ease;
   margin: 6px;
   :hover {
     background: ${({ theme }) => lighten(0.2, theme.colors.primary)};
+    transform: scale(1.1);
   }
 `;
 

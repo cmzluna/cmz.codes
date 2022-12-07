@@ -2,6 +2,8 @@ import { lighten } from "polished";
 import styled, { css } from "styled-components";
 import Image from "next/image";
 import LinkedIn from "components/Icons/LinkedIn";
+import Button from "components/Button";
+
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -12,9 +14,11 @@ const Container = styled.div`
   }
 `;
 const InnerWrapper = styled.div`
+  border: 2px dotted red;
   position: relative;
   width: 100%;
   height: 100%;
+  font-size: 1rem;
   @media (max-width: 870px) {
   }
 `;
@@ -24,10 +28,10 @@ const NavBar = styled.div``;
 
 const Text = styled.div`
   position: absolute;
-
+  border: 2px dotted yellow;
   color: white;
-  font-size: 1.7rem;
-  top: 22%;
+  font-size: 1.3em;
+  top: 14%;
   left: 15%;
   z-index: 3;
 
@@ -39,9 +43,7 @@ const Text = styled.div`
 
 const Buttons = styled.div`
   display: flex;
-
   position: absolute;
-
   bottom: 30%;
   left: 14%;
   z-index: 2;
@@ -50,6 +52,10 @@ const Buttons = styled.div`
     position: relative;
     left: 0;
     justify-content: center;
+
+    > * > * {
+      color: "red";
+    }
   }
 `;
 
@@ -99,6 +105,7 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
   border: 1px solid grey;
   cursor: pointer;
   transition: all 200ms ease;
+
   ::after {
     position: absolute;
     transition: all 2200ms ease;
@@ -110,6 +117,7 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
     height: 16px;
     border-radius: 100px;
   }
+
   ${({ theme, isOn }) =>
     isOn &&
     css`

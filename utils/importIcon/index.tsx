@@ -28,7 +28,7 @@ const Javascript = dynamic(() =>
 const Node = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiNodedotjs)
 );
-const PostgresSQL = dynamic(() =>
+const PostgreSQL = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiPostgresql)
 );
 const HTML5 = dynamic(() =>
@@ -49,7 +49,25 @@ const StyledComponents = dynamic(() =>
 const MongoDB = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiMongodb)
 );
+const SiTypescript = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiTypescript)
+);
 
+const SiNextdotjs = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiNextdotjs)
+);
+
+const SiFirebase = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiFirebase)
+);
+
+const SiGooglemaps = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiGooglemaps)
+);
+
+const SiStyledcomponents = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiStyledcomponents)
+);
 interface Props {
   name: string;
   size: number;
@@ -69,8 +87,8 @@ const importIcon: React.FC<Props> = (props) => {
     case "Node": {
       return <Node {...props} />;
     }
-    case "PostgresSQL": {
-      return <PostgresSQL {...props} />;
+    case "PostgreSQL": {
+      return <PostgreSQL {...props} />;
     }
     case "HTML5": {
       return <HTML5 {...props} />;
@@ -90,9 +108,24 @@ const importIcon: React.FC<Props> = (props) => {
     case "StyledComponents": {
       return <StyledComponents {...props} />;
     }
-
     case "MongoDB": {
       return <MongoDB {...props} />;
+    }
+    case "TypeScript": {
+      return <SiTypescript {...props} />;
+    }
+    case "Next": {
+      return <SiNextdotjs {...props} />;
+    }
+    case "Firebase": {
+      return <SiFirebase {...props} />;
+    }
+    case "GoogleMaps": {
+      return <SiGooglemaps {...props} />;
+    }
+
+    case "StyledComponents": {
+      return <SiStyledcomponents {...props} />;
     }
   }
 
