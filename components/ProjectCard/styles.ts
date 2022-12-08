@@ -24,7 +24,8 @@ const FigureWrapper = styled.figure`
   position: relative;
   margin: 0;
   width: 100%;
-  max-height: 220px;
+
+  height: 220px;
   overflow: hidden;
   border-top-left-radius: 0.7rem;
   border-top-right-radius: 0.7rem;
@@ -35,9 +36,16 @@ const ImageComponent = styled(Image)`
 
 const Title = styled.figcaption`
   position: absolute;
+  display: flex;
+  align-items: center;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  height: 25%;
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
+  > * {
+    margin-left: 10px;
+    color: white;
+  }
 `;
 
 const IconsWrapper = styled.div`

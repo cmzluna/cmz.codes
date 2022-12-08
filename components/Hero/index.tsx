@@ -18,7 +18,13 @@ const Hero = () => {
   return (
     <Container>
       <SocialLinks>
-        <LinkedIn className="LinkedIn" width={35} fill={theme.colors.primary} />
+        <Link href="http://www.lanacion.com.ar">
+          <LinkedIn
+            className="LinkedIn"
+            width={35}
+            fill={theme.colors.primary}
+          />
+        </Link>
         <Email className="Email" width={35} fill={theme.colors.primary} />
         <GitHub className="GitHub" width={35} fill={theme.colors.primary} />
       </SocialLinks>

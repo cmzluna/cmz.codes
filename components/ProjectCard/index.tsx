@@ -33,7 +33,7 @@ const ProjectCard: React.FC<Props> = ({
   return (
     <Container>
       <FigureWrapper>
-        <ImageComponent src={img} alt={"Logo"} width={60} height={120} />
+        <ImageComponent src={img} alt={"Logo"} fill objectFit="contain" />
 
         <Title>
           <h3>{name}</h3>
