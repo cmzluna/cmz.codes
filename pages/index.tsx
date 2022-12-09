@@ -3,8 +3,8 @@ import About from "components/About";
 import ProjectsList from "components/ProjectsList";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
-import Techtimonials from "components/Techtimonials";
-import TechIcons from "components/TechIcons";
+import TechtimonialsList from "components/TechtimonialsList";
+import { techtimonialsArray } from "components/TechtimonialsList/techtimonialsArray";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
 
       <ProjectsList />
 
-      <Techtimonials />
+      <TechtimonialsList list={techtimonialsArray} />
     </div>
   );
 }

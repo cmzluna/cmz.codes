@@ -45,7 +45,10 @@ const Hero = () => {
           <Button>My Work</Button>
         </Link>
 
-        <Link href="https://docs.google.com/document/d/1W4ym6tK3ZrtQtgvrFK8lOq-5QJRK9NoWVg6H2lgLwiA/edit?usp=sharing">
+        <Link
+          href="https://docs.google.com/document/d/1W4ym6tK3ZrtQtgvrFK8lOq-5QJRK9NoWVg6H2lgLwiA/edit?usp=sharing"
+          target="_blank"
+        >
           <Button color="#e1d2e5">My Resume</Button>
         </Link>
       </Buttons>

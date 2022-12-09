@@ -11,7 +11,7 @@ export const projectsArray = [
     id: "2",
     name: "Tomatelas",
     description:
-      "Ecommerce website with shopping cart, product list, filters, favorites and admin dashboard. This project was built from scratch in a month. ",
+      "Ecommerce website with shopping cart, product list, filters, favorites and admin dashboard. This project was built from scratch in a month. Backend-API has been set-up with Node.js and Express. Authentication using JWT web tokens.  ",
     technologies: ["Javascript", "React", "MongoDB", "PostgreSQL", "Redux"],
     links: {
       repo: "https://github.com/cmzluna/e-commerce-tomatelas",
@@ -50,7 +50,7 @@ export const projectsArray = [
     id: "4",
     name: "Pelicool",
     description:
-      "Movies website.     Search and listing, details of each movie. Ability to create users and implemented user's login. Made using PostgreSQL and Sequelize for the DB.",
+      "Movies website.     Search and listing, details of each movie. Ability to create users and implemented user's login. Made using PostgreSQL and Sequelize for the DB.The app uses Redux for client-side state management.",
     technologies: ["Javascript", "React", "Redux", "PostgreSQL"],
     links: { repo: "https://github.com/cmzluna/pelicool", deploy: "" },
   },
