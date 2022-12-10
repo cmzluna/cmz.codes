@@ -17,9 +17,10 @@ const InnerWrapper = styled.div`
     }
   }
   display: flex;
+  width: 150%;
   flex-direction: row;
   margin-bottom: 15px;
-  width: 200%;
+  border: 1px solid red;
   animation: scroll-left 20s linear infinite;
 
   :hover {

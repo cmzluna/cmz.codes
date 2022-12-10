@@ -11,7 +11,7 @@ const Container = styled.div`
   border-color: ${({ theme }) => lighten(0.2, theme.colors.primary)};
   background-color: ${({ theme }) => theme.colors.background.secondary};
   display: flex;
-  width: 550px;
+  width: 300px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
