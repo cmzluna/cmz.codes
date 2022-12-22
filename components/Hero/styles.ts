@@ -7,7 +7,7 @@ import Button from "components/Button";
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+
   position: relative;
   @media (max-width: 870px) {
     flex-direction: column;

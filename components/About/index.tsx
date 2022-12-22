@@ -12,7 +12,7 @@ import {
 
 const About = () => {
   return (
-    <SectionWrapperComponent title="About me" id="about">
+    <SectionWrapperComponent title="About" id="about">
       <TextWrapper>
         <CommaComponent />
         <BottomCommaComponent />

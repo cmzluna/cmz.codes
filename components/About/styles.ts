@@ -16,11 +16,14 @@ const Wrapper = styled.div``;
 const TextWrapper = styled.article`
   position: relative;
   flex: 1;
+  min-width: 300px;
+  margin: 0 20px;
 `;
 const ImageWrapper = styled.div`
   position: relative;
   width: 300px;
   height: 300px;
+  margin: 0 auto;
   border-radius: 999px;
   border: 1px solid grey;
 `;
@@ -33,17 +36,19 @@ const ImageComponent = styled(Image)`
 `;
 
 const SectionWrapperComponent = styled(SectionWrapper)`
-  display: grid;
+  display: flex;
   width: 90%;
   margin: 0 auto;
   position: relative;
   align-items: center;
   justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  flex-wrap: wrap;
   padding: 15px;
+  overflow: hidden;
 `;
 
 const CommaComponent = styled(Comma)`
+  z-index: 1;
   width: 160px;
   height: 170px;
   opacity: 0.3;

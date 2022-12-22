@@ -19,6 +19,8 @@ const GlobalStyle = createGlobalStyle`
   scroll-behavior: smooth;
   font-family: ${inter.style.fontFamily};
   background-color: ${({ theme }) => theme.colors.background.primary}; 
+  max-width: 1440px;
+  margin: 0 auto;
   }
   a {
 
