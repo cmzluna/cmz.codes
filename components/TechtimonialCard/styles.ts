@@ -1,17 +1,15 @@
 import { lighten } from "polished";
 import styled, { css } from "styled-components";
-import Image from "next/image";
 
 const Container = styled.div`
   position: relative;
   margin: 4px 10px;
   padding: 28px;
-  border: 4px solid red;
   border-radius: 0.7rem;
   border-color: ${({ theme }) => lighten(0.2, theme.colors.primary)};
   background-color: ${({ theme }) => theme.colors.background.secondary};
   display: flex;
-  width: 300px;
+  min-width: 280px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;

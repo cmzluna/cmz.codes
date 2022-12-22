@@ -1,20 +1,50 @@
+import CirclesSeparator from "components/CirclesSeparator";
+
 import React from "react";
-import { Container } from "./styles";
+import {
+  ImageComponent,
+  ImageWrapper,
+  TextWrapper,
+  SectionWrapperComponent,
+  CommaComponent,
+  BottomCommaComponent,
+} from "./styles";
 
 const About = () => {
   return (
-    <Container id="about">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugiat
-        alias iusto libero dolore aliquid perferendis necessitatibus officia
-        facere reiciendis dignissimos aliquam, quam nemo debitis distinctio
-        dolorum soluta architecto numquam animi. Qui obc Quasi, quidem? Ipsam
-        accusamus ullam beatae optio, incidunt tempora iste harum natus cum
-        dignissimos aliquam libero qua quo doloremque impedit amet. Veritatis
-        dignissimos cumque nostrum esse minima doloremque quaerat repudiandae
-        non incidunt? Quis, blanditiis.
-      </p>
-    </Container>
+    <SectionWrapperComponent title="About me" id="about">
+      <TextWrapper>
+        <CommaComponent />
+        <BottomCommaComponent />
+        Hi! I'm Claudio.
+        <p>
+          I am a front-end React developer based in Buenos Aires, passionate
+          about building useful applications from concept to delivery.
+        </p>
+        <p>
+          After being a self taught coder, I have decided to push myself into an
+          intensive coding bootcamp where I have learned the MERN stack.
+        </p>
+        Shortly after graduating from the bootcamp I have joined the engineering
+        team at Fizzmod where I have built React-Native apps for their
+        e-commerce system. I do programming in various languages and
+        technologies, and I like to spend my time pushing myself to learn more
+        through open source projects.
+        <p>
+          Aside from coding, I am passionate about languages, as they open the
+          doors to new worlds and cultures. I also love street photography, and
+          I take some shots from time to time :)
+        </p>
+      </TextWrapper>
+      <ImageWrapper>
+        <ImageComponent
+          src={"/claudio_photo.jpg"}
+          alt={"Logo"}
+          fill
+          objectFit="cover"
+        />
+      </ImageWrapper>
+    </SectionWrapperComponent>
   );
 };
 

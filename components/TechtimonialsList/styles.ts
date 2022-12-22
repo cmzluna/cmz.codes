@@ -17,11 +17,10 @@ const InnerWrapper = styled.div`
     }
   }
   display: flex;
-  width: 150%;
+  width: 250%;
   flex-direction: row;
   margin-bottom: 15px;
-  border: 1px solid red;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 15s linear infinite;
 
   :hover {
     animation-play-state: paused;

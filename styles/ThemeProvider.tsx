@@ -9,7 +9,7 @@ const lightTheme: DefaultTheme = {
     primary: "#886591",
     secondary: "#f2e5f5",
     links: "#1a161b",
-    background: { primary: "#d6cbdb", secondary: "#ece1f1", hover: "" },
+    background: { primary: "#fff", secondary: "#f4f4f4", hover: "" },
     text: "#1a161b",
   },
   icons: {

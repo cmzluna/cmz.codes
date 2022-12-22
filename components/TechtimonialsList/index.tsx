@@ -10,13 +10,16 @@ interface Props {
 const TechtimonialsList = (props: Props) => {
   const { list } = props;
 
+  const renderList = list.map((techtimonial) => (
+    <TechtimonialCard key={techtimonial.id} {...techtimonial} />
+  ));
+
   return (
     <Container>
       <Title>Techtimonials: </Title>
       <InnerWrapper id="techtimonials">
-        {list.map((techtimonial) => (
-          <TechtimonialCard key={techtimonial.id} {...techtimonial} />
-        ))}
+        {renderList}
+        {renderList}
       </InnerWrapper>
     </Container>
   );
