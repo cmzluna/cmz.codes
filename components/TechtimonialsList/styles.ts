@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import ImportIcon from "utils/importIcon";
+import SectionWrapper from "components/SectionWrapper";
 
 const Container = styled.div`
   display: flex;
@@ -18,6 +19,7 @@ const InnerWrapper = styled.div`
   }
   display: flex;
   width: 250%;
+
   flex-direction: row;
   margin-bottom: 15px;
   animation: scroll-left 15s linear infinite;
@@ -37,4 +39,26 @@ const StyledImportedIcon = styled(ImportIcon)`
   fill: ${({ theme }) => theme.icons.primary};
 `;
 
-export { Container, InnerWrapper, StyledImportedIcon, Title };
+const SectionWrapperComponent = styled(SectionWrapper)`
+  background-image: url("/circle_background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-blend-mode: screen;
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  align-items: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  padding: 80px;
+  overflow: hidden;
+`;
+export {
+  Container,
+  InnerWrapper,
+  StyledImportedIcon,
+  Title,
+  SectionWrapperComponent,
+};

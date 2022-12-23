@@ -1,8 +1,7 @@
 import React from "react";
-import { List } from "./styles";
+import { List, SectionWrapperComponent } from "./styles";
 import ProjectCard from "components/ProjectCard";
 import { projectsArray } from "./projectsArray";
-import { SectionWrapperComponent } from "components/About/styles";
 
 const ProjectsList = () => {
   return (

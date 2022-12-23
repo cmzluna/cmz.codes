@@ -3,16 +3,19 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 3vh 0;
 `;
 
 const Title = styled.div`
   position: absolute;
-  top: 55%;
+  top: 25%;
   left: 18%;
-  font-size: 3vw;
-  color: white;
+  font-size: 6vw;
+  color: ${({ theme }) => theme.colors.primary};
   width: 150%;
+
+  @media (min-width: 1440px) {
+    font-size: 4vw;
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -21,7 +24,6 @@ const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 200px;
-  border: 1px dotted red;
 `;
 
 const Wrapper = styled.div``;

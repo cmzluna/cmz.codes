@@ -17,32 +17,51 @@ const TextWrapper = styled.article`
   position: relative;
   flex: 1;
   min-width: 300px;
-  margin: 0 20px;
+  color: ${({ theme }) => theme.colors.text};
 `;
+
+const InnerWrapper = styled.div`
+  margin: 0 0 0 10%;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+`;
+
 const ImageWrapper = styled.div`
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 3vh auto;
-  border-radius: 999px;
-  border: 1px solid grey;
+  width: 250px;
+  height: 250px;
+
+  /* border-radius: 999px; */
 `;
+
 const ImageComponent = styled(Image)`
   opacity: 1;
   transition: opacity 500ms ease 0s;
-  position: absolute;
-  width: 250px;
+  width: 200px;
   border-radius: 9999px;
 `;
 
 const SectionWrapperComponent = styled(SectionWrapper)`
+  background-image: url("/circle_background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
   display: flex;
+  width: 100%;
+  margin: 0 auto;
   position: relative;
   align-items: center;
   justify-items: center;
-  flex-wrap: wrap;
-  padding: 80px;
+  padding: 120px 0 170px 80px;
   overflow: hidden;
+
+  & :first-child {
+    align-self: flex-end;
+  }
 `;
 
 const CommaComponent = styled(Comma)`
@@ -73,4 +92,5 @@ export {
   SectionWrapperComponent,
   CommaComponent,
   BottomCommaComponent,
+  InnerWrapper,
 };

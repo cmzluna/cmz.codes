@@ -1,6 +1,7 @@
 import { lighten } from "polished";
 import styled, { css } from "styled-components";
 import Image from "next/image";
+import SectionWrapper from "components/SectionWrapper";
 
 const List = styled.div`
   display: grid;
@@ -8,4 +9,20 @@ const List = styled.div`
   grid-gap: 1.5rem;
 `;
 
-export { List };
+const SectionWrapperComponent = styled(SectionWrapper)`
+  background-image: url("/circle_background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  display: flex;
+
+  margin: 0 auto;
+  position: relative;
+  align-items: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  padding: 80px;
+  overflow: hidden;
+`;
+
+export { List, SectionWrapperComponent };

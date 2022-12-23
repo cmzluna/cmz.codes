@@ -1,8 +1,12 @@
 import React from "react";
-import { Container, InnerWrapper, Title } from "./styles";
+import {
+  Container,
+  InnerWrapper,
+  Title,
+  SectionWrapperComponent,
+} from "./styles";
 import TechtimonialCard from "components/TechtimonialCard";
 import { TechtimonialProps } from "../TechtimonialCard/";
-import { SectionWrapperComponent } from "components/About/styles";
 
 interface Props {
   list: TechtimonialProps[];

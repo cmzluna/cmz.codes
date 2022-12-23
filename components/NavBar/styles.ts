@@ -37,7 +37,7 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
   height: 34px;
   background: ${({ theme }) => lighten(0.2, theme.colors.primary)};
   border-radius: 20px;
-  border: 1px solid grey;
+
   cursor: pointer;
   transition: all 200ms ease;
   ::after {

@@ -15,12 +15,17 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: ${({ theme }) => theme.colors.text};
     padding: 0;
-  margin: 10px 30px;
   scroll-behavior: smooth;
   font-family: ${inter.style.fontFamily};
   background-color: ${({ theme }) => theme.colors.background.primary}; 
   max-width: 1440px;
   margin: 0 auto;
+  background-image: url("/bubbles.svg");
+  background-size: contain;
+  background-repeat:repeat;
+  background-origin: border-box;
+  background-attachment: local;
+
   }
   a {
 
@@ -29,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+ 
  
 `;
 

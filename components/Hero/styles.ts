@@ -14,7 +14,6 @@ const Container = styled.div`
   }
 `;
 const InnerWrapper = styled.div`
-  border: 2px dotted red;
   position: relative;
   width: 100%;
   height: 100%;
@@ -28,7 +27,7 @@ const NavBar = styled.div``;
 
 const Text = styled.div`
   position: absolute;
-  border: 2px dotted yellow;
+
   color: white;
   font-size: 1.3em;
   top: 14%;
@@ -60,34 +59,37 @@ const Buttons = styled.div`
 `;
 
 const SocialLinks = styled.div`
+  z-index: 3;
   display: flex;
   position: absolute;
   min-width: 20%;
   height: 25%;
   right: 1%;
-  > .LinkedIn {
-  }
-  > .Email {
+
+  .LinkedIn {
     position: relative;
-    left: 15%;
-    top: 20%;
+    top: 8%;
   }
-  > .GitHub {
+  .Email {
     position: relative;
-    left: 24%;
-    top: 55%;
+    left: 55%;
+    top: 22%;
+  }
+  .GitHub {
+    position: relative;
+    left: 100%;
+    top: 40%;
   }
 
   @media (max-width: 870px) {
     position: relative;
     justify-content: space-around;
-    > .LinkedIn {
+    .LinkedIn {
+    }
+    .Email {
       position: static;
     }
-    > .Email {
-      position: static;
-    }
-    > .GitHub {
+    .GitHub {
       position: static;
     }
   }
