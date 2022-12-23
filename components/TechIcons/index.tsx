@@ -13,7 +13,7 @@ const TechIcons = (props: Props) => {
 
   return (
     <Container>
-      <Title>Technologies: </Title>
+      <Title>Technologies involved: </Title>
       <InnerWrapper id="technologies">
         {list.map((tech) => (
           <StyledImportedIcon key={tech} name={tech} size={size} title={tech} />

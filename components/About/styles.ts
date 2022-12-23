@@ -23,7 +23,7 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 300px;
   height: 300px;
-  margin: 0 auto;
+  margin: 3vh auto;
   border-radius: 999px;
   border: 1px solid grey;
 `;
@@ -37,13 +37,11 @@ const ImageComponent = styled(Image)`
 
 const SectionWrapperComponent = styled(SectionWrapper)`
   display: flex;
-  width: 90%;
-  margin: 0 auto;
   position: relative;
   align-items: center;
   justify-items: center;
   flex-wrap: wrap;
-  padding: 15px;
+  padding: 80px;
   overflow: hidden;
 `;
 

@@ -1,3 +1,4 @@
+import { useToggleLightMode } from "styles/ThemeProvider";
 import { ButtonContainer } from "./styles";
 
 interface ButtonProps extends React.DOMAttributes<HTMLDivElement> {
@@ -7,7 +8,13 @@ interface ButtonProps extends React.DOMAttributes<HTMLDivElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, ...rest }) => {
-  return <ButtonContainer {...rest}>{children}</ButtonContainer>;
+  const { isLightMode, toggleLightMode } = useToggleLightMode();
+
+  return (
+    <ButtonContainer isLightMode={isLightMode} {...rest}>
+      {children}
+    </ButtonContainer>
+  );
 };
 
 export default Button;

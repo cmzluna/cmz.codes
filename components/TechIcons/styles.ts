@@ -4,6 +4,7 @@ import ImportIcon from "utils/importIcon";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex: 1;
 `;
 
@@ -13,7 +14,6 @@ const InnerWrapper = styled.div`
   flex-wrap: wrap;
   margin-bottom: 15px;
   align-items: center;
-  width: 100%;
 `;
 
 const Title = styled.span`

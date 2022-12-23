@@ -11,7 +11,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 12px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 10px 12px;
   transition: all 500ms ease;
   :hover {
     background: ${({ theme }) => theme.colors.background.hover};

@@ -7,9 +7,9 @@ import {
 const lightTheme: DefaultTheme = {
   colors: {
     primary: "#886591",
-    secondary: "#f2e5f5",
+    secondary: "#efd5f7",
     links: "#1a161b",
-    background: { primary: "#fff", secondary: "#f4f4f4", hover: "" },
+    background: { primary: "#fff", secondary: "#d3d0f2", hover: "" },
     text: "#1a161b",
   },
   icons: {
@@ -21,8 +21,8 @@ const lightTheme: DefaultTheme = {
 
 const darkTheme: DefaultTheme = {
   colors: {
-    primary: "#9f78a9",
-    secondary: "#2f2b30",
+    primary: "#c69ed1",
+    secondary: "#dfc8e6",
     links: "#EEE",
     text: "#d1d1d1",
     background: { primary: "#2e2830", secondary: "#473d4a", hover: "#65586a" },

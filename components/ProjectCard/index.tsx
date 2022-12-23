@@ -46,7 +46,7 @@ const ProjectCard: React.FC<Props> = ({
       <IconsWrapper>
         {repo && (
           <Button>
-            <Link href={repo}>
+            <Link href={repo} target="_blank">
               <SiGit />
               Code
             </Link>

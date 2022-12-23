@@ -1,6 +1,8 @@
 import CirclesSeparator from "components/CirclesSeparator";
 
 import React from "react";
+import { useTheme } from "styled-components";
+import { useToggleLightMode } from "styles/ThemeProvider";
 import {
   ImageComponent,
   ImageWrapper,
@@ -11,11 +13,19 @@ import {
 } from "./styles";
 
 const About = () => {
+  const theme = useTheme();
+
   return (
     <SectionWrapperComponent title="About" id="about">
       <TextWrapper>
-        <CommaComponent />
-        <BottomCommaComponent />
+        <CommaComponent
+          fill={theme.colors.secondary}
+          stroke={theme.colors.primary}
+        />
+        <BottomCommaComponent
+          fill={theme.colors.secondary}
+          stroke={theme.colors.primary}
+        />
         Hi! I'm Claudio.
         <p>
           I am a front-end React developer based in Buenos Aires, passionate
