@@ -3,15 +3,18 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 2vh;
 `;
 
 const Title = styled.div`
-  position: absolute;
-  top: 25%;
-  left: 18%;
-  font-size: 6vw;
+  font-size: 5vw;
   color: ${({ theme }) => theme.colors.primary};
   width: 150%;
+  z-index: 5;
+  text-shadow: ${({ theme }) => `-1px 0px 0px  ${theme.colors.links},
+    1px 0px 0px ${theme.colors.links},
+    0px -1px 0px ${theme.colors.links},
+    0px 1px 0px ${theme.colors.links}`};
 
   @media (min-width: 1440px) {
     font-size: 4vw;
@@ -21,9 +24,10 @@ const Title = styled.div`
 const TitleWrapper = styled.div`
   position: relative;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  width: 200px;
+
+  @media (max-width: 870px) {
+    flex-direction: column;
+  }
 `;
 
 const Wrapper = styled.div``;

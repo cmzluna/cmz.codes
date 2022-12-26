@@ -20,15 +20,18 @@ const NavBarWrapper = styled.div`
   z-index: 3;
   display: flex;
   width: 90%;
+  padding: 15px;
   margin: 15px auto;
   justify-content: space-around;
-  padding: 15px;
+  flex-wrap: wrap;
   align-items: center;
 `;
 
 const NavLink = styled(Link)`
   color: ${({ theme }) => theme.colors.text};
   background: ${({ theme }) => theme.colors.background};
+  width: 20%;
+  margin: 10px;
 `;
 
 const ToggleContainer = styled.div<{ isOn: boolean }>`
@@ -37,7 +40,7 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
   height: 34px;
   background: ${({ theme }) => lighten(0.2, theme.colors.primary)};
   border-radius: 20px;
-
+  margin-right: 15px;
   cursor: pointer;
   transition: all 200ms ease;
   ::after {

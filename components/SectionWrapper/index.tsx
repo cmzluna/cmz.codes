@@ -17,7 +17,6 @@ const SectionWrapper: React.FC<Props> = ({
   return (
     <Container id={id}>
       <TitleWrapper>
-        <CirclesSeparator />
         <Title>{title}</Title>
       </TitleWrapper>
 

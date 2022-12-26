@@ -8,8 +8,8 @@ const lightTheme: DefaultTheme = {
   colors: {
     primary: "#886591",
     secondary: "#efd5f7",
-    links: "#1a161b",
-    background: { primary: "#fff", secondary: "#d3d0f2", hover: "" },
+    links: "#6a4c71",
+    background: { primary: "#fff", secondary: "#d3d0f2", hover: "#b3b1ce" },
     text: "#1a161b",
   },
   icons: {
@@ -23,9 +23,9 @@ const darkTheme: DefaultTheme = {
   colors: {
     primary: "#c69ed1",
     secondary: "#dfc8e6",
-    links: "#EEE",
+    links: "#efd5f7",
     text: "#d1d1d1",
-    background: { primary: "#2e2830", secondary: "#473d4a", hover: "#65586a" },
+    background: { primary: "#2e2830", secondary: "#473d4a", hover: "#87778d" },
   },
   icons: {
     primary: "#ad83b8",

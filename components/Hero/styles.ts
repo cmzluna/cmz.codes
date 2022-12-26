@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import Image from "next/image";
 import LinkedIn from "components/Icons/LinkedIn";
 import Button from "components/Button";
+import WorkResumeButtons from "components/WorkResumeButtons";
 
 const Container = styled.div`
   display: flex;
@@ -17,8 +18,10 @@ const InnerWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  font-size: 1rem;
+  font-size: 1em;
+  border: 3px dotted grey;
   @media (max-width: 870px) {
+    margin: 10% 0 10% 0;
   }
 `;
 const Background = styled(Image)``;
@@ -27,34 +30,16 @@ const NavBar = styled.div``;
 
 const Text = styled.div`
   position: absolute;
-
   color: white;
   font-size: 1.3em;
-  top: 14%;
+  top: 10%;
   left: 15%;
   z-index: 3;
-
+  flex-wrap: wrap;
   @media (max-width: 870px) {
-    top: 15%;
+    top: 1%;
     right: 4%;
-  }
-`;
-
-const Buttons = styled.div`
-  display: flex;
-  position: absolute;
-  bottom: 30%;
-  left: 14%;
-  z-index: 2;
-
-  @media (max-width: 870px) {
-    position: relative;
-    left: 0;
-    justify-content: center;
-
-    > * > * {
-      color: "red";
-    }
+    font-size: 0.9rem;
   }
 `;
 
@@ -104,7 +89,7 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
   height: 24px;
   background: lightgray;
   border-radius: 20px;
-  border: 1px solid grey;
+
   cursor: pointer;
   transition: all 200ms ease;
 
@@ -132,14 +117,21 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
     `}
 `;
 
+const WorkResumeBtns = styled(WorkResumeButtons)`
+  @media (min-width: 870px) {
+    bottom: 30%;
+    left: 14%;
+  }
+`;
+
 export {
   Container,
   Background,
   ToggleContainer,
   NavBar,
-  Buttons,
   SocialLinks,
   InnerWrapper,
   Text,
   RelativeWrapper,
+  WorkResumeBtns,
 };

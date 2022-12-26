@@ -1,5 +1,11 @@
 import React from "react";
-import { Container, Buttons, SocialLinks, InnerWrapper, Text } from "./styles";
+import {
+  Container,
+  SocialLinks,
+  InnerWrapper,
+  Text,
+  WorkResumeBtns,
+} from "./styles";
 import { useToggleLightMode } from "styles/ThemeProvider";
 import CirclesBackground from "components/Hero/components/CirclesBackground";
 import Computer from "./components/Computer";
@@ -35,24 +41,13 @@ const Hero = () => {
         <Text>
           <h2>FrontEnd Developer</h2>
           <p>
-            Creating fresh & fast web apps <br />
-            and sites with passion!
+            Passionate about creating cool apps <br />
+            and sites !
           </p>
         </Text>
       </InnerWrapper>
 
-      <Buttons>
-        <Link href="#portfolio">
-          <Button>My Work</Button>
-        </Link>
-
-        <Link
-          href="https://docs.google.com/document/d/1W4ym6tK3ZrtQtgvrFK8lOq-5QJRK9NoWVg6H2lgLwiA/edit?usp=sharing"
-          target="_blank"
-        >
-          <Button>My Resume</Button>
-        </Link>
-      </Buttons>
+      <WorkResumeBtns />
       {/* <NavBar />
 
 

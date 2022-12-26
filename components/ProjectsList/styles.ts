@@ -15,13 +15,12 @@ const SectionWrapperComponent = styled(SectionWrapper)`
   background-repeat: no-repeat;
   background-origin: border-box;
   display: flex;
-
   margin: 0 auto;
   position: relative;
   align-items: center;
   justify-items: center;
   flex-wrap: wrap;
-  padding: 80px;
+  padding: 1rem;
   overflow: hidden;
 `;
 
