@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 60 59" style="enable-background:new 0 0 60 59;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;stroke:#3D3D3C;stroke-width:0.96;stroke-linecap:round;stroke-linejoin:round;}
+	.st1{fill:#4F4F5B;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;filter:url(#Adobe_OpacityMaskFilter);}
+	.st3{mask:url(#mask0_0_1230_2_);}
+	.st4{fill:#F5F6F7;}
+	.st5{fill:none;stroke:#3D3D3C;stroke-width:0.96;stroke-linecap:round;stroke-linejoin:round;}
+	.st6{fill:#3782FF;stroke:#3D3D3C;stroke-width:0.96;stroke-linecap:round;stroke-linejoin:round;}
+</style>
+<g>
+	<path class="st0" d="M38.9,26.1L11.3,42.5L6.9,16L34.5-0.3L38.9,26.1z"/>
+	<path class="st1" d="M38.9,26.1l20.8,15.8L32.1,58.3L11.3,42.5L38.9,26.1z"/>
+	<defs>
+		<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-0.6" y="25" width="72.2" height="34.4">
+			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+		</filter>
+	</defs>
+	<mask maskUnits="userSpaceOnUse" x="-0.6" y="25" width="72.2" height="34.4" id="mask0_0_1230_2_">
+		<path class="st2" d="M38.7,26.1l21,15.5L32.3,58.3l-21-15.5L38.7,26.1z"/>
+	</mask>
+	<g class="st3">
+		<path class="st4" d="M0.3,58.9L71.1,58L0.3,58.9z"/>
+		<path class="st5" d="M0.3,58.9L71.1,58"/>
+		<path class="st4" d="M0.3,56.2l70.8-0.9L0.3,56.2z"/>
+		<path class="st5" d="M0.3,56.2l70.8-0.9"/>
+		<path class="st4" d="M0.2,53.5L71,52.6L0.2,53.5z"/>
+		<path class="st5" d="M0.2,53.5L71,52.6"/>
+		<path class="st4" d="M0.2,50.8L71,49.9L0.2,50.8z"/>
+		<path class="st5" d="M0.2,50.8L71,49.9"/>
+		<path class="st4" d="M0.2,48.1L71,47.2L0.2,48.1z"/>
+		<path class="st5" d="M0.2,48.1L71,47.2"/>
+		<path class="st4" d="M0.1,45.4l70.8-0.9L0.1,45.4z"/>
+		<path class="st5" d="M0.1,45.4l70.8-0.9"/>
+		<path class="st4" d="M0.1,42.7l70.8-0.9L0.1,42.7z"/>
+		<path class="st5" d="M0.1,42.7l70.8-0.9"/>
+		<path class="st4" d="M0.1,39.9L70.9,39L0.1,39.9z"/>
+		<path class="st5" d="M0.1,39.9L70.9,39"/>
+		<path class="st4" d="M0,37.2l70.8-0.9L0,37.2z"/>
+		<path class="st5" d="M0,37.2l70.8-0.9"/>
+		<path class="st4" d="M0,34.5l70.8-0.9L0,34.5z"/>
+		<path class="st5" d="M0,34.5l70.8-0.9"/>
+		<path class="st4" d="M0,31.8l70.8-0.9L0,31.8z"/>
+		<path class="st5" d="M0,31.8l70.8-0.9"/>
+		<path class="st4" d="M-0.1,29.1l70.8-0.9L-0.1,29.1z"/>
+		<path class="st5" d="M-0.1,29.1l70.8-0.9"/>
+		<path class="st4" d="M-0.1,26.4l70.8-0.9L-0.1,26.4z"/>
+		<path class="st5" d="M-0.1,26.4l70.8-0.9"/>
+	</g>
+	<path class="st5" d="M38.9,26.1l20.8,15.8L32.1,58.3L11.3,42.5L38.9,26.1L38.9,26.1z"/>
+	<path class="st6" d="M34.5-0.3l20.8,15.8l4.4,26.5L38.9,26.1L34.5-0.3z"/>
+</g>
+</svg>

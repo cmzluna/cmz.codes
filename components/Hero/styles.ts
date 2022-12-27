@@ -1,15 +1,19 @@
 import { lighten } from "polished";
 import styled, { css } from "styled-components";
 import Image from "next/image";
-import LinkedIn from "components/Icons/LinkedIn";
-import Button from "components/Button";
 import WorkResumeButtons from "components/WorkResumeButtons";
+import Mobile from "components/Hero/components/Mobile";
+import SelectorCard from "./components/SelectorCard";
+import CheckCard from "./components/CheckCard";
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-
   position: relative;
+  opacity: 0;
+  animation: pop-in 0.7s ease-out forwards;
+  border: 6px dotted red;
+
   @media (max-width: 870px) {
     flex-direction: column;
   }
@@ -18,10 +22,10 @@ const InnerWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  font-size: 1em;
-  border: 3px dotted grey;
+  font-size: 18px;
+  border: 6px dotted grey;
+
   @media (max-width: 870px) {
-    margin: 10% 0 10% 0;
   }
 `;
 const Background = styled(Image)``;
@@ -31,15 +35,20 @@ const NavBar = styled.div``;
 const Text = styled.div`
   position: absolute;
   color: white;
-  font-size: 1.3em;
+  font-size: 3vw;
   top: 10%;
   left: 15%;
-  z-index: 3;
+  z-index: 1;
   flex-wrap: wrap;
-  @media (max-width: 870px) {
-    top: 1%;
-    right: 4%;
-    font-size: 0.9rem;
+  opacity: 0;
+  animation: pop-in 0.7s 0.4s ease-out forwards;
+
+  @media (min-width: 870px) {
+    font-size: 2.7vw;
+  }
+  @media (max-width: 320px) {
+    font-size: 4.5vw;
+    top: 0;
   }
 `;
 
@@ -50,6 +59,7 @@ const SocialLinks = styled.div`
   min-width: 20%;
   height: 25%;
   right: 1%;
+  border: 6px dotted orange;
 
   .LinkedIn {
     position: relative;
@@ -119,11 +129,52 @@ const ToggleContainer = styled.div<{ isOn: boolean }>`
 
 const WorkResumeBtns = styled(WorkResumeButtons)`
   @media (min-width: 870px) {
-    bottom: 30%;
-    left: 14%;
+    bottom: 20%;
+    left: 15%;
   }
 `;
 
+const MobileComponent = styled(Mobile)`
+  position: absolute;
+  width: 25%;
+  bottom: 36%;
+  right: 20%;
+  z-index: 1;
+  border-radius: 9px;
+  animation: float1 4s 0.4s ease-in-out forwards infinite;
+  @media (max-width: 870px) {
+    bottom: 30%;
+    right: 13%;
+  }
+`;
+
+const SelectorCardComponent = styled(SelectorCard)`
+  position: absolute;
+  width: 26%;
+  bottom: 35%;
+  right: 32%;
+  z-index: 1;
+  border-radius: 9px;
+  animation: float2 4s 1.2s ease-in-out forwards infinite;
+  @media (max-width: 870px) {
+    bottom: 25%;
+    right: 28%;
+  }
+`;
+
+const CheckCardComponent = styled(CheckCard)`
+  position: absolute;
+  width: 40%;
+  top: 40%;
+  right: 20%;
+  z-index: 1;
+  border-radius: 9px;
+  animation: float3 4s 1.2s ease-in-out forwards infinite;
+  @media (max-width: 870px) {
+    top: 53%;
+    right: 16%;
+  }
+`;
 export {
   Container,
   Background,
@@ -134,4 +185,7 @@ export {
   Text,
   RelativeWrapper,
   WorkResumeBtns,
+  MobileComponent,
+  SelectorCardComponent,
+  CheckCardComponent,
 };

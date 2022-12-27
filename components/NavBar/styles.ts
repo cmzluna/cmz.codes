@@ -20,18 +20,18 @@ const NavBarWrapper = styled.div`
   z-index: 3;
   display: flex;
   width: 90%;
-  padding: 15px;
-  margin: 15px auto;
+  margin: 10px auto;
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
+  border: 1px solid blue;
 `;
 
 const NavLink = styled(Link)`
   color: ${({ theme }) => theme.colors.text};
   background: ${({ theme }) => theme.colors.background};
   width: 20%;
-  margin: 10px;
+  margin: 7px;
 `;
 
 const ToggleContainer = styled.div<{ isOn: boolean }>`

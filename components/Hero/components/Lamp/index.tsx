@@ -38,36 +38,38 @@ const Lamp = (props: any) => {
           }}
         />
         {isLightOn && (
-          <linearGradient
-            id="a"
-            gradientUnits="userSpaceOnUse"
-            x1={243.642}
-            y1={-127.941}
-            x2={230.73}
-            y2={511.221}
-          >
-            <stop
-              offset={0.074}
+          <>
+            <linearGradient
+              id="a"
+              gradientUnits="userSpaceOnUse"
+              x1={243.642}
+              y1={-127.941}
+              x2={230.73}
+              y2={511.221}
+            >
+              <stop
+                offset={0.074}
+                style={{
+                  stopColor: "#ff0",
+                }}
+              />
+              <stop
+                offset={1}
+                style={{
+                  stopColor: "#fff",
+                  stopOpacity: 0,
+                }}
+              />
+            </linearGradient>
+            <path
               style={{
-                stopColor: "#ff0",
+                fill: "url(#a)",
               }}
+              d="M460 536.7H.4l201.4-329.6h87.1z"
             />
-            <stop
-              offset={1}
-              style={{
-                stopColor: "#fff",
-                stopOpacity: 0,
-              }}
-            />
-          </linearGradient>
+            <path d="M284.9 211.2h-79.1c-2.2 0-4-1.8-4-4 0-17.5 14.2-31.6 31.6-31.6h23.8c17.5 0 31.6 14.2 31.6 31.6.1 2.2-1.7 4-3.9 4z" />
+          </>
         )}
-        <path
-          style={{
-            fill: "url(#a)",
-          }}
-          d="M460 536.7H.4l201.4-329.6h87.1z"
-        />
-        <path d="M284.9 211.2h-79.1c-2.2 0-4-1.8-4-4 0-17.5 14.2-31.6 31.6-31.6h23.8c17.5 0 31.6 14.2 31.6 31.6.1 2.2-1.7 4-3.9 4z" />
         <linearGradient
           id="b"
           gradientUnits="userSpaceOnUse"
@@ -94,34 +96,6 @@ const Lamp = (props: any) => {
             style={{
               stopColor: "#0e0e0e",
               stopOpacity: 0.7043,
-            }}
-          />
-          <stop
-            offset={0.535}
-            style={{
-              stopColor: "#202020",
-              stopOpacity: 0.5723,
-            }}
-          />
-          <stop
-            offset={0.694}
-            style={{
-              stopColor: "#3a3a3a",
-              stopOpacity: 0.4445,
-            }}
-          />
-          <stop
-            offset={0.849}
-            style={{
-              stopColor: "#5a5a5a",
-              stopOpacity: 0.3209,
-            }}
-          />
-          <stop
-            offset={1}
-            style={{
-              stopColor: "#828282",
-              stopOpacity: 0.2,
             }}
           />
         </linearGradient>
