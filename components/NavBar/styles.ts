@@ -24,7 +24,6 @@ const NavBarWrapper = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
-  border: 1px solid blue;
 `;
 
 const NavLink = styled(Link)`

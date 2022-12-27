@@ -8,7 +8,7 @@ const Buttons = styled.div`
   position: absolute;
   z-index: 2;
   width: 100%;
-  border: 1px solid red;
+
   @media (max-width: 870px) {
     display: flex;
     position: relative;

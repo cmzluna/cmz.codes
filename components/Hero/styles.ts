@@ -12,7 +12,6 @@ const Container = styled.div`
   position: relative;
   opacity: 0;
   animation: pop-in 0.7s ease-out forwards;
-  border: 6px dotted red;
 
   @media (max-width: 870px) {
     flex-direction: column;
@@ -23,7 +22,6 @@ const InnerWrapper = styled.div`
   width: 100%;
   height: 100%;
   font-size: 18px;
-  border: 6px dotted grey;
 
   @media (max-width: 870px) {
   }
@@ -59,7 +57,6 @@ const SocialLinks = styled.div`
   min-width: 20%;
   height: 25%;
   right: 1%;
-  border: 6px dotted orange;
 
   .LinkedIn {
     position: relative;
@@ -141,7 +138,7 @@ const MobileComponent = styled(Mobile)`
   right: 20%;
   z-index: 1;
   border-radius: 9px;
-  animation: float1 4s 0.4s ease-in-out forwards infinite;
+  animation: float1 4s 2s ease-in-out forwards infinite;
   @media (max-width: 870px) {
     bottom: 30%;
     right: 13%;
@@ -169,7 +166,8 @@ const CheckCardComponent = styled(CheckCard)`
   right: 20%;
   z-index: 1;
   border-radius: 9px;
-  animation: float3 4s 1.2s ease-in-out forwards infinite;
+
+  animation: float3 4s 2.2s ease-in-out forwards infinite;
   @media (max-width: 870px) {
     top: 53%;
     right: 16%;

@@ -35,7 +35,6 @@ const TextWrapper = styled.article`
   flex: 1;
   float: none;
   color: ${({ theme }) => theme.colors.text};
-  border: 1px solid grey;
 `;
 
 const InnerWrapper = styled.div`
@@ -47,7 +46,6 @@ const InnerWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  border: 2px dotted yellow;
   z-index: 8;
 
   @media (max-width: 768px) {
@@ -66,13 +64,9 @@ const ImageWrapper = styled.div`
     top: -10px;
     margin: 0 auto;
   }
-  /* border-radius: 999px; */
 `;
 
 const WorkResumeBtns = styled(WorkResumeButtons)`
-  /* bottom: -20%;
-  left: 0%;
-  top: auto; */
   position: relative;
   width: 75%;
   display: flex;
@@ -95,7 +89,6 @@ const SectionWrapperComponent = styled(SectionWrapper)`
   width: 100%;
   position: relative;
 
-  border: 1px solid red;
   & :first-child {
     align-self: flex-end;
   }
