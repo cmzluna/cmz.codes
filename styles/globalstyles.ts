@@ -23,9 +23,20 @@ const GlobalStyle = createGlobalStyle`
   background-repeat:repeat;
   background-origin: border-box;
   background-attachment: local;
-
+animation: bgScroll 80s linear infinite;
   border:1px solid yellow;
  
+  @keyframes bgScroll {
+  0% {
+ 
+    background-position : 0px 0px
+  }
+  100% {
+ 
+    background-position : 0px -808px
+  }
+}
+
   @keyframes leafanimation {
     0% {
 		transform: translate(-7.54px, -17.78px) skewX(0deg) scale(1) ;
