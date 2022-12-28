@@ -4,7 +4,7 @@ import styled from "styled-components";
 const SocialLinksBottom = styled(SocialLinks)`
   z-index: 3;
   display: flex;
-  width: 100%;
+  width: 35%;
   justify-content: space-around;
   margin: 3vh auto;
   padding: 5px;
