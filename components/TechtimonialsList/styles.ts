@@ -22,7 +22,7 @@ const InnerWrapper = styled.div`
 
   flex-direction: row;
   margin-bottom: 15px;
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 10s linear infinite;
 
   :hover {
     animation-play-state: paused;
@@ -40,6 +40,8 @@ const StyledImportedIcon = styled(ImportIcon)`
 `;
 
 const SectionWrapperComponent = styled(SectionWrapper)`
+  border: 1px solid #c69ed1;
+  border-radius: 30%;
   background-image: url("/circle_background.svg");
   background-size: cover;
   background-repeat: no-repeat;

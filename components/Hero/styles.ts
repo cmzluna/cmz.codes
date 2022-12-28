@@ -5,6 +5,7 @@ import WorkResumeButtons from "components/WorkResumeButtons";
 import Mobile from "components/Hero/components/Mobile";
 import SelectorCard from "./components/SelectorCard";
 import CheckCard from "./components/CheckCard";
+import SocialLinks from "components/SocialLinks";
 
 const Container = styled.div`
   display: flex;
@@ -50,7 +51,7 @@ const Text = styled.div`
   }
 `;
 
-const SocialLinks = styled.div`
+const SocialLinksTop = styled(SocialLinks)`
   z-index: 3;
   display: flex;
   position: absolute;
@@ -86,6 +87,44 @@ const SocialLinks = styled.div`
     }
   }
 `;
+
+const SocialLinksBottom = styled(SocialLinks)`
+  z-index: 3;
+  display: flex;
+  position: absolute;
+  min-width: 20%;
+  height: 25%;
+  right: 1%;
+
+  .LinkedIn {
+    position: relative;
+    top: 8%;
+  }
+  .Email {
+    position: relative;
+    left: 55%;
+    top: 22%;
+  }
+  .GitHub {
+    position: relative;
+    left: 100%;
+    top: 40%;
+  }
+
+  @media (max-width: 870px) {
+    position: relative;
+    justify-content: space-around;
+    .LinkedIn {
+    }
+    .Email {
+      position: static;
+    }
+    .GitHub {
+      position: static;
+    }
+  }
+`;
+
 const RelativeWrapper = styled.div`
   position: relative;
 `;
@@ -178,7 +217,8 @@ export {
   Background,
   ToggleContainer,
   NavBar,
-  SocialLinks,
+  SocialLinksTop,
+  SocialLinksBottom,
   InnerWrapper,
   Text,
   RelativeWrapper,

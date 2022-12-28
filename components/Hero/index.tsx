@@ -1,13 +1,13 @@
 import React from "react";
 import {
   Container,
-  SocialLinks,
   InnerWrapper,
   Text,
   WorkResumeBtns,
   MobileComponent,
   SelectorCardComponent,
   CheckCardComponent,
+  SocialLinksTop,
 } from "./styles";
 import { useToggleLightMode } from "styles/ThemeProvider";
 import CirclesBackground from "components/Hero/components/CirclesBackground";
@@ -24,11 +24,7 @@ const Hero = () => {
 
   return (
     <Container>
-      <SocialLinks>
-        <LinkedIn className="LinkedIn" width={35} fill={theme.colors.primary} />
-        <Email className="Email" width={35} fill={theme.colors.primary} />
-        <GitHub className="GitHub" width={35} fill={theme.colors.primary} />
-      </SocialLinks>
+      <SocialLinksTop />
 
       <InnerWrapper>
         <CirclesBackground />
@@ -51,7 +47,7 @@ const Hero = () => {
       {/* <NavBar />
 
 
-      <SocialLinks /> */}
+      <SocialLinksWrapper /> */}
     </Container>
   );
 };

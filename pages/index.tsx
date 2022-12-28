@@ -5,6 +5,7 @@ import Head from "next/head";
 import NavBar from "../components/NavBar";
 import TechtimonialsList from "components/TechtimonialsList";
 import { techtimonialsArray } from "components/TechtimonialsList/techtimonialsArray";
+import { SocialLinksBottom } from "./styles";
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       <About />
       <ProjectsList />
       <TechtimonialsList list={techtimonialsArray} />
+      <SocialLinksBottom />
+      <NavBar />
     </div>
   );
 }
