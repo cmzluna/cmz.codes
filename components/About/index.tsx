@@ -41,8 +41,8 @@ const About = () => {
             />
           </ImageWrapper>
           <p>
-            Hi! I'm Claudio. <br />I am a front-end React developer based in
-            Buenos Aires, passionate about building useful applications from
+            Hi! I&apos;m Claudio. <br />I am a front-end React developer based
+            in Buenos Aires, passionate about building useful applications from
             concept to delivery.
           </p>
           <p>
