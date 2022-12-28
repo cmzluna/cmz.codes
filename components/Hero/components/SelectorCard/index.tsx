@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Wrapper } from "./styles";
 
-const SelectorCard = (props) => {
+const SelectorCard = (props: any) => {
   const { className } = props;
 
   return (

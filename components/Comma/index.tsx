@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Comma = (props) => (
+const Comma = (props: any) => (
   <svg
     stroke="#886591"
     fill="none"

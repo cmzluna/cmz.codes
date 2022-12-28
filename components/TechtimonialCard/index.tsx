@@ -1,4 +1,3 @@
-import TechIcons from "components/TechIcons";
 import React from "react";
 import {
   Container,

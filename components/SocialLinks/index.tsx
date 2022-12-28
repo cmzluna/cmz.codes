@@ -5,7 +5,7 @@ import React from "react";
 import { useTheme } from "styled-components";
 import { Wrapper } from "./styles";
 
-const SocialLinks = (props) => {
+const SocialLinks = (props: any) => {
   const { className } = props;
   const theme = useTheme();
 

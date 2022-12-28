@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Wrapper } from "./styles";
 
-const Mobile = (props) => {
+const Mobile = (props: any) => {
   const { className } = props;
 
   return (

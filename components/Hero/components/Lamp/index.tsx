@@ -8,8 +8,6 @@ interface Props {
 const Lamp = (props: any) => {
   const { isLightOn = true } = props;
 
-  // TODO: transition smoothly between Themes
-  // https://stackoverflow.com/questions/73608068/transition-between-two-svg-react
   return (
     <Wrapper>
       <svg

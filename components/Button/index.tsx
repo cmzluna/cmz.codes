@@ -8,7 +8,7 @@ interface ButtonProps extends React.DOMAttributes<HTMLDivElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, ...rest }) => {
-  const { isLightMode, toggleLightMode } = useToggleLightMode();
+  const { isLightMode } = useToggleLightMode();
 
   return (
     <ButtonContainer isLightMode={isLightMode} {...rest}>

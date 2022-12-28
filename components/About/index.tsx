@@ -1,9 +1,5 @@
-import CircleBackground from "components/CircleBackground";
-import CirclesSeparator from "components/CirclesSeparator";
-
 import React from "react";
 import { useTheme } from "styled-components";
-import { useToggleLightMode } from "styles/ThemeProvider";
 import {
   ImageComponent,
   ImageWrapper,

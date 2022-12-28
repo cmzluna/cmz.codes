@@ -1,4 +1,3 @@
-import ImportIcon from "utils/importIcon";
 import React from "react";
 
 import { Container, InnerWrapper, StyledImportedIcon, Title } from "./styles";

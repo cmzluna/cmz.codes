@@ -1,13 +1,10 @@
 import React from "react";
-
 import { Container, NavBarWrapper, NavLink, ToggleContainer } from "./styles";
 import { useToggleLightMode } from "styles/ThemeProvider";
-import Link from "next/link";
 
 const NavBar = () => {
   const { isLightMode, toggleLightMode } = useToggleLightMode();
 
-  console.log("isLightMode ==> ", isLightMode);
   return (
     <Container>
       <NavBarWrapper>

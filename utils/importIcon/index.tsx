@@ -71,6 +71,7 @@ const SiStyledcomponents = dynamic(() =>
 interface Props {
   name: string;
   size: number;
+  title: string;
 }
 const importIcon: React.FC<Props> = (props) => {
   const { name } = props;

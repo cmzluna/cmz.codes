@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Wrapper } from "./styles";
+
 const Computer = (props: any) => (
   <Wrapper>
     <svg

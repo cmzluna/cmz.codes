@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Container,
-  InnerWrapper,
-  Title,
-  SectionWrapperComponent,
-} from "./styles";
+import { InnerWrapper, SectionWrapperComponent } from "./styles";
 import TechtimonialCard from "components/TechtimonialCard";
 import { TechtimonialProps } from "../TechtimonialCard/";
 

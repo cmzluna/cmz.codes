@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const CirclesSeparator = (props) => (
+const CirclesSeparator = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 303.6 211.4"

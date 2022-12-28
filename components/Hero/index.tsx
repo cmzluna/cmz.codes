@@ -13,14 +13,9 @@ import { useToggleLightMode } from "styles/ThemeProvider";
 import CirclesBackground from "components/Hero/components/CirclesBackground";
 import Computer from "./components/Computer";
 import Lamp from "components/Hero/components/Lamp";
-import LinkedIn from "components/Icons/LinkedIn";
-import Email from "components/Icons/Email";
-import GitHub from "components/Icons/GitHub";
-import { useTheme } from "styled-components";
 
 const Hero = () => {
-  const { isLightMode, toggleLightMode } = useToggleLightMode();
-  const theme = useTheme();
+  const { isLightMode } = useToggleLightMode();
 
   return (
     <Container>
@@ -44,10 +39,6 @@ const Hero = () => {
       </InnerWrapper>
 
       <WorkResumeBtns />
-      {/* <NavBar />
-
-
-      <SocialLinksWrapper /> */}
     </Container>
   );
 };

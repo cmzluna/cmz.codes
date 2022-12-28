@@ -1,8 +1,11 @@
 import { lighten } from "polished";
 import styled from "styled-components";
-import { useToggleLightMode } from "styles/ThemeProvider";
 
-const ButtonContainer = styled.div`
+interface ButtonContainerProps {
+  isLightMode: boolean;
+}
+
+const ButtonContainer = styled.div<ButtonContainerProps>`
   align-items: center;
   background: ${({ theme }) => theme.colors.background.secondary};
   border-radius: 16px;

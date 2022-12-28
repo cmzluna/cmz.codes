@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, TitleWrapper, Wrapper, Title } from "./styles";
-import CirclesSeparator from "components/CirclesSeparator";
 
 interface Props {
   className?: string;
