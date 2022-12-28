@@ -5,7 +5,23 @@ import Head from "next/head";
 import NavBar from "../components/NavBar";
 import TechtimonialsList from "components/TechtimonialsList";
 import { techtimonialsArray } from "components/TechtimonialsList/techtimonialsArray";
-import { SocialLinksBottom } from "./styles";
+import styled from "styled-components";
+import SocialLinks from "components/SocialLinks";
+
+const SocialLinksBottom = styled(SocialLinks)`
+  z-index: 3;
+  display: flex;
+  width: 35%;
+  justify-content: space-around;
+  margin: 3vh auto;
+  padding: 5px;
+  border-bottom: 1px solid #c69ed1;
+  border-radius: 9999px;
+
+  @media (max-width: 870px) {
+    justify-content: space-around;
+  }
+`;
 
 export default function Home() {
   return (
