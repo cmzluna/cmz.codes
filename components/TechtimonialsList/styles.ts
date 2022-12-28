@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ImportIcon from "utils/importIcon";
 import SectionWrapper from "components/SectionWrapper";
 
@@ -57,6 +57,7 @@ const SectionWrapperComponent = styled(SectionWrapper)`
   padding: 80px;
   overflow: hidden;
 `;
+
 export {
   Container,
   InnerWrapper,

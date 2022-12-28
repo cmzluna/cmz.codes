@@ -15,11 +15,7 @@ export interface TechtimonialProps {
   text: string;
 }
 
-const TechtimonialCard: React.FC<TechtimonialProps> = ({
-  id,
-  author,
-  text,
-}) => {
+const TechtimonialCard: React.FC<TechtimonialProps> = ({ author, text }) => {
   const { name, position } = author;
 
   return (

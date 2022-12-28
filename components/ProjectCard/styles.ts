@@ -1,5 +1,4 @@
-import { lighten } from "polished";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Image from "next/image";
 
 const Container = styled.div`
@@ -24,12 +23,12 @@ const FigureWrapper = styled.figure`
   position: relative;
   margin: 0;
   width: 100%;
-
   height: 220px;
   overflow: hidden;
   border-top-left-radius: 0.7rem;
   border-top-right-radius: 0.7rem;
 `;
+
 const ImageComponent = styled(Image)`
   width: 100%;
 `;

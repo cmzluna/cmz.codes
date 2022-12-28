@@ -1,7 +1,5 @@
 import React from "react";
-
 import { Container, InnerWrapper, StyledImportedIcon, Title } from "./styles";
-// import TechIcons from "components/TechIcons";
 
 interface Props {
   list: string[];

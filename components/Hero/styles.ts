@@ -18,6 +18,7 @@ const Container = styled.div`
     flex-direction: column;
   }
 `;
+
 const InnerWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -27,6 +28,7 @@ const InnerWrapper = styled.div`
   @media (max-width: 870px) {
   }
 `;
+
 const Background = styled(Image)``;
 
 const NavBar = styled.div``;
@@ -52,43 +54,6 @@ const Text = styled.div`
 `;
 
 const SocialLinksTop = styled(SocialLinks)`
-  z-index: 3;
-  display: flex;
-  position: absolute;
-  min-width: 20%;
-  height: 25%;
-  right: 1%;
-
-  .LinkedIn {
-    position: relative;
-    top: 8%;
-  }
-  .Email {
-    position: relative;
-    left: 55%;
-    top: 22%;
-  }
-  .GitHub {
-    position: relative;
-    left: 100%;
-    top: 40%;
-  }
-
-  @media (max-width: 870px) {
-    position: relative;
-    justify-content: space-around;
-    .LinkedIn {
-    }
-    .Email {
-      position: static;
-    }
-    .GitHub {
-      position: static;
-    }
-  }
-`;
-
-const SocialLinksBottom = styled(SocialLinks)`
   z-index: 3;
   display: flex;
   position: absolute;
@@ -212,13 +177,13 @@ const CheckCardComponent = styled(CheckCard)`
     right: 16%;
   }
 `;
+
 export {
   Container,
   Background,
   ToggleContainer,
   NavBar,
   SocialLinksTop,
-  SocialLinksBottom,
   InnerWrapper,
   Text,
   RelativeWrapper,

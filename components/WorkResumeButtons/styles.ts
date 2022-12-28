@@ -1,8 +1,4 @@
-import { lighten } from "polished";
-import styled, { css } from "styled-components";
-import Image from "next/image";
-import LinkedIn from "components/Icons/LinkedIn";
-import Button from "components/Button";
+import styled from "styled-components";
 
 const Buttons = styled.div`
   position: absolute;

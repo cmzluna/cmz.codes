@@ -1,5 +1,4 @@
-import { lighten } from "polished";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Image from "next/image";
 import SectionWrapper from "components/SectionWrapper";
 import Comma from "components/Comma";

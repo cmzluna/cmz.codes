@@ -1,6 +1,4 @@
-import { lighten } from "polished";
-import styled, { css } from "styled-components";
-import Image from "next/image";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -13,8 +11,6 @@ const Wrapper = styled.div`
   .cls-7,
   .cls-6,
   .cls-9 {
-    /* visibility: hidden; */
-
     transform-origin: bottom;
     transform-box: fill-box;
     animation: leafanimation 2s ease-in infinite;

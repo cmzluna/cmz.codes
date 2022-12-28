@@ -1,5 +1,5 @@
 import { lighten } from "polished";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
@@ -41,9 +41,11 @@ const Separator = styled.span`
 const Text = styled.div`
   flex: 1;
 `;
+
 const Author = styled.h3`
   margin: 0;
 `;
+
 const Position = styled.p`
   margin: 0;
 `;

@@ -13,8 +13,10 @@ const SocialLinksBottom = styled(SocialLinks)`
 
   .LinkedIn {
   }
+
   .Email {
   }
+
   .GitHub {
   }
 

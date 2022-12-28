@@ -1,6 +1,4 @@
-import { lighten } from "polished";
-import styled, { css } from "styled-components";
-import Image from "next/image";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: absolute;
