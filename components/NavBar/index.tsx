@@ -12,7 +12,7 @@ const NavBar = () => {
         <NavLink href="#about">About</NavLink>
         <NavLink href="#portfolio">Portfolio</NavLink>
         <NavLink
-          href="https://docs.google.com/document/d/1W4ym6tK3ZrtQtgvrFK8lOq-5QJRK9NoWVg6H2lgLwiA/edit?usp=sharing"
+          href={encodeURI("Curriculum Vitae Claudio Mazzoli.pdf")}
           target="_blank"
         >
           Resume
