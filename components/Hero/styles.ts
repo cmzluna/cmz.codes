@@ -61,7 +61,7 @@ const SocialLinksTop = styled(SocialLinks)`
   height: 25%;
   right: 1%;
 
-  .LinkedIn {
+  & > .LinkedIn {
     position: relative;
     top: 8%;
   }

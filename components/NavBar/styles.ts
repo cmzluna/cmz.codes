@@ -31,6 +31,13 @@ const NavLink = styled(Link)`
   background: ${({ theme }) => theme.colors.background};
   width: 20%;
   margin: 7px;
+  transition: all 0.14s ease-in;
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.primary};
+    transform: scale(1.1);
+  }
 `;
 
 const ToggleContainer = styled.div<{ isOn: boolean }>`

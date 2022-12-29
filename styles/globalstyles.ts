@@ -24,8 +24,28 @@ const GlobalStyle = createGlobalStyle`
   background-attachment: local;
 animation: bgScroll 80s linear infinite;
  
+
+  }
+  a {
+
+    text-decoration: none;
+  }
+  * {
+    box-sizing: border-box;
+  }
  
-  @keyframes bgScroll {
+ 
+ // animations
+ @keyframes wobble {
+  0% { transform: translateX(0%); }
+  15% { transform: translateX(-25%) rotate(-5deg); }
+  30% { transform: translateX(20%) rotate(3deg); }
+  45% { transform: translateX(-15%) rotate(-3deg); }
+  60% { transform: translateX(10%) rotate(2deg); }
+  75% { transform: translateX(-5%) rotate(-1deg); }
+  100% { transform: translateX(0%); }
+}
+ @keyframes bgScroll {
   0% {
  
     background-position : 0px 0px
@@ -112,6 +132,23 @@ animation: bgScroll 80s linear infinite;
     }
 }
 
+
+@keyframes floatingIcon {
+	0% {
+
+		transform: translatey(0px)  ;
+	}
+	50% {
+
+		transform: translatey(-5px)  ;
+	}
+	100% {
+
+		transform: translatey(0px)   ;
+	}
+} 
+
+
 @keyframes float1 {
 	0% {
     opacity: 1;
@@ -190,17 +227,6 @@ animation: bgScroll 80s linear infinite;
       transform: none;
     }
   }
-
-  }
-  a {
-
-    text-decoration: none;
-  }
-  * {
-    box-sizing: border-box;
-  }
- 
- 
 `;
 
 export default GlobalStyle;

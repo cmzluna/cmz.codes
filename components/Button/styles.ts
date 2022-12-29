@@ -7,7 +7,7 @@ interface ButtonContainerProps {
 
 const ButtonContainer = styled.div<ButtonContainerProps>`
   align-items: center;
-  background: ${({ theme }) => theme.colors.background.secondary};
+  background: ${({ theme }) => theme.colors.background.primary};
   border-radius: 16px;
   border: ${({ theme }) => ` 0.7px solid ${theme.colors.primary}`};
   color: ${({ color, theme }) => color || theme.colors.primary};
