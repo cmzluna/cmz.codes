@@ -48,10 +48,9 @@ const About = () => {
           <Separator />
           <p>
             Shortly after graduating from the bootcamp I have joined en
-            ecommerce company where I have built React-Native apps. I do
-            programming in various languages and technologies, and I like to
-            spend my time pushing myself to learn more through open source
-            projects.
+            ecommerce company where I have built React-Native apps. I code in
+            various programming languages and technologies, and I like to spend
+            my time pushing myself to learn more through open source projects.
           </p>
 
           <p>
