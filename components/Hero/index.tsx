@@ -33,7 +33,7 @@ const Hero = () => {
           <h2>FrontEnd Developer</h2>
           <p>
             Passionate about creating
-            <br /> cool apps and sites !
+            <br /> cool apps and sites!
           </p>
         </Text>
       </InnerWrapper>
