@@ -37,12 +37,6 @@ const ImageComponent = styled(Image)`
   width: 100%;
 `;
 
-const StyledLink = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-`;
-
 const Title = styled.figcaption`
   position: absolute;
   display: flex;
@@ -74,6 +68,5 @@ export {
   Title,
   Description,
   IconsWrapper,
-  StyledLink,
   LinkText,
 };

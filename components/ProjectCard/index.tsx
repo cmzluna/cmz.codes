@@ -7,7 +7,6 @@ import {
   Title,
   Description,
   IconsWrapper,
-  StyledLink,
   LinkText,
 } from "./styles";
 import { SiHomeadvisor, SiGit } from "react-icons/si";
@@ -47,24 +46,20 @@ const ProjectCard: React.FC<Props> = ({
       </IconsWrapper>
       <IconsWrapper>
         {repo && (
-          <Button>
-            <Link href={repo} target="_blank">
-              <StyledLink>
-                <SiGit />
-                <LinkText>Code</LinkText>
-              </StyledLink>
-            </Link>
-          </Button>
+          <Link href={repo} target="_blank">
+            <Button>
+              <SiGit />
+              <LinkText>Code</LinkText>
+            </Button>
+          </Link>
         )}
         {deploy && (
-          <Button>
-            <Link href={deploy} target="_blank">
-              <StyledLink>
-                <SiHomeadvisor />
-                <LinkText>See Live</LinkText>
-              </StyledLink>
-            </Link>
-          </Button>
+          <Link href={deploy} target="_blank">
+            <Button>
+              <SiHomeadvisor />
+              <LinkText>See Live</LinkText>
+            </Button>
+          </Link>
         )}
       </IconsWrapper>
     </Container>

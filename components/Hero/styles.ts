@@ -35,7 +35,7 @@ const NavBar = styled.div``;
 
 const Text = styled.div`
   position: absolute;
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   font-size: 3vw;
   top: 10%;
   left: 15%;
