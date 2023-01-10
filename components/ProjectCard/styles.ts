@@ -29,8 +29,18 @@ const FigureWrapper = styled.figure`
   border-top-right-radius: 0.7rem;
 `;
 
+const LinkText = styled.div`
+  margin-left: 0.3em;
+`;
+
 const ImageComponent = styled(Image)`
   width: 100%;
+`;
+
+const StyledLink = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
 `;
 
 const Title = styled.figcaption`
@@ -64,4 +74,6 @@ export {
   Title,
   Description,
   IconsWrapper,
+  StyledLink,
+  LinkText,
 };
