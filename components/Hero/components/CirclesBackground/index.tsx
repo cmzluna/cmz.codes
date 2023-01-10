@@ -10,9 +10,6 @@ const CirclesBackground = (props: Props) => (
     x={0}
     y={0}
     viewBox="0 0 961 551.1"
-    style={{
-      enableBackground: "new 0 0 961 551.1",
-    }}
     xmlSpace="preserve"
     {...props}
   >
