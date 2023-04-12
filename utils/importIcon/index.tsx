@@ -49,24 +49,36 @@ const StyledComponents = dynamic(() =>
 const MongoDB = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiMongodb)
 );
-const SiTypescript = dynamic(() =>
+const Typescript = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiTypescript)
 );
 
-const SiNextdotjs = dynamic(() =>
+const Nextdotjs = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiNextdotjs)
 );
 
-const SiFirebase = dynamic(() =>
+const Firebase = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiFirebase)
 );
 
-const SiGooglemaps = dynamic(() =>
+const Googlemaps = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiGooglemaps)
 );
 
-const SiStyledcomponents = dynamic(() =>
+const Styledcomponents = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiStyledcomponents)
+);
+
+const GraphQL = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiGraphql)
+);
+
+const TailwindCSS = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiTailwindcss)
+);
+
+const NestJS = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiNestjs)
 );
 interface Props {
   name: string;
@@ -113,20 +125,28 @@ const importIcon: React.FC<Props> = (props) => {
       return <MongoDB {...props} />;
     }
     case "TypeScript": {
-      return <SiTypescript {...props} />;
+      return <Typescript {...props} />;
     }
     case "Next": {
-      return <SiNextdotjs {...props} />;
+      return <Nextdotjs {...props} />;
     }
     case "Firebase": {
-      return <SiFirebase {...props} />;
+      return <Firebase {...props} />;
     }
     case "GoogleMaps": {
-      return <SiGooglemaps {...props} />;
+      return <Googlemaps {...props} />;
     }
-
     case "StyledComponents": {
-      return <SiStyledcomponents {...props} />;
+      return <Styledcomponents {...props} />;
+    }
+    case "GraphQL": {
+      return <GraphQL {...props} />;
+    }
+    case "TailwindCSS": {
+      return <TailwindCSS {...props} />;
+    }
+    case "NestJS": {
+      return <NestJS {...props} />;
     }
   }
 

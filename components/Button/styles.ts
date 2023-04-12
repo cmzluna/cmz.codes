@@ -17,7 +17,7 @@ const ButtonContainer = styled.div<ButtonContainerProps>`
   height: 40px;
   justify-content: center;
   max-width: 200px;
-  padding: 1rem 1.6rem;
+  padding: 0.8rem 0.5rem;
   font-size: 1.2rem;
   transition: all 500ms ease;
   margin: 6px;

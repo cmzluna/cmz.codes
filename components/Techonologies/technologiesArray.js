@@ -16,6 +16,9 @@ const technologiesArray = [
   "Prettier",
   "Mongodb",
   "Mocha",
+  "GraphQL",
+  "TailwindCSS",
+  "NestJS",
 ];
 
 export default technologiesArray;

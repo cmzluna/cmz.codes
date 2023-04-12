@@ -47,7 +47,7 @@ const LightModeContext = React.createContext<LMProps>({
 const LightModeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isLightMode, setLightMode] = useState(true);
+  const [isLightMode, setLightMode] = useState(false);
   const toggleLightMode = () => setLightMode((prev) => !prev);
   return (
     <LightModeContext.Provider value={{ isLightMode, toggleLightMode }}>
