@@ -37,6 +37,12 @@ const HTML5 = dynamic(() =>
 const React = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiReact)
 );
+const ReactNavigation = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiNaver)
+);
+const Auth0 = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiAuth0)
+);
 const Redux = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiRedux)
 );
@@ -80,6 +86,10 @@ const TailwindCSS = dynamic(() =>
 const NestJS = dynamic(() =>
   import("react-icons/si").then((mod) => mod.SiNestjs)
 );
+const MapLibre = dynamic(() =>
+  import("react-icons/si").then((mod) => mod.SiGooglemaps)
+);
+
 interface Props {
   name: string;
   size: number;
@@ -110,6 +120,12 @@ const importIcon: React.FC<Props> = (props) => {
       return <Javascript {...props} />;
     }
     case "React": {
+      return <React {...props} />;
+    }
+    case "ReactNavigation": {
+      return <ReactNavigation {...props} />;
+    }
+    case "ReactNative": {
       return <React {...props} />;
     }
     case "Redux": {
@@ -147,6 +163,12 @@ const importIcon: React.FC<Props> = (props) => {
     }
     case "NestJS": {
       return <NestJS {...props} />;
+    }
+    case "Auth0": {
+      return <Auth0 {...props} />;
+    }
+    case "MapLibre": {
+      return <MapLibre {...props} />;
     }
   }
 
