@@ -3,7 +3,7 @@ export const projectsArray = [
     id: "1",
     name: "GreenCycle",
     description:
-      "Mobile app that includes Auth0 authentication, QR reading, interactive maps (MapLibre), animations (Reanimated) and various type of navigators.",
+      "Mobile app that includes Auth0 authentication, QR reading, interactive maps (MapLibre), animations (Reanimated) and various types of navigators.",
     technologies: [
       "ReactNative",
       "StyledComponents",
