@@ -1,0 +1,83 @@
+---
+type Variant = 'primary' | 'ghost' | 'icon';
+type Size = 'sm' | 'md' | 'lg';
+
+interface Props {
+  variant?: Variant;
+  size?: Size;
+  href?: string;
+  class?: string;
+}
+
+const { variant = 'primary', size = 'md', href, class: className = '' } = Astro.props;
+
+const variants = {
+  primary: 'bg-cyan-600 hover:bg-cyan-500 text-white',
+  ghost: 'bg-transparent hover:bg-violet-600/20 text-text border border-border hover:border-secondary',
+  icon: 'bg-transparent text-text hover:text-primary w-10 h-10 flex items-center justify-center rounded-full hover:bg-cyan-600/20',
+};
+
+const sizes = {
+  sm: 'px-3 py-2 text-sm',
+  md: 'px-4 py-2.5 text-base',
+  lg: 'px-6 py-3 text-lg',
+};
+
+const baseStyles = `
+  inline-flex items-center justify-center
+  font-semibold rounded-lg
+  transition-all duration-300
+  focus:outline-none focus:ring-2 focus:ring-primary/50
+  active:scale-95
+`;
+
+const Tag = href ? 'a' : 'button';
+const combinedClass = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`.trim();
+---
+
+<Tag
+  href={href}
+  class={combinedClass}
+  {...(href ? {} : Astro.props)}
+>
+  <slot />
+</Tag>
+
+<style define:vars={{ variant }}>
+  :global([class*='primary']) {
+    position: relative;
+    overflow: hidden;
+  }
+
+  :global([class*='primary']::before) {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+  }
+
+  :global([class*='primary']:hover::before) {
+    opacity: 1;
+  }
+
+  :global([class*='primary']:hover) {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  }
+
+  :global([class*='ghost']:hover) {
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+  }
+
+  :global([class*='icon']:hover) {
+    transform: scale(1.1);
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+  }
+</style>

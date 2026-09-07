@@ -1,0 +1,257 @@
+---
+import Card from '@components/ui/Card.astro';
+import Heading from '@components/ui/Heading.astro';
+
+interface Testimonial {
+  name: string;
+  title: string;
+  quote: string;
+  avatar?: string;
+  color?: 'cyan' | 'violet' | 'blue';
+}
+
+interface Props {
+  testimonials?: Testimonial[];
+  title?: string;
+}
+
+const {
+  testimonials = [
+    {
+      name: 'Sarah Johnson',
+      title: 'CTO at TechCorp',
+      quote:
+        'Claudio brought exceptional expertise to our React Native project. His attention to detail and problem-solving skills were invaluable.',
+      avatar: '/avatars/sarah.jpg',
+      color: 'cyan',
+    },
+    {
+      name: 'Mike Chen',
+      title: 'Product Manager at StartupXYZ',
+      quote:
+        'Working with Claudio was a breeze. He understood our requirements perfectly and delivered a polished product on time.',
+      avatar: '/avatars/mike.jpg',
+      color: 'violet',
+    },
+    {
+      name: 'Emma Davis',
+      title: 'Founder of DesignStudio',
+      quote:
+        'Claudio turned our design vision into reality. His frontend skills are top-notch, and he communicates clearly throughout the process.',
+      avatar: '/avatars/emma.jpg',
+      color: 'blue',
+    },
+  ],
+  title = 'What Clients Say',
+} = Astro.props;
+---
+
+<section class="testimonials-section">
+  <div class="testimonials-container">
+    <Heading level={2} class="testimonials-title">
+      {title}
+    </Heading>
+
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <Card class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-quote">{testimonial.quote}</p>
+
+            <div class="testimonial-author">
+              <div class={`author-avatar avatar-${testimonial.color || 'cyan'}`}>
+                {testimonial.avatar ? (
+                  <img src={testimonial.avatar} alt={testimonial.name} />
+                ) : (
+                  <div class="avatar-initials">
+                    {testimonial.name.split(' ').map((n) => n[0]).join('')}
+                  </div>
+                )}
+              </div>
+
+              <div class="author-info">
+                <h4 class="author-name">{testimonial.name}</h4>
+                <p class="author-title">{testimonial.title}</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+
+    {testimonials.length === 0 && (
+      <p class="testimonials-empty">
+        No testimonials available. Check back soon!
+      </p>
+    )}
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: var(--space-4xl) var(--space-xl);
+    background: linear-gradient(
+      180deg,
+      var(--color-surface-container) 0%,
+      var(--color-surface) 100%
+    );
+  }
+
+  .testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonials-title {
+    margin-bottom: var(--space-3xl);
+    text-align: center;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    flex: 1;
+  }
+
+  .testimonial-quote {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin: 0;
+    font-style: italic;
+  }
+
+  .testimonial-quote::before {
+    content: '"';
+    font-size: 2rem;
+    color: var(--color-primary-light);
+    margin-right: var(--space-xs);
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: auto;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .author-avatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .avatar-cyan {
+    border-color: var(--color-primary);
+    background: rgba(6, 182, 212, 0.1);
+    animation: glow-cyan 3s ease-in-out infinite;
+  }
+
+  .avatar-violet {
+    border-color: var(--color-secondary);
+    background: rgba(139, 92, 246, 0.1);
+    animation: glow-violet 3s ease-in-out infinite;
+  }
+
+  .avatar-blue {
+    border-color: var(--color-tertiary);
+    background: rgba(59, 130, 246, 0.1);
+    animation: glow-blue 3s ease-in-out infinite;
+  }
+
+  .author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .avatar-initials {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+  }
+
+  .author-info {
+    flex: 1;
+  }
+
+  .author-name {
+    margin: 0 0 var(--space-2xs) 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .author-title {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+
+  @keyframes glow-cyan {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+    }
+  }
+
+  @keyframes glow-violet {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    }
+  }
+
+  @keyframes glow-blue {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+  }
+
+  .testimonials-empty {
+    text-align: center;
+    padding: var(--space-3xl);
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-section {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

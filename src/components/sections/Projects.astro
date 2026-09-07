@@ -1,0 +1,154 @@
+---
+import { getCollection } from 'astro:content';
+import Card from '@components/ui/Card.astro';
+import Badge from '@components/ui/Badge.astro';
+import Button from '@components/ui/Button.astro';
+import Heading from '@components/ui/Heading.astro';
+
+interface Props {
+  featured?: boolean;
+}
+
+const { featured = false } = Astro.props;
+
+const projects = await getCollection('projects');
+const displayProjects = featured
+  ? projects.filter((p) => p.data.featured)
+  : projects;
+---
+
+<section class="projects-section">
+  <div class="projects-container">
+    <Heading level={2} class="projects-title">
+      {featured ? 'Featured Projects' : 'All Projects'}
+    </Heading>
+
+    <div class="projects-grid">
+      {displayProjects.map((project) => (
+        <Card class="project-card" title={project.data.title} description={project.data.description}>
+          <div class="project-content">
+            {project.data.image && (
+              <div class="project-image">
+                <img src={project.data.image} alt={project.data.title} />
+              </div>
+            )}
+
+            <div class="project-tech">
+              {project.data.technologies.map((tech) => (
+                <Badge label={tech} color="cyan" variant="solid" />
+              ))}
+            </div>
+
+            <div class="project-links">
+              {project.data.links.repo && (
+                <Button variant="ghost" size="sm" href={project.data.links.repo}>
+                  Repository
+                </Button>
+              )}
+              {project.data.links.deploy && (
+                <Button variant="primary" size="sm" href={project.data.links.deploy}>
+                  View Live
+                </Button>
+              )}
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+
+    {displayProjects.length === 0 && (
+      <p class="projects-empty">
+        No projects found. Check back soon!
+      </p>
+    )}
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding: var(--space-4xl) var(--space-xl);
+    background: linear-gradient(
+      180deg,
+      var(--color-surface) 0%,
+      var(--color-surface-container) 100%
+    );
+  }
+
+  .projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .projects-title {
+    margin-bottom: var(--space-3xl);
+    text-align: center;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .project-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    flex: 1;
+  }
+
+  .project-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: var(--color-surface-dim);
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .project-links {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: auto;
+  }
+
+  .projects-empty {
+    text-align: center;
+    padding: var(--space-3xl);
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects-section {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

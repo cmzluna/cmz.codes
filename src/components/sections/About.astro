@@ -1,0 +1,187 @@
+---
+import Card from '@components/ui/Card.astro';
+import Heading from '@components/ui/Heading.astro';
+
+interface Props {
+  title?: string;
+  bio?: string;
+  imageUrl?: string;
+}
+
+const {
+  title = 'About Me',
+  bio = 'I am a passionate React Native and Frontend Engineer with a focus on building scalable, high-performance applications.',
+  imageUrl = '/avatar.jpg',
+} = Astro.props;
+---
+
+<section class="about-section">
+  <div class="about-container">
+    <Heading level={2} class="about-title">
+      {title}
+    </Heading>
+
+    <div class="about-content">
+      <div class="about-image">
+        <img src={imageUrl} alt="Profile" />
+        <div class="image-glow"></div>
+      </div>
+
+      <div class="about-text">
+        <p class="about-bio">{bio}</p>
+
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-value">5+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">20+</div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
+        </div>
+
+        <p class="about-description">
+          Specializing in React Native, TypeScript, and modern web technologies. I love solving complex problems and creating beautiful, user-centric applications.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: var(--space-4xl) var(--space-xl);
+    background: linear-gradient(
+      180deg,
+      var(--color-surface-container) 0%,
+      var(--color-surface) 100%
+    );
+  }
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-title {
+    margin-bottom: var(--space-3xl);
+    text-align: center;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  .about-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    transition: transform 300ms ease;
+  }
+
+  .about-image:hover img {
+    transform: scale(1.02);
+  }
+
+  .image-glow {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba(6, 182, 212, 0.2) 0%,
+      transparent 70%
+    );
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .about-bio {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background: rgba(17, 24, 39, 0.4);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-primary-light);
+    margin-bottom: var(--space-xs);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .about-description {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    50% {
+      transform: translateY(-20px) translateX(-10px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-section {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .about-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

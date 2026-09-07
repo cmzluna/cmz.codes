@@ -1,0 +1,150 @@
+---
+import { getCollection } from 'astro:content';
+import Badge from '@components/ui/Badge.astro';
+import Heading from '@components/ui/Heading.astro';
+
+interface Props {
+  featured?: boolean;
+}
+
+const { featured = false } = Astro.props;
+
+const techs = await getCollection('technologies');
+
+const displayTechs = featured
+  ? techs.filter((t) => t.data.featured)
+  : techs;
+
+const grouped = displayTechs.reduce(
+  (acc, tech) => {
+    const cat = tech.data.category;
+    if (!acc[cat]) acc[cat] = [];
+    acc[cat].push(tech);
+    return acc;
+  },
+  {} as Record<string, typeof techs>
+);
+
+const categoryLabels = {
+  frontend: 'Frontend',
+  mobile: 'Mobile',
+  backend: 'Backend',
+  tools: 'Tools & DevOps',
+};
+
+const colorMap = {
+  frontend: 'cyan',
+  mobile: 'violet',
+  backend: 'blue',
+  tools: 'cyan',
+} as Record<string, 'cyan' | 'violet' | 'blue'>;
+---
+
+<section class="technologies-section">
+  <div class="technologies-container">
+    <Heading level={2} class="technologies-title">
+      {featured ? 'Technologies I Use' : 'Full Tech Stack'}
+    </Heading>
+
+    <div class="technologies-grid">
+      {Object.entries(grouped).map(([category, items]) => (
+        <div class="tech-category">
+          <h3 class="category-title">
+            {categoryLabels[category as keyof typeof categoryLabels] || category}
+          </h3>
+          <div class="tech-badges">
+            {items.map((tech) => (
+              <Badge
+                label={tech.data.name}
+                color={colorMap[category as keyof typeof colorMap]}
+                variant="solid"
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {displayTechs.length === 0 && (
+      <p class="technologies-empty">
+        No technologies found. Check back soon!
+      </p>
+    )}
+  </div>
+</section>
+
+<style>
+  .technologies-section {
+    padding: var(--space-4xl) var(--space-xl);
+    background: linear-gradient(
+      180deg,
+      var(--color-surface) 0%,
+      var(--color-surface-container) 100%
+    );
+  }
+
+  .technologies-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .technologies-title {
+    margin-bottom: var(--space-3xl);
+    text-align: center;
+  }
+
+  .technologies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .tech-category {
+    padding: var(--space-xl);
+    background: rgba(17, 24, 39, 0.65);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(16px);
+    transition: all 300ms ease;
+  }
+
+  .tech-category:hover {
+    background: rgba(17, 24, 39, 0.85);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  }
+
+  .category-title {
+    margin: 0 0 var(--space-md) 0;
+    font-size: 0.875rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary-light);
+  }
+
+  .tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .technologies-empty {
+    text-align: center;
+    padding: var(--space-3xl);
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 768px) {
+    .technologies-section {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .technologies-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
