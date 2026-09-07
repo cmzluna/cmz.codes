@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Claudio Mazzoli | FrontEnd &amp; React Native Developer</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#1b1322',
+              cardDark: '#261b30',
+              deepPurple: '#2d1f3b',
+              purple: '#674d8c',
+              lavender: '#9d7ec7',
+              lavenderLight: '#cfb9ea',
+              accent: '#8257e5',
+              wood: '#d2aa7b',
+              woodShadow: '#b08b5f',
+              lightBg: '#fbf9fe',
+              lightCard: '#ffffff',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float': 'floating 4s ease-in-out infinite',
+            'float-delayed': 'floating 4s ease-in-out 2s infinite',
+            'pulse-subtle': 'pulseLight 3s ease-in-out infinite',
+            'sway': 'swayLamp 6s ease-in-out infinite',
+            'spin-slow': 'spinRing 34s linear infinite',
+            'spin-reverse': 'spinRingReverse 42s linear infinite',
+            'spin-ultra-slow': 'spinRing 60s linear infinite',
+            'spin-ultra-reverse': 'spinRingReverse 65s linear infinite',
+            'orbit-slow': 'orbitMotion 28s ease-in-out infinite',
+            'dash-move': 'dashFlow 20s linear infinite',
+          },
+          keyframes: {
+            floating: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseLight: {
+              '0%, 100%': { opacity: '0.45' },
+              '50%': { opacity: '0.65' },
+            },
+            swayLamp: {
+              '0%, 100%': { transform: 'rotate(-0.8deg)' },
+              '50%': { transform: 'rotate(0.8deg)' },
+            },
+            spinRing: {
+              'from': { transform: 'rotate(0deg)' },
+              'to': { transform: 'rotate(360deg)' }
+            },
+            spinRingReverse: {
+              'from': { transform: 'rotate(360deg)' },
+              'to': { transform: 'rotate(0deg)' }
+            },
+            orbitMotion: {
+              '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+              '50%': { transform: 'translate(18px, -18px) scale(1.04)' }
+            },
+            dashFlow: {
+              'to': { strokeDashoffset: '-200' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Layout & Custom Styles -->
+<style data-purpose="custom-decorations">
+    /* Subtle organic background lines and ambient rings */
+    .bubble-ring {
+      border-radius: 9999px;
+      border: 1.5px solid currentColor;
+      pointer-events: none;
+      position: absolute;
+    }
+    
+    /* Conical spotlight simulation on desktop */
+    .spotlight-beam {
+      clip-path: polygon(48% 0%, 52% 0%, 98% 100%, 2% 100%);
+      background: radial-gradient(ellipse at top, rgba(254, 240, 138, 0.42) 0%, rgba(253, 224, 71, 0.16) 45%, rgba(250, 204, 21, 0) 80%);
+    }
+    .dark .spotlight-beam {
+      background: radial-gradient(ellipse at top, rgba(254, 240, 138, 0.5) 0%, rgba(250, 204, 21, 0.22) 50%, rgba(234, 179, 8, 0) 85%);
+    }
+
+    /* Screen display artwork preview inside monitor */
+    .screen-mockup-bg {
+      background: linear-gradient(135deg, #4f74bb 0%, #355799 100%);
+    }
+
+    /* Mature Atmospheric Dark Glass (Linear / Raycast / Vercel style) */
+    .glass-card, .glass-panel-deep {
+      background: linear-gradient(180deg, rgba(32, 24, 40, 0.72) 0%, rgba(18, 11, 25, 0.88) 100%);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), inset 0 0 16px rgba(130, 87, 229, 0.04), 0 12px 30px -10px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .glass-card:hover, .glass-panel-deep:hover {
+      border-color: rgba(168, 85, 247, 0.35);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 20px 40px -12px rgba(0, 0, 0, 0.7), 0 0 35px -5px rgba(130, 87, 229, 0.25);
+      transform: translateY(-4px);
+    }
+
+    /* Accessibility: Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-spin-slow,
+      .animate-spin-reverse,
+      .animate-spin-ultra-slow,
+      .animate-spin-ultra-reverse,
+      .animate-orbit-slow,
+      .animate-dash-move,
+      .animate-float,
+      .animate-float-delayed,
+      .animate-pulse-subtle,
+      .animate-sway {
+        animation: none !important;
+        transform: none !important;
+      }
+    }
+  </style>
+<style data-purpose="light-mode-styles">
+  /* Light Mode - when .dark class is NOT present */
+  html:not(.dark) {
+    color-scheme: light;
+  }
+
+  html:not(.dark) body {
+    background-color: #fbf9fe;
+    color: #1a1a1a;
+  }
+
+  html:not(.dark) [class*="bg-\[#0c0914\]"] {
+    background-color: #fbf9fe !important;
+  }
+
+  html:not(.dark) .glass-card,
+  html:not(.dark) .glass-panel-deep {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(251, 249, 254, 0.98) 100%) !important;
+    border-color: rgba(139, 92, 246, 0.2) !important;
+  }
+
+  html:not(.dark) .text-slate-100,
+  html:not(.dark) .dark\:text-slate-100 {
+    color: #1f2937 !important;
+  }
+
+  html:not(.dark) .text-slate-300,
+  html:not(.dark) .dark\:text-slate-300 {
+    color: #6b7280 !important;
+  }
+
+  html:not(.dark) .text-white,
+  html:not(.dark) .dark\:text-white {
+    color: #1f2937 !important;
+  }
+
+  html:not(.dark) .border-purple-900\/40 {
+    border-color: rgba(147, 51, 234, 0.1) !important;
+  }
+
+  html:not(.dark) .dark\:text-brand-lavender {
+    color: #8257e5 !important;
+  }
+
+  html:not(.dark) .dark\:hover\:text-brand-lavender:hover {
+    color: #8257e5 !important;
+  }
+
+  html:not(.dark) .spotlight-beam {
+    background: radial-gradient(ellipse at top, rgba(130, 87, 229, 0.3) 0%, rgba(130, 87, 229, 0.1) 50%, rgba(130, 87, 229, 0) 85%) !important;
+  }
+</style>
+</head>
+<body class="bg-[#0c0914] text-slate-100 font-sans relative overflow-x-hidden antialiased selection:bg-brand-lavender selection:text-white min-h-screen">
+<!-- Decorative Seamless Ambient Organic Vectors, Cosmic Curves & Planetary Orbits across All Sections -->
+<div aria-hidden="true" class="absolute inset-0 pointer-events-none overflow-hidden z-0"><!-- Glowing ambient radial gradients across vertical flow -->
+<div class="absolute -top-32 -left-20 w-[55rem] h-[55rem] bg-gradient-to-br from-brand-accent/20 via-brand-purple/10 to-transparent rounded-full blur-3xl opacity-75"></div>
+<div class="absolute top-[28rem] -right-32 w-[60rem] h-[60rem] bg-gradient-to-bl from-brand-lavender/15 via-[#2d184a]/25 to-transparent rounded-full blur-3xl opacity-70"></div>
+<div class="absolute top-[75rem] left-[-10rem] w-[55rem] h-[55rem] bg-gradient-to-tr from-[#3a1d5e]/25 via-brand-accent/15 to-transparent rounded-full blur-3xl opacity-70"></div>
+<div class="absolute top-[125rem] right-[-10rem] w-[60rem] h-[60rem] bg-gradient-to-tl from-brand-accent/20 via-purple-900/25 to-transparent rounded-full blur-3xl opacity-75"></div>
+<div class="absolute top-[180rem] -left-32 w-[58rem] h-[58rem] bg-gradient-to-br from-brand-purple/20 via-[#1a0f2e]/40 to-transparent rounded-full blur-3xl opacity-70"></div>
+<div class="absolute top-[235rem] -right-28 w-[62rem] h-[62rem] bg-gradient-to-bl from-brand-accent/15 via-purple-950/30 to-transparent rounded-full blur-3xl opacity-75"></div>
+<div class="absolute top-[280rem] -left-28 w-[50rem] h-[50rem] bg-gradient-to-tr from-brand-accent/20 via-purple-900/20 to-transparent rounded-full blur-3xl opacity-70"></div>
+<!-- Shared Linear Gradients for SVGs -->
+<svg aria-hidden="true" class="absolute w-0 h-0" focusable="false">
+<defs>
+<lineargradient id="orbit-grad-violet" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#c084fc" stop-opacity="0.85"></stop>
+<stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#3b0764" stop-opacity="0.1"></stop>
+</lineargradient>
+<lineargradient id="orbit-grad-plum" x1="100%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#a855f7" stop-opacity="0.75"></stop>
+<stop offset="60%" stop-color="#6b21a8" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.1"></stop>
+</lineargradient>
+<lineargradient id="ambient-cyan-purple" x1="0%" x2="100%" y1="50%" y2="50%">
+<stop offset="0%" stop-color="#7c3aed" stop-opacity="0.7"></stop>
+<stop offset="100%" stop-color="#38bdf8" stop-opacity="0.3"></stop>
+</lineargradient>
+<lineargradient id="orbit-grad-subtle" x1="0%" x2="100%" y1="100%" y2="0%">
+<stop offset="0%" stop-color="#9d7ec7" stop-opacity="0.65"></stop>
+<stop offset="65%" stop-color="#55248c" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#181024" stop-opacity="0.05"></stop>
+</lineargradient>
+<radialgradient cx="35%" cy="35%" id="sphere-glow-lavender" r="65%">
+<stop offset="0%" stop-color="#ffffff"></stop>
+<stop offset="25%" stop-color="#d8b9ff"></stop>
+<stop offset="70%" stop-color="#8257e5"></stop>
+<stop offset="100%" stop-color="#2e1065"></stop>
+</radialgradient>
+</defs>
+</svg>
+<!-- 1. Hero Section Orbital Rings -->
+<svg class="absolute -top-36 -left-32 w-[55rem] h-[55rem] animate-spin-slow origin-center opacity-75 drop-shadow-[0_0_20px_rgba(168,85,247,0.25)]" viewbox="0 0 800 800">
+<ellipse class="animate-dash-move" cx="400" cy="400" fill="none" rx="340" ry="240" stroke="url(#orbit-grad-violet)" stroke-dasharray="10 14" stroke-width="1.5" transform="rotate(-25 400 400)"></ellipse>
+<ellipse cx="400" cy="400" fill="none" rx="270" ry="180" stroke="url(#orbit-grad-plum)" stroke-width="1.2" transform="rotate(35 400 400)"></ellipse>
+<circle class="drop-shadow-[0_0_10px_#c084fc]" cx="680" cy="330" fill="url(#sphere-glow-lavender)" r="6"></circle>
+<circle class="drop-shadow-[0_0_8px_#a855f7]" cx="160" cy="470" fill="#a855f7" opacity="0.8" r="4"></circle>
+</svg>
+<!-- 2. Mid Hero Harmonic Loop -->
+<svg class="absolute top-[38rem] -right-44 w-[65rem] h-[65rem] animate-spin-reverse origin-center opacity-70 drop-shadow-[0_0_25px_rgba(139,92,246,0.22)]" viewbox="0 0 850 850">
+<circle cx="425" cy="425" fill="none" opacity="0.75" r="370" stroke="url(#orbit-grad-violet)" stroke-dasharray="8 16" stroke-width="1.5"></circle>
+<ellipse cx="425" cy="425" fill="none" rx="320" ry="210" stroke="url(#orbit-grad-plum)" stroke-dasharray="14 12" stroke-width="2" transform="rotate(-40 425 425)"></ellipse>
+<ellipse cx="425" cy="425" fill="none" opacity="0.55" rx="230" ry="140" stroke="url(#ambient-cyan-purple)" stroke-width="1.2" transform="rotate(15 425 425)"></ellipse>
+<circle class="drop-shadow-[0_0_12px_#c084fc]" cx="730" cy="425" fill="url(#sphere-glow-lavender)" r="7"></circle>
+<circle class="drop-shadow-[0_0_8px_#818cf8]" cx="210" cy="280" fill="#818cf8" opacity="0.8" r="4.5"></circle>
+</svg>
+<!-- 3. About & Tech Stack Section: Cosmic Drifting Orbits & Radiant Spheres -->
+<svg class="absolute top-[72rem] -left-48 w-[62rem] h-[62rem] animate-spin-slow origin-center opacity-45" viewbox="0 0 820 820">
+<ellipse class="animate-dash-move" cx="410" cy="410" fill="none" rx="360" ry="230" stroke="url(#orbit-grad-plum)" stroke-dasharray="12 18" stroke-width="1.8" transform="rotate(45 410 410)"></ellipse>
+<circle cx="410" cy="410" fill="none" opacity="0.6" r="280" stroke="url(#orbit-grad-violet)" stroke-width="1.2"></circle>
+<ellipse cx="410" cy="410" fill="none" opacity="0.5" rx="200" ry="140" stroke="url(#orbit-grad-subtle)" stroke-dasharray="8 14" stroke-width="1.4" transform="rotate(-20 410 410)"></ellipse>
+<circle class="drop-shadow-[0_0_10px_#c084fc]" cx="670" cy="250" fill="url(#sphere-glow-lavender)" r="6"></circle>
+<circle class="drop-shadow-[0_0_8px_#d8b4fe]" cx="210" cy="560" fill="#d8b4fe" opacity="0.8" r="4"></circle>
+<circle class="drop-shadow-[0_0_8px_#38bdf8]" cx="410" cy="130" fill="#38bdf8" opacity="0.75" r="3.5"></circle>
+</svg>
+<!-- 4. Techtimonials Section: Concentric Cosmic Rings & Floating Spheres -->
+<svg class="absolute top-[122rem] -right-52 w-[68rem] h-[68rem] animate-spin-ultra-reverse origin-center opacity-40" viewbox="0 0 900 900">
+<circle cx="450" cy="450" fill="none" r="390" stroke="url(#orbit-grad-violet)" stroke-dasharray="10 20" stroke-width="1.6"></circle>
+<ellipse class="animate-dash-move" cx="450" cy="450" fill="none" rx="330" ry="220" stroke="url(#orbit-grad-subtle)" stroke-width="1.4" transform="rotate(30 450 450)"></ellipse>
+<ellipse cx="450" cy="450" fill="none" opacity="0.65" rx="240" ry="160" stroke="url(#orbit-grad-plum)" stroke-dasharray="14 16" stroke-width="1.2" transform="rotate(-48 450 450)"></ellipse>
+<circle class="drop-shadow-[0_0_12px_#a855f7]" cx="750" cy="380" fill="url(#sphere-glow-lavender)" r="7"></circle>
+<circle class="drop-shadow-[0_0_8px_#c084fc]" cx="180" cy="510" fill="#c084fc" opacity="0.8" r="4"></circle>
+<circle cx="450" cy="60" fill="#c084fc" opacity="0.7" r="3"></circle>
+</svg>
+<!-- 5. Curriculum Vitae Section: Floating Cosmic Orbits -->
+<svg class="absolute top-[170rem] -left-40 w-[60rem] h-[60rem] animate-spin-ultra-slow origin-center opacity-40" viewbox="0 0 800 800">
+<ellipse cx="400" cy="400" fill="none" rx="340" ry="220" stroke="url(#orbit-grad-plum)" stroke-dasharray="14 18" stroke-width="1.6" transform="rotate(-35 400 400)"></ellipse>
+<circle cx="400" cy="400" fill="none" opacity="0.6" r="260" stroke="url(#orbit-grad-violet)" stroke-width="1.2"></circle>
+<circle class="drop-shadow-[0_0_10px_#c084fc]" cx="630" cy="260" fill="url(#sphere-glow-lavender)" r="6"></circle>
+<circle class="drop-shadow-[0_0_8px_#818cf8]" cx="180" cy="420" fill="#818cf8" opacity="0.75" r="4"></circle>
+</svg>
+<!-- 6. Featured Projects & Footer: Extended Orbits & Glowing Spheres -->
+<svg class="absolute top-[215rem] -right-44 w-[66rem] h-[66rem] animate-spin-slow origin-center opacity-40" viewbox="0 0 850 850">
+<ellipse class="animate-dash-move" cx="425" cy="425" fill="none" rx="370" ry="240" stroke="url(#orbit-grad-violet)" stroke-dasharray="12 16" stroke-width="1.6" transform="rotate(25 425 425)"></ellipse>
+<circle cx="425" cy="425" fill="none" opacity="0.6" r="290" stroke="url(#orbit-grad-plum)" stroke-width="1.4"></circle>
+<ellipse cx="425" cy="425" fill="none" opacity="0.5" rx="210" ry="140" stroke="url(#orbit-grad-subtle)" stroke-dasharray="10 14" stroke-width="1.2" transform="rotate(-50 425 425)"></ellipse>
+<circle class="drop-shadow-[0_0_12px_#d8b4fe]" cx="730" cy="430" fill="url(#sphere-glow-lavender)" r="6.5"></circle>
+<circle class="drop-shadow-[0_0_8px_#a855f7]" cx="210" cy="310" fill="#a855f7" opacity="0.8" r="4.5"></circle>
+</svg>
+<svg class="absolute top-[265rem] -left-36 w-[58rem] h-[58rem] animate-spin-reverse origin-center opacity-35" viewbox="0 0 750 750">
+<ellipse cx="375" cy="375" fill="none" rx="330" ry="210" stroke="url(#orbit-grad-plum)" stroke-dasharray="14 18" stroke-width="1.6" transform="rotate(40 375 375)"></ellipse>
+<circle cx="375" cy="375" fill="none" opacity="0.6" r="250" stroke="url(#orbit-grad-violet)" stroke-width="1.2"></circle>
+<circle class="drop-shadow-[0_0_10px_#c084fc]" cx="590" cy="230" fill="url(#sphere-glow-lavender)" r="5.5"></circle>
+</svg>
+<!-- Floating Planetary Rings & Shimmer Dots across the full canvas -->
+<div class="bubble-ring w-8 h-8 top-28 left-1/4 text-purple-400/50 animate-orbit-slow"></div>
+<div class="bubble-ring w-16 h-16 top-48 left-14 text-brand-lavender/40 animate-spin-slow"></div>
+<div class="bubble-ring w-5 h-5 top-20 left-[18%] text-brand-lavenderLight/50"></div>
+<div class="bubble-ring w-12 h-12 top-80 left-[8%] text-purple-400/35 animate-orbit-slow"></div>
+<div class="bubble-ring w-14 h-14 top-40 right-28 text-purple-300/45 animate-spin-reverse"></div>
+<div class="bubble-ring w-6 h-6 top-72 right-1/4 text-brand-lavender/50"></div>
+<!-- About Section Orbitals -->
+<div class="bubble-ring w-20 h-20 top-[48rem] right-12 text-brand-lavender/35 animate-spin-slow"></div>
+<div class="bubble-ring w-10 h-10 top-[60rem] left-12 text-purple-400/35 animate-orbit-slow"></div>
+<div class="bubble-ring w-14 h-14 top-[78rem] right-20 text-purple-300/30 animate-spin-reverse"></div>
+<div class="bubble-ring w-7 h-7 top-[92rem] left-1/3 text-brand-lavenderLight/35"></div>
+<!-- Techtimonials Orbitals -->
+<div class="bubble-ring w-24 h-24 top-[112rem] left-16 text-purple-500/30 animate-orbit-slow"></div>
+<div class="bubble-ring w-12 h-12 top-[128rem] right-14 text-brand-lavender/35 animate-spin-slow"></div>
+<div class="bubble-ring w-8 h-8 top-[145rem] left-1/4 text-purple-400/30 animate-spin-reverse"></div>
+<!-- CV & Projects Orbitals -->
+<div class="bubble-ring w-16 h-16 top-[168rem] right-24 text-brand-lavender/30 animate-orbit-slow"></div>
+<div class="bubble-ring w-10 h-10 top-[188rem] left-16 text-purple-300/30 animate-spin-reverse"></div>
+<div class="bubble-ring w-22 h-22 top-[210rem] right-16 text-purple-400/30 animate-spin-slow"></div>
+<div class="bubble-ring w-12 h-12 top-[236rem] left-10 text-brand-lavender/30 animate-orbit-slow"></div>
+<div class="bubble-ring w-10 h-10 top-[258rem] right-1/4 text-purple-400/30 animate-pulse-subtle"></div>
+<div class="bubble-ring w-14 h-14 top-[280rem] left-20 text-brand-lavenderLight/30 animate-spin-reverse"></div></div>
+<!-- 1. BEGIN: MainHeader -->
+<header class="relative z-50 max-w-6xl mx-auto px-6 pt-6 pb-2 flex items-center justify-between" data-purpose="site-navigation">
+<!-- Theme Toggle Switch (Moon/Sun) matching reference icon in pill -->
+<div class="flex items-center">
+<button aria-label="Toggle Dark / Light mode" class="w-12 h-7 bg-brand-deepPurple/20 dark:bg-purple-950/70 border border-brand-purple/40 rounded-full p-1 flex items-center justify-between transition-colors shadow-inner focus:outline-none focus:ring-2 focus:ring-brand-lavender" id="theme-toggle" title="Toggle Dark / Light mode">
+<div class="w-5 h-5 rounded-full bg-brand-lavender dark:bg-amber-300 flex items-center justify-center transform transition-transform duration-300 translate-x-5 dark:translate-x-0 shadow" id="theme-knob">
+<svg aria-hidden="true" class="lucide lucide-moon w-3.5 h-3.5 text-brand-dark block dark:block" data-lucide="moon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+<svg aria-hidden="true" class="lucide lucide-sun w-3.5 h-3.5 text-brand-dark hidden" data-lucide="sun" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+</div>
+</button>
+</div>
+<!-- Navigation Links: About -> Techtimonials -> Resume -> Portfolio -->
+<nav class="hidden md:flex items-center space-x-10 text-sm font-semibold tracking-wide">
+<a class="text-slate-300 hover:text-brand-lavender transition-colors" href="#about">About</a>
+<a class="text-slate-300 hover:text-brand-lavender transition-colors" href="#techtimonials">Techtimonials</a>
+<a class="text-slate-300 hover:text-brand-lavender transition-colors" href="#resume">Resume</a>
+<a class="text-slate-300 hover:text-brand-lavender transition-colors" href="#portfolio">Portfolio</a>
+</nav>
+<!-- Social Connect Icons -->
+<div class="flex items-center space-x-4 text-slate-200">
+<a class="p-1.5 hover:text-brand-lavender transition-transform hover:scale-110" href="https://linkedin.com/in/claudiomazzoli" rel="noopener noreferrer" target="_blank" title="LinkedIn">
+<i class="w-5 h-5" data-lucide="linkedin"></i>
+</a>
+<a class="p-1.5 hover:text-brand-lavender transition-transform hover:scale-110" href="mailto:claudiomazzoli@example.com" title="Email me">
+<svg aria-hidden="true" class="lucide lucide-mail w-5 h-5" data-lucide="mail" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect height="16" rx="2" width="20" x="2" y="4"></rect></svg>
+</a>
+<a class="p-1.5 hover:text-brand-lavender transition-transform hover:scale-110" href="https://github.com/claudiomazzoli" rel="noopener noreferrer" target="_blank" title="GitHub">
+<i class="w-5 h-5" data-lucide="github"></i>
+</a>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- 2. BEGIN: HeroSection -->
+<!-- FULLSCREEN VIDEO HERO -->
+<section class="relative w-full min-h-screen bg-gradient-to-b from-brand-dark to-brand-cardDark flex items-center justify-center overflow-hidden" data-purpose="video-hero" id="video-hero-section">
+<!-- Video container (same size as monitor) -->
+<div class="w-full max-w-[485px] aspect-video relative mx-auto" id="video-container">
+<video
+  id="hero-video"
+  class="w-full h-full object-cover"
+  autoplay
+  muted
+  playsinline
+  preload="auto"
+  loop="false"
+  onended="transitionToCode()"
+  onloadedmetadata="console.log('▶️ Video loaded - Duration:', this.duration + 's')"
+  onplay="console.log('▶️ Video playing')"
+  onpause="console.log('⏸️ Video paused')"
+  onerror="console.error('❌ Video error:', this.error)"
+>
+<source src="/videos/cmzvideo.webm" type="video/webm" />
+<source src="/videos/cmzvideo-h264.mp4" type="video/mp4" />
+</video>
+
+<!-- Fade-out overlay that appears as video ends -->
+<div id="video-fade" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-1000 pointer-events-none" style="transition: opacity 1s ease-in-out;"></div>
+</div>
+</section>
+<!-- END: FULLSCREEN VIDEO HERO -->
+
+<style data-purpose="video-container">
+#video-container {
+  width: 100%;
+  max-width: 485px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+#hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+}
+
+/* Hide video section when transition starts */
+#video-hero-section.fade-out #video-container {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Mobile: show placeholder, not video */
+@media (max-width: 1023px) {
+  #video-container {
+    background: linear-gradient(135deg, #2d1f3b 0%, #1b1322 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #hero-video {
+    display: none;
+  }
+  
+  #video-container::after {
+    content: "✨ Full experience on desktop";
+    color: #9d7ec7;
+    font-size: 1.125rem;
+    text-align: center;
+  }
+}
+</style>
+
+<script>
+function transitionToCode() {
+  console.log('🎬 Video ended - starting transition');
+
+  const videoHero = document.getElementById('video-hero-section');
+  const videoFade = document.getElementById('video-fade');
+  const codeSection = document.getElementById('hero-code-section');
+
+  console.log('Elements found:', { videoHero, videoFade, codeSection });
+
+  if (!videoFade) {
+    console.error('❌ video-fade not found');
+    return;
+  }
+
+  // Start fade overlay
+  videoFade.style.opacity = '1';
+  console.log('✅ Fade overlay opacity set to 1');
+
+  // After fade completes, hide video and show code section
+  setTimeout(() => {
+    console.log('⏰ 1 second passed - hiding video and showing code');
+
+    if (videoHero) {
+      videoHero.style.display = 'none';
+      console.log('✅ Video hero hidden');
+    }
+
+    if (codeSection) {
+      // Ensure it's displayed
+      codeSection.style.display = 'block';
+      codeSection.style.visibility = 'visible';
+
+      // Trigger reflow
+      void codeSection.offsetHeight;
+
+      // Fade in
+      codeSection.style.opacity = '1';
+      console.log('✅ Code section displayed and fading in');
+    } else {
+      console.error('❌ Code section not found');
+    }
+  }, 1000);
+}
+
+// Ensure code section is pre-rendered but hidden
+window.addEventListener('DOMContentLoaded', () => {
+  console.log('📄 DOM loaded - hiding code section');
+  const codeSection = document.getElementById('hero-code-section');
+  if (codeSection) {
+    codeSection.style.display = 'none';
+    codeSection.style.opacity = '0';
+    codeSection.style.visibility = 'hidden';
+    console.log('✅ Code section hidden');
+  } else {
+    console.error('❌ Code section not found on DOMContentLoaded');
+  }
+
+  // FALLBACK: Monitor video time to detect when it ends
+  // (in case onended doesn't fire)
+  const video = document.getElementById('hero-video');
+  if (video) {
+    let hasTransitioned = false;
+    video.addEventListener('timeupdate', () => {
+      const timeRemaining = video.duration - video.currentTime;
+      if (timeRemaining < 0.1 && !hasTransitioned) {
+        console.log('⏱️ Video almost ended (timeupdate fallback) - duration:', video.duration, 'current:', video.currentTime);
+        hasTransitioned = true;
+        // Pause to prevent looping
+        video.pause();
+        transitionToCode();
+      }
+    });
+
+    video.addEventListener('ended', () => {
+      console.log('✅ onended fired - starting transition');
+      if (!hasTransitioned) {
+        hasTransitioned = true;
+        transitionToCode();
+      }
+    });
+  }
+});
+</script>
+
+
+
+
+
+<section class="relative z-10 py-0 overflow-hidden" data-purpose="hero-illustration" id="hero-code-section" style="display: none; opacity: 0; transition: opacity 1s ease-in-out;">
+<div class="max-w-6xl mx-auto px-6 h-screen flex flex-col justify-between">
+<!-- Hanging Studio Industrial Lamp with Light Cone -->
+<!-- Main Hero Content & Desk Illustration Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center pt-8 relative z-30">
+<!-- Hero Text & CTA Buttons -->
+<div class="lg:col-span-6 space-y-6 pt-10 text-center lg:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-purple/10 text-brand-purple dark:bg-brand-lavender/10 dark:text-brand-lavenderLight border border-brand-purple/20">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Available for Frontend &amp; React Native projects
+        </div>
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          FrontEnd Developer
+        </h1>
+<p class="text-xl sm:text-2xl text-slate-300 font-medium max-w-lg leading-relaxed">
+          Passionate about creating cool apps and sites!
+        </p>
+<div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+<a class="px-8 py-3 rounded-full text-sm font-semibold tracking-wide border-2 border-brand-deepPurple dark:border-brand-lavender/70 bg-brand-deepPurple/10 dark:bg-brand-cardDark/80 text-white hover:bg-brand-deepPurple hover:text-white dark:hover:bg-brand-lavender dark:hover:text-brand-dark transition-all duration-200 shadow-md" href="#portfolio">
+            My Work
+          </a>
+<a class="px-8 py-3 rounded-full text-sm font-semibold tracking-wide border-2 border-purple-400/50 bg-transparent text-slate-200 hover:border-brand-lavender hover:text-brand-lavender transition-all duration-200" href="#resume">
+            My Resume
+          </a>
+</div>
+</div>
+<!-- Desk Illustration Recreation with Monitor, App UI, Plant & Elements -->
+<div class="lg:col-span-6 relative mt-12 lg:mt-0 flex flex-col items-center justify-center">
+<!-- Ambient Purple Glow Backlight -->
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-96 h-80 bg-brand-accent/25 dark:bg-brand-lavender/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<!-- 1. Industrial Ceiling Lamp hanging directly over the workstation center (layering in front of the top monitor) -->
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center pointer-events-none">
+<!-- Hanging Wire/Cord -->
+<div class="w-1 h-12 bg-slate-700 dark:bg-slate-300 shadow-sm"></div>
+<!-- Lamp Body & Shade matching IMAGE_2 -->
+<div class="relative origin-top animate-sway flex flex-col items-center"><svg class="w-36 h-24 filter drop-shadow-2xl relative z-20" fill="none" viewbox="0 0 140 85">
+<!-- Socket mount -->
+<rect class="fill-slate-800 dark:fill-slate-300" height="8" rx="2" width="18" x="61" y="4"></rect>
+<!-- Dome knob -->
+<circle class="fill-slate-900 dark:fill-slate-950 stroke-2 stroke-slate-700" cx="70" cy="18" r="14"></circle>
+<!-- Deep black industrial flared shade -->
+<path class="fill-black dark:fill-[#0c0a13] stroke-[3] stroke-slate-800/80" d="M22 68 C24 38 48 24 70 24 C92 24 116 38 118 68 Z"></path>
+<!-- White rim highlight on rim -->
+<ellipse class="fill-transparent stroke-1 stroke-white/20" cx="70" cy="68" rx="48" ry="4"></ellipse>
+<!-- Inner warm reflector disc -->
+<ellipse class="fill-amber-100/90 dark:fill-amber-200" cx="70" cy="68" rx="48" ry="7"></ellipse>
+<!-- Glowing Bulb -->
+<circle class="fill-amber-300 filter drop-shadow-[0_0_12px_rgba(253,224,71,1)]" cx="70" cy="69" r="9"></circle>
+</svg>
+<!-- Warm Spotlight Beam Cone starting seamlessly from the 96px aperture rim of the shade (span 42.5% to 57.5% of 640px = 96px) -->
+<div class="spotlight-beam w-[540px] sm:w-[600px] md:w-[640px] h-[480px] -mt-4 animate-pulse-subtle opacity-75 pointer-events-none relative z-10" style="clip-path: polygon(42.5% 0%, 57.5% 0%, 98% 100%, 2% 100%); margin-top: -15px;"></div></div>
+</div>
+<!-- 2. 'Build: Successful' Badge elevated on top layer overlapping the workstation / lamp top-right area -->
+<div class="absolute -top-12 right-2 sm:right-6 z-50 bg-slate-900/95 backdrop-blur-md border border-purple-500/40 rounded-2xl px-3.5 py-2.5 shadow-2xl animate-float flex items-center space-x-3 transition-transform hover:scale-105">
+<div class="w-7 h-7 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
+<svg aria-hidden="true" class="lucide lucide-check w-4 h-4 stroke-[3]" data-lucide="check" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5"></path></svg>
+</div>
+<div class="text-left pr-1">
+<div class="flex items-center gap-1.5">
+<span class="text-[11px] font-bold text-white">Build: Successful</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+</div>
+<p class="text-[9px] font-mono text-slate-400">0 errors • 60 FPS Fast Refresh</p>
+</div>
+</div>
+<!-- Floating Badge 1: Reanimated 3 & 60 FPS Worklets -->
+<div class="absolute top-12 -left-6 sm:-left-10 z-40 bg-slate-900/90 backdrop-blur-md border border-brand-lavender/35 rounded-xl px-3 py-1.5 shadow-xl animate-float-delayed hidden sm:flex items-center gap-2 transition-transform hover:scale-105">
+<span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+<span class="text-[11px] font-mono font-semibold text-brand-lavenderLight">&lt;Reanimated 3 /&gt; <span class="text-emerald-400 text-[9px] font-bold">60 FPS</span></span>
+</div>
+<!-- Floating Badge 2: SOLID & Clean Architecture -->
+<div class="absolute top-28 -left-8 sm:-left-12 z-40 bg-slate-950/95 backdrop-blur-md border border-indigo-500/40 rounded-xl px-3 py-1.5 shadow-xl animate-float hidden sm:flex items-center gap-2 text-[10px] font-mono font-semibold text-indigo-200">
+<svg aria-hidden="true" class="lucide lucide-layers w-3.5 h-3.5 text-cyan-400" data-lucide="layers" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>
+<span class="">SOLID • Clean Architecture</span>
+</div>
+<!-- Floating Badge 3: DIP: ILocationService -->
+<div class="absolute bottom-20 -left-4 sm:-left-8 z-40 bg-slate-900/90 backdrop-blur-md border border-purple-800/60 rounded-xl px-2.5 py-1.5 shadow-lg animate-float hidden sm:flex items-center gap-1.5 text-[10px] font-mono font-medium text-purple-200">
+<svg aria-hidden="true" class="lucide lucide-sparkles w-3 h-3 text-brand-lavender" data-lucide="sparkles" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+<span class="text-cyan-300">DIP:</span> <span class="">ILocationService</span>
+</div>
+<!-- The Bespoke Studio Monitor -->
+<div class="relative z-30 w-full max-w-[485px] drop-shadow-2xl">
+<div class="bg-slate-950 p-2.5 rounded-[22px] border-2 border-purple-900/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative group">
+<div class="absolute top-1.5 left-1/2 -translate-x-1/2 flex items-center space-x-1">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-700 border border-slate-600"></span>
+<span class="w-1 h-1 rounded-full bg-emerald-400/80"></span>
+</div>
+<div class="bg-slate-950 rounded-2xl overflow-hidden border border-slate-800/90 relative shadow-inner">
+<div class="h-7 bg-slate-900/90 px-3 flex items-center justify-between border-b border-slate-800/80 text-[10px] select-none">
+<div class="flex items-center space-x-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+</div>
+<div class="flex items-center space-x-2 text-slate-400 font-mono text-[9px]">
+<span class="px-2 py-0.5 rounded bg-slate-800/90 text-brand-lavenderLight flex items-center gap-1 border border-slate-700/50">
+<svg aria-hidden="true" class="lucide lucide-file-code-2 w-2.5 h-2.5 text-cyan-400" data-lucide="file-code-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.15V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2h-3.35"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m5 16-3 3 3 3"></path><path d="m9 22 3-3-3-3"></path></svg> useEcoTracker.ts
+          </span>
+</div>
+<div class="flex items-center space-x-1.5 text-slate-500 text-[8px] font-mono">
+<span class="text-emerald-400 font-semibold">SOLID • LIVE</span>
+</div>
+</div>
+<div class="h-64 grid grid-cols-12 relative overflow-hidden bg-gradient-to-b from-slate-950 via-[#111625] to-[#0c0f18]">
+<!-- Left Editor Pane: Pristine SOLID & Clean Architecture TypeScript Hook -->
+<div class="col-span-7 p-2.5 font-mono text-[8.5px] leading-[1.38] select-none text-slate-300 border-r border-slate-800/60 overflow-hidden flex flex-col justify-between">
+<div class="space-y-0.5 overflow-hidden">
+<div class="text-slate-500 text-[7.5px]">// SOLID: DIP &amp; SRP - Domain Hook</div>
+<div class="">
+<span class="text-purple-400 font-semibold">interface</span> <span class="text-amber-200">IGeoLocationService</span> {
+            </div>
+<div class="pl-2 text-slate-400 text-[8px]">
+              getCurrentCoords(): <span class="text-cyan-300">Promise&lt;Coords&gt;</span>;
+            </div>
+<div class="pl-2 text-slate-400 text-[8px]">
+              watchPosition(cb: <span class="text-cyan-300">PosCallback</span>): <span class="text-cyan-300">Unsubscribe</span>;
+            </div>
+<div class="text-slate-400">}</div>
+<div class="pt-0.5">
+<span class="text-purple-400 font-semibold">export const</span> <span class="text-blue-400">useNearbyHubs</span> = (
+            </div>
+<div class="pl-2 text-slate-400">
+              geo: <span class="text-amber-200">IGeoLocationService</span>,
+            </div>
+<div class="pl-2 text-slate-400">
+              repo: <span class="text-amber-200">IHubsRepository</span>
+            ) =&gt; {
+            </div>
+<div class="pl-2 text-slate-400">
+<span class="text-purple-400">const</span> [hubs, setHubs] = <span class="text-cyan-300">useState</span>&lt;<span class="text-amber-200">HubEntity[]</span>&gt;([]);
+            </div>
+<div class="pl-2 text-slate-400">
+<span class="text-purple-400">const</span> [status] = <span class="text-cyan-300">useState</span>&lt;<span class="text-amber-200">SyncState</span>&gt;(<span class="text-emerald-300">'idle'</span>);
+            </div>
+<div class="pl-2 text-slate-500 text-[7.5px]">// 60FPS Reanimated 3 Worklet</div>
+<div class="pl-2 text-slate-400">
+<span class="text-purple-400">const</span> translateY = <span class="text-cyan-300">useSharedValue</span>(0);
+            </div>
+<div class="pl-2 text-slate-400">
+<span class="text-purple-400">const</span> pan = <span class="text-blue-300">Gesture</span>.<span class="text-amber-300">Pan</span>().<span class="text-blue-300">onChange</span>((e) =&gt; {
+            </div>
+<div class="pl-4 text-emerald-300 text-[7.5px]">
+<span class="text-slate-400">'worklet';</span> translateY.value = <span class="text-amber-300">withSpring</span>(e.y);
+            </div>
+<div class="pl-2 text-slate-400">});</div>
+</div>
+<div class="pt-1 border-t border-slate-800/80 flex items-center justify-between text-[8px] text-slate-400 font-mono">
+<span class="text-brand-lavenderLight flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              SRP / Inversion Ready
+            </span>
+<span class="text-slate-500">TypeScript 5.3</span>
+</div>
+</div>
+<!-- Right Workspace Pane (Mini Live Visual Canvas) -->
+<div class="col-span-5 p-2 flex flex-col justify-between bg-slate-900/40 relative">
+<div class="flex items-center justify-between text-[8px] text-slate-400">
+<span class="font-semibold uppercase tracking-wider text-slate-300">Simulator</span>
+<span class="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 font-mono text-[7px]">iOS • 17.4</span>
+</div>
+<div class="my-auto flex flex-col items-center justify-center relative">
+<div class="w-16 h-16 rounded-full border-2 border-brand-lavender/40 border-t-brand-accent animate-spin flex items-center justify-center [animation-duration:8s]">
+<div class="w-10 h-10 rounded-full bg-brand-deepPurple/60 border border-brand-purple/50 flex items-center justify-center text-brand-lavender">
+<svg aria-hidden="true" class="lucide lucide-layers w-4 h-4" data-lucide="layers" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg>
+</div>
+</div>
+<div class="mt-2 text-center">
+<div class="text-[9px] font-bold text-white">Claudio.dev</div>
+<div class="text-[7px] text-brand-lavenderLight font-mono">SOLID Architecture Layer</div>
+</div>
+</div>
+<div class="flex items-center justify-center gap-1">
+<span class="w-8 h-1.5 rounded-full bg-slate-700"></span>
+<span class="w-4 h-1.5 rounded-full bg-brand-lavender"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute inset-x-6 top-3 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"></div>
+</div>
+<!-- Monitor Stand -->
+<div class="flex flex-col items-center -mt-0.5 relative z-10">
+<div class="w-12 h-9 bg-gradient-to-b from-slate-600 via-slate-700 to-slate-800 shadow-inner rounded-t-sm flex items-center justify-center">
+<div class="w-2.5 h-4 bg-slate-800/40 rounded-full"></div>
+</div>
+<div class="w-32 h-2.5 bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 rounded-full shadow-lg border-t border-slate-500/30"></div>
+</div>
+</div>
+<!-- Floating Sleek Smartphone Breakout (React Native Mobile UI) -->
+<div class="absolute right-0 sm:right-3 top-10 sm:top-14 z-30 w-32 sm:w-36 h-56 sm:h-64 bg-slate-900 rounded-[24px] p-1.5 border-[3px] border-slate-700/80 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6)] transform rotate-6 animate-float-delayed hover:rotate-0 transition-transform duration-300 backdrop-blur-md">
+<div class="w-10 h-2.5 bg-black rounded-full mx-auto mb-1 flex items-center justify-center space-x-1">
+<span class="w-1 h-1 rounded-full bg-blue-500"></span>
+<span class="w-1 h-1 rounded-full bg-slate-800"></span>
+</div>
+<div class="w-full h-[calc(100%-18px)] rounded-[18px] bg-gradient-to-b from-slate-900 via-[#1a1528] to-[#120e1e] p-2 flex flex-col justify-between overflow-hidden border border-purple-900/40 text-white select-none">
+<div class="flex items-center justify-between pb-1.5 border-b border-purple-900/30">
+<div class="flex items-center space-x-1.5">
+<span class="w-4 h-4 rounded-md bg-brand-lavender/30 flex items-center justify-center text-[8px] font-bold text-brand-lavenderLight">🌱</span>
+<span class="text-[9px] font-bold tracking-tight text-white">EcoTrack</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+</div>
+<div class="space-y-1.5 my-auto">
+<div class="p-1.5 rounded-lg bg-purple-950/60 border border-purple-400/20 backdrop-blur-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="text-[7px] font-bold uppercase text-brand-lavenderLight">Nearby Hub</span>
+<span class="text-[7px] text-emerald-400 font-mono">0.8 km</span>
+</div>
+<div class="h-1.5 bg-brand-lavender/40 rounded-full w-4/5"></div>
+<div class="h-1 bg-white/20 rounded-full w-3/5"></div>
+</div>
+<div class="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-md bg-emerald-500/20 flex items-center justify-center text-emerald-300">
+<svg aria-hidden="true" class="lucide lucide-map-pin w-3 h-3" data-lucide="map-pin" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+</div>
+<div class="space-y-0.5 flex-1">
+<div class="h-1.5 bg-emerald-400/50 rounded-full w-3/4"></div>
+<div class="h-1 bg-emerald-400/20 rounded-full w-1/2"></div>
+</div>
+</div>
+</div>
+<div class="h-5 bg-black/40 rounded-lg px-2 flex items-center justify-between text-slate-400 text-[8px]">
+<svg aria-hidden="true" class="lucide lucide-home w-2.5 h-2.5 text-brand-lavender" data-lucide="home" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+<svg aria-hidden="true" class="lucide lucide-compass w-2.5 h-2.5" data-lucide="compass" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></svg>
+<svg aria-hidden="true" class="lucide lucide-bell w-2.5 h-2.5" data-lucide="bell" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+<svg aria-hidden="true" class="lucide lucide-user w-2.5 h-2.5" data-lucide="user" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+</div>
+</div>
+</div>
+<!-- Potted Succulent Plant on Desk with Rich Detail -->
+<div class="absolute left-4 sm:left-8 bottom-7 z-30 flex flex-col items-center pointer-events-none filter drop-shadow-md">
+<div class="relative w-12 h-10 -mb-1">
+<span class="absolute left-3 top-0 w-3.5 h-8 bg-gradient-to-t from-emerald-600 to-emerald-400 rounded-full rotate-[-25deg] shadow-sm"></span>
+<span class="absolute left-5 top-0 w-3.5 h-9 bg-gradient-to-t from-emerald-700 to-emerald-500 rounded-full rotate-[10deg] shadow-sm"></span>
+<span class="absolute left-1 top-2 w-3.5 h-7 bg-gradient-to-t from-teal-700 to-teal-500 rounded-full rotate-[-45deg]"></span>
+<span class="absolute right-1 top-2 w-3.5 h-7 bg-gradient-to-t from-emerald-600 to-emerald-300 rounded-full rotate-[40deg]"></span>
+<span class="absolute left-4 top-1 w-2.5 h-6 bg-emerald-300 rounded-full shadow-inner"></span>
+</div>
+<div class="w-8 h-8 bg-gradient-to-b from-slate-600 to-slate-800 rounded-b-lg shadow-md border-t-2 border-brand-lavender/40 flex flex-col items-center justify-center overflow-hidden">
+<div class="w-full h-1 bg-brand-lavender/30 my-0.5"></div>
+</div>
+<div class="w-9 h-2 bg-amber-950/30 rounded-full mt-0.5 blur-[0.5px]"></div>
+</div>
+<!-- Ergonomic Studio Desk Mat & Wooden Table Surface -->
+<div class="relative w-full max-w-xl z-20 -mt-2.5">
+<div class="w-4/5 mx-auto h-3 bg-purple-950/60 rounded-t-lg border-t border-brand-lavender/20 shadow-md"></div>
+<div class="w-full h-5 bg-gradient-to-r from-amber-700 via-brand-wood to-amber-800 rounded-sm shadow-lg border-b border-brand-woodShadow relative overflow-hidden" style="transform: perspective(400px) rotateX(15deg);">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/20 to-transparent pointer-events-none"></div>
+</div>
+<div class="w-full h-3.5 bg-gradient-to-b from-brand-woodShadow to-amber-950 rounded-b-sm shadow-2xl flex items-center justify-center">
+<div class="w-24 h-0.5 bg-amber-900/50 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- 3. BEGIN: About & Tech Stack Section -->
+<section class="relative z-10 pt-10 pb-24 bg-gradient-to-b from-transparent via-[#160f26]/60 to-[#120c1f]/75 border-b border-purple-900/40" data-purpose="about-me" id="about">
+<div class="max-w-6xl mx-auto px-6 relative">
+<div class="w-full flex justify-center mb-4 pointer-events-none opacity-60">
+<svg class="w-full max-w-4xl h-10 text-brand-lavender/30 stroke-current fill-none" preserveaspectratio="none" viewbox="0 0 1000 40">
+<path d="M0,20 C200,38 350,2 500,20 C650,38 800,2 1000,20" stroke-dasharray="6 6" stroke-width="1.5"></path>
+</svg>
+</div>
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-brand-lavender/10 text-brand-lavenderLight border border-brand-purple/20 mb-4">
+<span class="w-2 h-2 rounded-full bg-brand-lavender animate-ping"></span>
+        Architecture &amp; Engineering Mindset
+      </div>
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+        About <span class="text-brand-lavender">Claudio</span>
+</h2>
+<div class="w-20 h-1.5 bg-brand-lavender mx-auto rounded-full mb-4"></div>
+<p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        Dedicated SSR React Native &amp; Frontend Engineer crafting robust architectures, fluid mobile experiences, and scalable web platforms.
+      </p>
+</div>
+<!-- Row 1: Bio Profile Card + Tech Stack Card -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12">
+<!-- Left: Bio Card (Elevated Glassmorphism) -->
+<div class="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+<div class="relative flex-shrink-0">
+<div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-brand-accent via-brand-lavender to-cyan-400 shadow-[0_0_25px_rgba(157,126,199,0.45)] relative group">
+<div class="w-full h-full rounded-full overflow-hidden border-2 border-brand-dark bg-slate-900 flex items-center justify-center">
+<img alt="Claudio Mazzoli - SSR &amp; React Native Engineer" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnFXf7v6uXrAPECwGkDsKwXlFvMDsB0YcjP3CjMjlD4RZvPTSUyV_PMXnrEKRwsXMwQfc7YLsTLFJB7LgWpd-Y4NBgadhR2FQShO25WCIfDLpNa5f-99AMxKZZhiUUTfNILvP1BnYbMYD65AbMLhYwZ3fjGaIjG_9M6jIcU1hY-BtVtDQf7uijjA6r9QVo67oYzosBsac4KZQuPInLQnZEIg-lYoQcrPtypvdMmxlTsoko1lfJwIYm"/>
+</div>
+</div>
+<div class="absolute -bottom-1 -right-1 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold shadow-md border-2 border-brand-dark flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>Senior
+              </div>
+</div>
+<div class="space-y-2 text-center sm:text-left">
+<div class="text-xs font-mono font-semibold uppercase tracking-wider text-brand-lavenderLight">Hello &amp; Welcome</div>
+<h3 class="text-2xl font-extrabold text-white">Hi! I'm <span class="text-brand-lavender">Claudio</span>.</h3>
+<p class="text-sm text-slate-300 leading-relaxed">
+                A specialized <strong class="text-white font-semibold">SSR, React &amp; React Native Engineer</strong> dedicated to building high-velocity, resilient applications from concept to production rollout.
+              </p>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-purple-900/40 space-y-4 text-sm text-slate-300 leading-relaxed">
+<p class="">With a comprehensive background spanning high-concurrency e-commerce and full-stack MERN engineering, I specialize in bridging performant <strong class="text-white">Next.js Server-Side Rendering (SSR/SSG)</strong> web ecosystems with cross-platform <strong class="text-white">React Native</strong> mobile client architectures.</p>
+<p class="">Whether implementing 60 FPS gesture-driven interactions using <span class="text-brand-lavender font-semibold">Reanimated 3 &amp; Gesture Handler</span>, structuring offline-first data sync engines with robust SQLite/WatermelonDB, or enforcing strict <span class="text-brand-lavender font-semibold">TypeScript</span> design patterns across design systems, my focus remains steady: maintainable codebases, accessible ergonomics, and unmatched UX performance.</p>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-4 pt-2">
+<a class="px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide border-2 border-brand-lavender/70 bg-brand-lavender text-brand-dark hover:opacity-90 transition-all shadow-md font-bold" href="#portfolio">My Work</a>
+<a class="px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide border-2 border-purple-400/50 bg-transparent text-slate-200 hover:border-brand-lavender hover:text-brand-lavender transition-all" href="mailto:claudiomazzoli@example.com">Contact Me!</a>
+</div>
+</div>
+<!-- Right: Tech Stack & Tools Card (Elevated Glassmorphism) -->
+<div class="lg:col-span-5 glass-panel-deep p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+<div>
+<!-- Header -->
+<div class="flex items-center gap-3 mb-6 pb-4 border-b border-purple-900/40">
+<div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/30 text-brand-lavender flex items-center justify-center font-mono font-bold text-sm shadow-inner">
+              &lt;/&gt;
+            </div>
+<div>
+<h3 class="text-base font-bold text-white tracking-wide">Tech Stack &amp; Tools</h3>
+<p class="text-[11px] text-slate-400 font-mono">Production-proven toolchain</p>
+</div>
+</div>
+<!-- Categories List -->
+<div class="space-y-6">
+<!-- 1. Frontend & Mobile -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">FRONTEND &amp; MOBILE</span>
+<span class="text-xs font-mono font-bold text-cyan-400">Core Focus</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<!-- React: dark slate navy pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e293b]/90 text-slate-200 border border-slate-700/60 shadow-sm transition-colors hover:border-brand-lavender/50">React</span>
+<!-- React Native: dark royal indigo/purple pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e1b4b]/90 text-indigo-200 border border-indigo-700/50 shadow-sm transition-colors hover:border-indigo-400/60">React Native</span>
+<!-- TypeScript: dark violet/indigo pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#2e1065]/90 text-purple-200 border border-purple-800/60 shadow-sm transition-colors hover:border-purple-400/60">TypeScript</span>
+<!-- Next.js: dark navy/slate pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e293b]/90 text-slate-200 border border-slate-700/60 shadow-sm transition-colors hover:border-brand-lavender/50">Next.js</span>
+<!-- Tailwind CSS: dark teal/cyan pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#0e464c]/90 text-cyan-300 border border-cyan-500/40 shadow-sm transition-colors hover:border-cyan-400/60">Tailwind CSS</span>
+<!-- Redux Toolkit: dark purple/violet pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#4c1d95]/90 text-purple-200 border border-purple-600/40 shadow-sm transition-colors hover:border-purple-400/60">Redux Toolkit</span>
+</div>
+</div>
+<!-- 2. Backend & Services -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">BACKEND &amp; SERVICES</span>
+<span class="text-xs font-mono font-bold text-emerald-400">MERN Stack</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<!-- Node.js: dark slate blue pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e293b]/90 text-slate-200 border border-slate-700/60 shadow-sm transition-colors hover:border-emerald-400/50">Node.js</span>
+<!-- Express: dark navy pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#172554]/90 text-slate-200 border border-blue-900/60 shadow-sm transition-colors hover:border-blue-400/50">Express</span>
+<!-- MongoDB: dark forest green pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#064e3b]/90 text-emerald-300 border border-emerald-600/40 shadow-sm transition-colors hover:border-emerald-400/60">MongoDB</span>
+<!-- PostgreSQL: deep navy/cobalt pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e3a8a]/90 text-blue-200 border border-blue-600/50 shadow-sm transition-colors hover:border-blue-400/60">PostgreSQL</span>
+<!-- Firebase: dark amber/brown pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#78350f]/90 text-amber-300 border border-amber-500/40 shadow-sm transition-colors hover:border-amber-400/60">Firebase</span>
+<!-- GraphQL: deep slate pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e293b]/90 text-slate-200 border border-slate-700/60 shadow-sm transition-colors hover:border-purple-400/50">GraphQL</span>
+</div>
+</div>
+<!-- 3. Architecture & Mobile APIs -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">ARCHITECTURE &amp; MOBILE APIS</span>
+<span class="text-xs font-mono font-bold text-brand-lavenderLight">Performance</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<!-- MapLibre / Google Maps: dark slate pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e293b]/90 text-slate-200 border border-slate-700/60 shadow-sm transition-colors hover:border-brand-lavender/50">MapLibre / Google Maps</span>
+<!-- Reanimated 3: rich vibrant purple/violet pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#6b21a8]/90 text-purple-100 border border-purple-500/50 shadow-sm transition-colors hover:border-purple-300/60">Reanimated 3</span>
+<!-- Gesture Handler: deep purple pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#581c87]/90 text-purple-200 border border-purple-600/40 shadow-sm transition-colors hover:border-purple-300/60">Gesture Handler</span>
+<!-- Auth0: dark navy/teal pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e293b]/90 text-slate-200 border border-slate-700/60 shadow-sm transition-colors hover:border-brand-lavender/50">Auth0</span>
+<!-- Offline-First: dark pine green pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#064e3b]/90 text-emerald-300 border border-emerald-600/40 shadow-sm transition-colors hover:border-emerald-400/60">Offline-First</span>
+<!-- Git / GitHub CI: slate/navy pill -->
+<span class="px-3 py-1 text-xs rounded-full font-medium bg-[#1e293b]/90 text-slate-200 border border-slate-700/60 shadow-sm transition-colors hover:border-brand-lavender/50">Git / GitHub CI</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 2: 3 Prominent Architecture Focus Cards (Glassmorphic) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6"><!-- Card 1: React & RN Architecture -->
+<div class="rounded-2xl glass-card p-7 flex flex-col justify-between group relative overflow-hidden border border-brand-lavender/25 hover:border-brand-lavender/60 transition-all">
+<div class="absolute top-0 right-0 w-32 h-32 bg-brand-accent/15 rounded-full blur-2xl pointer-events-none group-hover:bg-brand-accent/25 transition-all"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-950/90 to-brand-deepPurple/70 border border-purple-400/40 flex items-center justify-center text-purple-200 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.25)] transition-transform group-hover:scale-110 group-hover:border-purple-300/70 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+<svg aria-hidden="true" class="lucide lucide-atom w-7 h-7 text-brand-lavenderLight" data-lucide="atom" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="1"></circle><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"></path><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"></path></svg>
+</div>
+<h3 class="text-xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-lavenderLight transition-colors">React &amp; RN Architecture</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-6">
+  Cross-platform Web &amp; Mobile architecture, offline-first sync, and 60 FPS Reanimated gestures.
+</p>
+</div>
+<div class="border-t border-purple-500/20 pt-4 flex items-center justify-between">
+<span class="px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 font-mono text-xs flex items-center gap-2 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+</span>
+  Production Proven
+</span>
+</div>
+</div>
+<!-- Card 2: Clean Architecture -->
+<div class="rounded-2xl glass-card p-7 flex flex-col justify-between group relative overflow-hidden border border-brand-lavender/25 hover:border-brand-lavender/60 transition-all">
+<div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-950/90 to-brand-deepPurple/70 border border-purple-400/40 flex items-center justify-center text-cyan-300 mb-6 shadow-[0_0_15px_rgba(56,189,248,0.2)] font-mono font-bold text-lg transition-transform group-hover:scale-110 group-hover:border-cyan-400/70 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.4)]">
+  &lt;/&gt;
+</div>
+<h3 class="text-xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-lavenderLight transition-colors">Clean Architecture</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-6">
+  TypeScript strict typing, semantic design systems, modular state patterns, and test coverage.
+</p>
+</div>
+<div class="border-t border-purple-500/20 pt-4 flex items-center justify-between">
+<span class="px-3 py-1 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 font-mono text-xs flex items-center gap-2 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-400 shadow-[0_0_8px_#38bdf8]"></span>
+</span>
+  Strict Contracts
+</span>
+</div>
+</div>
+<!-- Card 3: SSR & Full-Stack -->
+<div class="rounded-2xl glass-card p-7 flex flex-col justify-between group relative overflow-hidden border border-brand-lavender/25 hover:border-brand-lavender/60 transition-all">
+<div class="absolute top-0 right-0 w-32 h-32 bg-purple-600/15 rounded-full blur-2xl pointer-events-none group-hover:bg-purple-600/25 transition-all"></div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-950/90 to-brand-deepPurple/70 border border-purple-400/40 flex items-center justify-center text-purple-200 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.25)] transition-transform group-hover:scale-110 group-hover:border-purple-300/70 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+<svg aria-hidden="true" class="lucide lucide-server w-7 h-7 text-brand-lavenderLight" data-lucide="server" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="8" rx="2" ry="2" width="20" x="2" y="2"></rect><rect height="8" rx="2" ry="2" width="20" x="2" y="14"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>
+</div>
+<h3 class="text-xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-lavenderLight transition-colors">SSR &amp; Full-Stack</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-6">
+  Next.js SSR/SSG, performant edge hydration, and resilient Node/PostgreSQL REST &amp; GraphQL APIs.
+</p>
+</div>
+<div class="border-t border-purple-500/20 pt-4 flex items-center justify-between">
+<span class="px-3 py-1 rounded-full bg-purple-950/70 border border-purple-500/40 text-purple-200 font-mono text-xs flex items-center gap-2 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-purple-400 shadow-[0_0_8px_#c084fc]"></span>
+</span>
+  Edge Optimized
+</span>
+</div>
+</div></div>
+</div>
+</section>
+<!-- END: About & Tech Stack Section -->
+<!-- 4. BEGIN: TechtimonialsSection -->
+<section class="relative z-10 py-20 bg-gradient-to-b from-[#120c1f]/70 via-[#150e24]/60 to-[#100a1b]/80" data-purpose="testimonials-section" id="techtimonials">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        Techtimonials
+      </h2>
+<div class="w-20 h-1.5 bg-brand-lavender mx-auto rounded-full mb-4"></div>
+<p class="text-slate-300">
+        What teammates, mentors, and collaborators say about working together.
+      </p>
+</div>
+<!-- Testimonials Grid with Subtle Glass Finish -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Testimonial 1 -->
+<div class="glass-card p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden group border border-brand-lavender/25 hover:border-brand-lavender/60 transition-all">
+<div class="absolute -top-3 -right-2 text-7xl font-serif text-brand-lavender/10 select-none pointer-events-none group-hover:text-brand-lavender/20 transition-colors">”</div>
+<div class="space-y-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-brand-lavender/15 border border-brand-lavender/30 flex items-center justify-center text-brand-lavender font-serif text-xl font-bold shadow-inner">“</div>
+<p class="text-sm text-slate-200 leading-relaxed font-normal">
+  Claudio has an exceptional eye for user interface details. In our React Native sprints, his problem-solving with map integrations and complex navigation was invaluable.
+</p>
+</div>
+<div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-purple-900/40 relative z-10">
+<div class="w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-brand-accent via-brand-lavender to-cyan-400 shadow-[0_0_12px_rgba(157,126,199,0.35)] flex-shrink-0">
+<div class="w-full h-full rounded-full bg-slate-950 flex items-center justify-center text-brand-lavenderLight font-bold text-xs">
+  CD
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white group-hover:text-brand-lavenderLight transition-colors">Christian D.</h4>
+<p class="text-xs text-brand-lavenderLight/70 font-mono">Full Stack Engineer</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="glass-card p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden group border border-brand-lavender/25 hover:border-brand-lavender/60 transition-all">
+<div class="absolute -top-3 -right-2 text-7xl font-serif text-blue-400/10 select-none pointer-events-none group-hover:text-blue-400/20 transition-colors">”</div>
+<div class="space-y-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center text-blue-300 font-serif text-xl font-bold shadow-inner">“</div>
+<p class="text-sm text-slate-200 leading-relaxed font-normal">
+  Collaborative, always ready to assist team members, and passionate about shipping clean, well-tested frontend components. A pleasure to build projects with!
+</p>
+</div>
+<div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-purple-900/40 relative z-10">
+<div class="w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-blue-500 via-indigo-400 to-cyan-400 shadow-[0_0_12px_rgba(96,165,250,0.35)] flex-shrink-0">
+<div class="w-full h-full rounded-full bg-slate-950 flex items-center justify-center text-blue-200 font-bold text-xs">
+  MB
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">Martin B.</h4>
+<p class="text-xs text-blue-300/70 font-mono">Software Developer</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="glass-card p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden group border border-brand-lavender/25 hover:border-brand-lavender/60 transition-all">
+<div class="absolute -top-3 -right-2 text-7xl font-serif text-emerald-400/10 select-none pointer-events-none group-hover:text-emerald-400/20 transition-colors">”</div>
+<div class="space-y-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-300 font-serif text-xl font-bold shadow-inner">“</div>
+<p class="text-sm text-slate-200 leading-relaxed font-normal">
+  His speed at mastering TypeScript and state management frameworks translated into robust features on our e-commerce demo applications.
+</p>
+</div>
+<div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-purple-900/40 relative z-10">
+<div class="w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-400 shadow-[0_0_12px_rgba(52,211,153,0.35)] flex-shrink-0">
+<div class="w-full h-full rounded-full bg-slate-950 flex items-center justify-center text-emerald-200 font-bold text-xs">
+  FC
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">Fernando C.</h4>
+<p class="text-xs text-emerald-300/70 font-mono">Backend Architect</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 4 -->
+<div class="glass-card p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden group border border-brand-lavender/25 hover:border-brand-lavender/60 transition-all">
+<div class="absolute -top-3 -right-2 text-7xl font-serif text-purple-400/10 select-none pointer-events-none group-hover:text-purple-400/20 transition-colors">”</div>
+<div class="space-y-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-purple-500/15 border border-purple-400/30 flex items-center justify-center text-purple-300 font-serif text-xl font-bold shadow-inner">“</div>
+<p class="text-sm text-slate-200 leading-relaxed font-normal">
+  Claudio consistently delivered polished UI micro-interactions and ensured everything was fully responsive on all mobile viewports.
+</p>
+</div>
+<div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-purple-900/40 relative z-10">
+<div class="w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-purple-500 via-pink-400 to-brand-lavender shadow-[0_0_12px_rgba(192,132,252,0.35)] flex-shrink-0">
+<div class="w-full h-full rounded-full bg-slate-950 flex items-center justify-center text-purple-200 font-bold text-xs">
+  JC
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">Juan C.</h4>
+<p class="text-xs text-purple-300/70 font-mono">Frontend Peer</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 5 -->
+<div class="glass-card p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden group border border-brand-lavender/25 hover:border-brand-lavender/60 transition-all">
+<div class="absolute -top-3 -right-2 text-7xl font-serif text-rose-400/10 select-none pointer-events-none group-hover:text-rose-400/20 transition-colors">”</div>
+<div class="space-y-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-rose-500/15 border border-rose-400/30 flex items-center justify-center text-rose-300 font-serif text-xl font-bold shadow-inner">“</div>
+<p class="text-sm text-slate-200 leading-relaxed font-normal">
+  High empathy, clear communication, and steady focus on the end-user journey. Claudio is a great addition to any engineering team.
+</p>
+</div>
+<div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-purple-900/40 relative z-10">
+<div class="w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-rose-500 via-purple-400 to-brand-lavender shadow-[0_0_12px_rgba(244,63,94,0.35)] flex-shrink-0">
+<div class="w-full h-full rounded-full bg-slate-950 flex items-center justify-center text-rose-200 font-bold text-xs">
+  PN
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold text-white group-hover:text-rose-300 transition-colors">Paula N.</h4>
+<p class="text-xs text-rose-300/70 font-mono">Product Designer</p>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<!-- END: TechtimonialsSection -->
+<!-- 5. BEGIN: ResumeSection (Curriculum Vitae & Experience - Elevated Glassmorphism) -->
+<section class="relative z-10 py-16 border-y border-purple-900/50 shadow-2xl" data-purpose="resume-highlights" id="resume">
+<div class="max-w-4xl mx-auto px-6">
+<div class="glass-card rounded-2xl p-8 sm:p-12 text-center space-y-6"><div class="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-36 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 space-y-6">
+<div class="inline-flex p-4 rounded-2xl bg-gradient-to-br from-brand-lavender/20 to-brand-deepPurple/40 text-brand-lavender border border-brand-lavender/40 mb-2 shadow-[0_0_20px_rgba(157,126,199,0.3)]">
+<svg aria-hidden="true" class="lucide lucide-file-text w-9 h-9 text-brand-lavenderLight" data-lucide="file-text" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+  Curriculum Vitae &amp; Experience
+</h2>
+<p class="text-slate-300 max-w-xl mx-auto text-base leading-relaxed">
+  Explore my detailed career background, technical certifications, and engineering experience in Frontend and Mobile app development.
+</p>
+<div class="pt-4 flex flex-wrap justify-center gap-4">
+<a class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold bg-brand-lavender text-brand-dark hover:opacity-90 shadow-[0_0_25px_rgba(157,126,199,0.45)] transition-all hover:scale-105" href="#">
+<svg aria-hidden="true" class="lucide lucide-download w-4 h-4" data-lucide="download" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg> Download CV (PDF)
+</a>
+<a class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold border-2 border-brand-lavender/50 text-slate-200 hover:border-brand-lavender hover:text-brand-lavender transition-all hover:scale-105 shadow-md" href="https://linkedin.com/in/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="linkedin"></i> View LinkedIn Profile
+</a>
+</div>
+</div></div>
+</div>
+</section>
+<!-- END: ResumeSection -->
+<!-- 6. BEGIN: PortfolioSection (Featured Projects) -->
+<section class="relative z-10 py-20 bg-gradient-to-b from-[#100a1b]/80 via-[#170e28]/50 to-[#0c0914]" data-purpose="portfolio-showcase" id="portfolio">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        Featured Projects
+      </h2>
+<div class="w-20 h-1.5 bg-brand-lavender mx-auto rounded-full mb-4"></div>
+<p class="text-slate-300">
+        A showcase of mobile applications and web platforms engineered with modern stacks.
+      </p>
+</div>
+<!-- Project Cards Grid with Glass Finish -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Project 1: GreenCycle -->
+<article class="glass-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-emerald-500/30 hover:border-emerald-400/60 transition-all">
+<div class="p-6 relative">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-emerald-500/15 rounded-full blur-2xl pointer-events-none group-hover:bg-emerald-500/25 transition-all"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:scale-110 transition-transform">
+  🌱
+</div>
+<span class="text-xs px-3 py-1 rounded-full bg-emerald-950/80 text-emerald-300 font-mono font-semibold border border-emerald-500/40 shadow-sm flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Mobile App
+</span>
+</div>
+<h3 class="text-xl font-extrabold text-white group-hover:text-emerald-300 transition-colors mb-2">
+  GreenCycle
+</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-5">
+  Cross-platform ecological navigation app connecting citizens with recycling hubs, drop-off spots, and environmental community initiatives.
+</p>
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-emerald-200 border border-emerald-500/30 font-mono">React Native</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-slate-300 border border-slate-700/60 font-mono">MapLibre</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-purple-200 border border-purple-500/30 font-mono">Reanimated</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-slate-300 border border-slate-700/60 font-mono">Auth0</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-emerald-300 border border-emerald-600/30 font-mono">MongoDB</span>
+</div>
+</div>
+<div class="px-6 py-4 bg-slate-950/60 border-t border-purple-900/40 flex items-center justify-between text-xs font-semibold">
+<a class="text-slate-300 hover:text-emerald-300 flex items-center gap-1.5 transition-colors font-mono" href="https://github.com/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="github"></i> Code
+</a>
+<a class="px-3.5 py-1.5 rounded-full bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 border border-emerald-500/40 flex items-center gap-1.5 transition-all hover:scale-105 shadow-sm font-mono" href="#">
+  Demo Preview <svg aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5" data-lucide="external-link" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</a>
+</div>
+</article>
+<!-- Project 2: Movee -->
+<article class="glass-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-blue-500/30 hover:border-blue-400/60 transition-all">
+<div class="p-6 relative">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-blue-500/15 rounded-full blur-2xl pointer-events-none group-hover:bg-blue-500/25 transition-all"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-blue-500/40 flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform">
+  🎬
+</div>
+<span class="text-xs px-3 py-1 rounded-full bg-blue-950/80 text-blue-300 font-mono font-semibold border border-blue-500/40 shadow-sm flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Web App
+</span>
+</div>
+<h3 class="text-xl font-extrabold text-white group-hover:text-blue-300 transition-colors mb-2">
+  Movee
+</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-5">
+  Movie discovery and recommendation platform featuring trending filters, curated user watchlists, and rich metadata integration.
+</p>
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-blue-200 border border-blue-500/30 font-mono">React</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-cyan-300 border border-cyan-500/30 font-mono">Tailwind CSS</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-purple-200 border border-purple-500/30 font-mono">GraphQL</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-slate-300 border border-slate-700/60 font-mono">NestJS</span>
+</div>
+</div>
+<div class="px-6 py-4 bg-slate-950/60 border-t border-purple-900/40 flex items-center justify-between text-xs font-semibold">
+<a class="text-slate-300 hover:text-blue-300 flex items-center gap-1.5 transition-colors font-mono" href="https://github.com/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="github"></i> Code
+</a>
+<a class="px-3.5 py-1.5 rounded-full bg-blue-950/60 hover:bg-blue-900/80 text-blue-300 border border-blue-500/40 flex items-center gap-1.5 transition-all hover:scale-105 shadow-sm font-mono" href="#">
+  Live Demo <svg aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5" data-lucide="external-link" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</a>
+</div>
+</article>
+<!-- Project 3: Socially -->
+<article class="glass-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-purple-500/30 hover:border-purple-400/60 transition-all">
+<div class="p-6 relative">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-purple-500/15 rounded-full blur-2xl pointer-events-none group-hover:bg-purple-500/25 transition-all"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/40 flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(168,85,247,0.2)] group-hover:scale-110 transition-transform">
+  💬
+</div>
+<span class="text-xs px-3 py-1 rounded-full bg-purple-950/80 text-purple-300 font-mono font-semibold border border-purple-500/40 shadow-sm flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span> Full Stack
+</span>
+</div>
+<h3 class="text-xl font-extrabold text-white group-hover:text-purple-300 transition-colors mb-2">
+  Socially
+</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-5">
+  Modern social feed platform with instant image sharing, user relationship graphs, responsive notifications, and dark mode.
+</p>
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-purple-200 border border-purple-500/30 font-mono">Next.js SSR</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-amber-200 border border-amber-500/30 font-mono">Firebase</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-cyan-300 border border-cyan-500/30 font-mono">Tailwind</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-slate-300 border border-slate-700/60 font-mono">Auth</span>
+</div>
+</div>
+<div class="px-6 py-4 bg-slate-950/60 border-t border-purple-900/40 flex items-center justify-between text-xs font-semibold">
+<a class="text-slate-300 hover:text-purple-300 flex items-center gap-1.5 transition-colors font-mono" href="https://github.com/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="github"></i> Code
+</a>
+<a class="px-3.5 py-1.5 rounded-full bg-purple-950/60 hover:bg-purple-900/80 text-purple-300 border border-purple-500/40 flex items-center gap-1.5 transition-all hover:scale-105 shadow-sm font-mono" href="#">
+  Live Demo <svg aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5" data-lucide="external-link" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</a>
+</div>
+</article>
+<!-- Project 4: UberClone -->
+<article class="glass-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-amber-500/30 hover:border-amber-400/60 transition-all">
+<div class="p-6 relative">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-amber-500/15 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-500/25 transition-all"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-xl bg-amber-950/80 border border-amber-500/40 flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(245,158,11,0.2)] group-hover:scale-110 transition-transform">
+  🚗
+</div>
+<span class="text-xs px-3 py-1 rounded-full bg-amber-950/80 text-amber-300 font-mono font-semibold border border-amber-500/40 shadow-sm flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span> Mobile App
+</span>
+</div>
+<h3 class="text-xl font-extrabold text-white group-hover:text-amber-300 transition-colors mb-2">
+  UberClone
+</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-5">
+  Ride hailing simulation featuring Google Places autocomplete, directions routing, travel duration estimation, and ride type selection.
+</p>
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-amber-200 border border-amber-500/30 font-mono">React Native</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-slate-300 border border-slate-700/60 font-mono">Google Maps API</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-purple-200 border border-purple-500/30 font-mono">Redux</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-cyan-300 border border-cyan-500/30 font-mono">Tailwind</span>
+</div>
+</div>
+<div class="px-6 py-4 bg-slate-950/60 border-t border-purple-900/40 flex items-center justify-between text-xs font-semibold">
+<a class="text-slate-300 hover:text-amber-300 flex items-center gap-1.5 transition-colors font-mono" href="https://github.com/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="github"></i> Code
+</a>
+<a class="px-3.5 py-1.5 rounded-full bg-amber-950/60 hover:bg-amber-900/80 text-amber-300 border border-amber-500/40 flex items-center gap-1.5 transition-all hover:scale-105 shadow-sm font-mono" href="#">
+  Case Study <svg aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5" data-lucide="external-link" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</a>
+</div>
+</article>
+<!-- Project 5: Tomatelas -->
+<article class="glass-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-rose-500/30 hover:border-rose-400/60 transition-all">
+<div class="p-6 relative">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-rose-500/15 rounded-full blur-2xl pointer-events-none group-hover:bg-rose-500/25 transition-all"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-xl bg-rose-950/80 border border-rose-500/40 flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(244,63,94,0.2)] group-hover:scale-110 transition-transform">
+  🍅
+</div>
+<span class="text-xs px-3 py-1 rounded-full bg-rose-950/80 text-rose-300 font-mono font-semibold border border-rose-500/40 shadow-sm flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span> E-Commerce
+</span>
+</div>
+<h3 class="text-xl font-extrabold text-white group-hover:text-rose-300 transition-colors mb-2">
+  Tomatelas
+</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-5">
+  Full-featured drink &amp; cocktail store with cart checkout, interactive catalog with complex category filtering, and review system.
+</p>
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-rose-200 border border-rose-500/30 font-mono">React</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-blue-200 border border-blue-500/30 font-mono">Express</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-cyan-300 border border-cyan-500/30 font-mono">PostgreSQL</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-purple-200 border border-purple-500/30 font-mono">Redux</span>
+</div>
+</div>
+<div class="px-6 py-4 bg-slate-950/60 border-t border-purple-900/40 flex items-center justify-between text-xs font-semibold">
+<a class="text-slate-300 hover:text-rose-300 flex items-center gap-1.5 transition-colors font-mono" href="https://github.com/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="github"></i> Code
+</a>
+<a class="px-3.5 py-1.5 rounded-full bg-rose-950/60 hover:bg-rose-900/80 text-rose-300 border border-rose-500/40 flex items-center gap-1.5 transition-all hover:scale-105 shadow-sm font-mono" href="#">
+  Live Demo <svg aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5" data-lucide="external-link" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</a>
+</div>
+</article>
+<!-- Project 6: TS-ShoppingCart -->
+<article class="glass-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-cyan-500/30 hover:border-cyan-400/60 transition-all">
+<div class="p-6 relative">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-cyan-500/15 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/25 transition-all"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(6,182,212,0.2)] group-hover:scale-110 transition-transform">
+  🛍️
+</div>
+<span class="text-xs px-3 py-1 rounded-full bg-cyan-950/80 text-cyan-300 font-mono font-semibold border border-cyan-500/40 shadow-sm flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Web App
+</span>
+</div>
+<h3 class="text-xl font-extrabold text-white group-hover:text-cyan-300 transition-colors mb-2">
+  TS Shopping Cart
+</h3>
+<p class="text-sm text-slate-300 leading-relaxed mb-5">
+  Type-safe e-commerce cart architecture demonstration leveraging TypeScript strict typing, optimistic UI updates, and drawer menus.
+</p>
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-cyan-200 border border-cyan-500/30 font-mono">TypeScript</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-slate-200 border border-slate-700/60 font-mono">React</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-purple-200 border border-purple-500/30 font-mono">Material UI</span>
+<span class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-900/90 text-brand-lavenderLight border border-brand-lavender/30 font-mono">React Query</span>
+</div>
+</div>
+<div class="px-6 py-4 bg-slate-950/60 border-t border-purple-900/40 flex items-center justify-between text-xs font-semibold">
+<a class="text-slate-300 hover:text-cyan-300 flex items-center gap-1.5 transition-colors font-mono" href="https://github.com/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="github"></i> Code
+</a>
+<a class="px-3.5 py-1.5 rounded-full bg-cyan-950/60 hover:bg-cyan-900/80 text-cyan-300 border border-cyan-500/40 flex items-center gap-1.5 transition-all hover:scale-105 shadow-sm font-mono" href="#">
+  Live Demo <svg aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5" data-lucide="external-link" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</a>
+</div>
+</article></div>
+</div>
+</section>
+<!-- END: PortfolioSection -->
+<!-- 7. BEGIN: MainFooter -->
+<footer class="relative z-10 py-10 border-t border-purple-900/40 bg-[#08050e]/95 backdrop-blur-md text-slate-300" data-purpose="site-footer">
+<div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="text-center md:text-left">
+<div class="text-base font-bold text-white">
+        Claudio Mazzoli
+      </div>
+<p class="text-xs text-slate-400 mt-0.5">
+        FrontEnd &amp; React Native Developer • Crafted with pride &amp; precision
+      </p>
+</div>
+<!-- Footer Social Links -->
+<div class="flex items-center space-x-6 text-slate-300">
+<a class="hover:text-brand-lavender transition-colors flex items-center gap-2 text-sm font-medium" href="https://linkedin.com/in/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="linkedin"></i> LinkedIn
+      </a>
+<a class="hover:text-brand-lavender transition-colors flex items-center gap-2 text-sm font-medium" href="https://github.com/claudiomazzoli" rel="noopener noreferrer" target="_blank">
+<i class="w-4 h-4" data-lucide="github"></i> GitHub
+      </a>
+<a class="hover:text-brand-lavender transition-colors flex items-center gap-2 text-sm font-medium" href="mailto:claudiomazzoli@example.com">
+<svg aria-hidden="true" class="lucide lucide-mail w-4 h-4" data-lucide="mail" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect height="16" rx="2" width="20" x="2" y="4"></rect></svg> Contact
+      </a>
+</div>
+<div class="text-xs text-slate-400">
+      © <span class="" id="year">2026</span> Claudio Mazzoli. All rights reserved.
+    </div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- Theme Toggle & Lucide Icon Script -->
+<script data-purpose="theme-toggle">
+  // Initialize Lucide icons
+  lucide.createIcons();
+
+  // Dynamic Year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Dark/Light Mode Switcher logic
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const htmlEl = document.documentElement;
+
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+  if (currentTheme === 'dark') {
+    htmlEl.classList.add('dark');
+  } else {
+    htmlEl.classList.remove('dark');
+  }
+
+  themeToggleBtn.addEventListener('click', () => {
+    const isDark = htmlEl.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
+</body></html>

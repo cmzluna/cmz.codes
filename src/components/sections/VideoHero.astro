@@ -1,0 +1,76 @@
+---
+// VideoHero.astro - Responsive video hero with fallback
+---
+
+<div class="relative w-full overflow-hidden">
+  <!-- Desktop: Video Hero (1024px+) -->
+  <div class="hidden lg:block relative w-full bg-gradient-to-b from-brand-dark to-brand-cardDark">
+    <!-- Aspect ratio container - prevents layout shift -->
+    <div class="w-full pt-[56.25%] relative bg-black">
+      <video
+        class="absolute top-0 left-0 w-full h-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="/videos/cmzvideo.webm" type="video/webm" />
+        <source src="/videos/cmzvideo-h264.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Dark overlay gradient for text readability (optional) -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+
+      <!-- Optional: Floating CTA over video -->
+      <div class="absolute inset-0 flex items-end justify-center pb-12 pointer-events-none">
+        <div class="text-center pointer-events-auto">
+          <a
+            href="#projects"
+            class="px-8 py-3 rounded-full text-sm font-semibold tracking-wide border-2 border-brand-lavender/70 bg-brand-cardDark/80 text-white hover:bg-brand-lavender hover:text-brand-dark transition-all duration-200 shadow-lg inline-block"
+          >
+            Explorar Proyectos
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile: Static Hero Image (<1024px) -->
+  <div class="lg:hidden relative w-full h-96 bg-gradient-to-br from-brand-accent/20 via-brand-purple/10 to-transparent">
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-purple/10 text-brand-purple mb-6 border border-brand-purple/20">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+        Creative Developer
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+        Claudio Mazzoli
+      </h1>
+      <p class="text-base text-slate-300 max-w-sm">
+        Building stunning digital experiences
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Prevent layout shift on video load */
+  video {
+    display: block;
+  }
+
+  /* Prefers reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    video {
+      animation: none;
+    }
+  }
+
+  /* Optimize for different devices */
+  @media (max-width: 640px) {
+    video {
+      /* On very small screens, still hidden anyway */
+    }
+  }
+</style>
