@@ -71,8 +71,163 @@
 /* Dark mode theme (already default) */
 :root {
   color-scheme: dark;
+}
+
+body {
   background-color: var(--color-surface);
   color: var(--color-text);
+}
+
+/* Light mode theme - activated via class toggle */
+html:not(.dark) {
+  color-scheme: light;
+
+  /* Claudio Mazzoli Dual System - Radiant Light Mode (Stitch EXACT) */
+  --color-primary: #693bca;
+  --color-primary-light: #8257e5;
+  --color-primary-dark: #5a2ba0;
+
+  --color-secondary: #006398;
+  --color-secondary-light: #5bb8fe;
+  --color-secondary-dark: #004b73;
+
+  --color-tertiary: #006847;
+  --color-tertiary-light: #00845a;
+  --color-tertiary-dark: #005238;
+
+  /* Stitch EXACT Light Mode - Neutrals */
+  --color-surface: #fdf8ff;
+  --color-surface-dim: #ddd8e3;
+  --color-surface-bright: #ffffff;
+  --color-surface-container: #f1ecf7;
+
+  --color-text: #1c1b22;
+  --color-text-secondary: #494454;
+  --color-text-muted: #7a7485;
+
+  --color-border: #cbc3d6;
+  --color-border-light: #e5e0eb;
+}
+
+/* Global Color Override for Light/Dark Modes */
+/* LIGHT MODE - Force all colors */
+html:not(.dark) {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+}
+
+html:not(.dark) * {
+  --tw-bg-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+  --tw-border-opacity: 1 !important;
+}
+
+/* Light mode: Dark backgrounds become light */
+html:not(.dark) body,
+html:not(.dark) .bg-\[#0c0914\],
+html:not(.dark) .bg-\[#08050e\],
+html:not(.dark) .bg-slate-900,
+html:not(.dark) .bg-slate-950,
+html:not(.dark) .bg-black,
+html:not(.dark) .dark\:bg-slate-900,
+html:not(.dark) .dark\:bg-slate-950 {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+}
+
+/* Light mode: Semi-transparent dark backgrounds */
+html:not(.dark) .bg-slate-900\/95,
+html:not(.dark) .bg-slate-900\/90,
+html:not(.dark) .bg-slate-950\/95,
+html:not(.dark) .dark\:bg-purple-950 {
+  background-color: rgba(253, 248, 255, 0.95) !important;
+  color: var(--color-text) !important;
+}
+
+/* Light mode: White text becomes dark text */
+html:not(.dark) .text-white,
+html:not(.dark) .text-slate-100,
+html:not(.dark) .dark\:text-white,
+html:not(.dark) .dark\:text-slate-100 {
+  color: var(--color-text) !important;
+}
+
+/* Light mode: Light gray text becomes medium text */
+html:not(.dark) .text-slate-200,
+html:not(.dark) .text-slate-300,
+html:not(.dark) .dark\:text-slate-300 {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Light mode: Medium gray text becomes muted text */
+html:not(.dark) .text-slate-400,
+html:not(.dark) .dark\:text-slate-400 {
+  color: var(--color-text-muted) !important;
+}
+
+/* Light mode: All dark slate variants */
+html:not(.dark) [class*="bg-slate-9"],
+html:not(.dark) [class*="bg-slate-8"],
+html:not(.dark) [class*="text-slate-900"],
+html:not(.dark) [class*="text-slate-950"],
+html:not(.dark) [class*="border-slate-9"],
+html:not(.dark) [class*="border-slate-8"] {
+  --tw-bg-opacity: 1 !important;
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* Light mode: Code monitor background and text */
+html:not(.dark) #code-monitor {
+  background: linear-gradient(to bottom, #f1ecf7, #fdf8ff, #ffffff) !important;
+  color: var(--color-text) !important;
+}
+
+html:not(.dark) #code-monitor .text-slate-300 {
+  color: var(--color-text-secondary) !important;
+}
+
+html:not(.dark) #code-monitor .text-purple-400 {
+  color: #5a2ba0 !important;
+}
+
+html:not(.dark) #code-monitor .text-cyan-300,
+html:not(.dark) #code-monitor .text-cyan-400 {
+  color: #004b73 !important;
+}
+
+html:not(.dark) #code-monitor .text-amber-200,
+html:not(.dark) #code-monitor .text-amber-300 {
+  color: #7a3c02 !important;
+}
+
+html:not(.dark) #code-monitor .text-emerald-300,
+html:not(.dark) #code-monitor .text-emerald-400 {
+  color: #006847 !important;
+}
+
+html:not(.dark) #code-monitor .text-blue-300,
+html:not(.dark) #code-monitor .text-blue-400 {
+  color: #004b73 !important;
+}
+
+html:not(.dark) #code-monitor .text-slate-500 {
+  color: #9a8fa8 !important;
+}
+
+html:not(.dark) #code-monitor .border-slate-800 {
+  border-color: #e5e0eb !important;
+}
+
+html:not(.dark) #code-monitor .bg-slate-900 {
+  background-color: #f1ecf7 !important;
+}
+
+/* Light mode: Lamp bulb color */
+html:not(.dark) #lamp-bulb {
+  fill: url(#lightBulbGradient) !important;
+  filter: drop-shadow(0 0 8px rgba(200, 200, 200, 0.6)) !important;
 }
 
 /* Base styles */
@@ -85,6 +240,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 a {
