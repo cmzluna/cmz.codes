@@ -103,7 +103,7 @@ html:not(.dark) {
 
   --color-text: #1c1b22;
   --color-text-secondary: #494454;
-  --color-text-muted: #7a7485;
+  --color-text-muted: #5a5465;
 
   --color-border: #cbc3d6;
   --color-border-light: #e5e0eb;
@@ -163,6 +163,22 @@ html:not(.dark) .dark\:text-slate-300 {
 html:not(.dark) .text-slate-400,
 html:not(.dark) .dark\:text-slate-400 {
   color: var(--color-text-muted) !important;
+}
+
+/* Light mode: Colored text becomes darker for readability */
+html:not(.dark) .text-purple-200,
+html:not(.dark) .text-purple-100,
+html:not(.dark) .text-indigo-200,
+html:not(.dark) .text-indigo-100,
+html:not(.dark) .text-cyan-300,
+html:not(.dark) .text-cyan-100,
+html:not(.dark) .text-emerald-300,
+html:not(.dark) .text-emerald-100,
+html:not(.dark) .text-blue-200,
+html:not(.dark) .text-blue-100,
+html:not(.dark) .text-amber-200,
+html:not(.dark) .text-amber-100 {
+  color: var(--color-text-secondary) !important;
 }
 
 /* Light mode: All dark slate variants */
