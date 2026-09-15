@@ -4,77 +4,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Claudio | React Developer</title>
-<!-- Tailwind CSS v3 with Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Tailwind Custom Configuration -->
-<script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              dark: '#1b1322',
-              cardDark: '#261b30',
-              deepPurple: '#2d1f3b',
-              purple: '#674d8c',
-              lavender: '#9d7ec7',
-              lavenderLight: '#cfb9ea',
-              accent: '#8257e5',
-              wood: '#d2aa7b',
-              woodShadow: '#b08b5f',
-              lightBg: '#fbf9fe',
-              lightCard: '#ffffff',
-            }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-          },
-          animation: {
-            'float': 'floating 4s ease-in-out infinite',
-            'float-delayed': 'floating 4s ease-in-out 2s infinite',
-            'pulse-subtle': 'pulseLight 3s ease-in-out infinite',
-            'sway': 'swayLamp 6s ease-in-out infinite',
-            'spin-slow': 'spinRing 34s linear infinite',
-            'spin-reverse': 'spinRingReverse 42s linear infinite',
-            'spin-ultra-slow': 'spinRing 60s linear infinite',
-            'spin-ultra-reverse': 'spinRingReverse 65s linear infinite',
-            'orbit-slow': 'orbitMotion 28s ease-in-out infinite',
-            'dash-move': 'dashFlow 20s linear infinite',
-          },
-          keyframes: {
-            floating: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' },
-            },
-            pulseLight: {
-              '0%, 100%': { opacity: '0.45' },
-              '50%': { opacity: '0.65' },
-            },
-            swayLamp: {
-              '0%, 100%': { transform: 'rotate(-0.8deg)' },
-              '50%': { transform: 'rotate(0.8deg)' },
-            },
-            spinRing: {
-              'from': { transform: 'rotate(0deg)' },
-              'to': { transform: 'rotate(360deg)' }
-            },
-            spinRingReverse: {
-              'from': { transform: 'rotate(360deg)' },
-              'to': { transform: 'rotate(0deg)' }
-            },
-            orbitMotion: {
-              '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
-              '50%': { transform: 'translate(18px, -18px) scale(1.04)' }
-            },
-            dashFlow: {
-              'to': { strokeDashoffset: '-200' }
-            }
-          }
-        }
-      }
-    }
-  </script>
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -83,6 +12,60 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <!-- Layout & Custom Styles -->
 <style data-purpose="custom-decorations">
+    /* Base utility classes */
+    .p-7 { padding: 1.75rem; }
+    .p-6 { padding: 1.5rem; }
+    .pt-6 { padding-top: 1.5rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .gap-3\.5 { gap: 0.875rem; }
+    .gap-6 { gap: 1.5rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-full { border-radius: 9999px; }
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .relative { position: relative; }
+    .overflow-hidden { overflow: hidden; }
+    .group { position: relative; }
+    .border { border-width: 1px; }
+    .border-purple-900\/40 { border-color: rgba(88, 28, 135, 0.4); }
+    .h-8 { height: 2rem; }
+    .w-8 { width: 2rem; }
+    .h-11 { height: 2.75rem; }
+    .w-11 { width: 2.75rem; }
+    .h-full { height: 100%; }
+    .w-full { width: 100%; }
+    .text-sm { font-size: 0.875rem; }
+    .text-xs { font-size: 0.75rem; }
+    .font-bold { font-weight: bold; }
+    .font-normal { font-weight: normal; }
+    .font-mono { font-family: monospace; }
+    .leading-relaxed { line-height: 1.625; }
+    .text-white { color: white; }
+    .text-slate-200 { color: rgb(226, 232, 240); }
+    .border-t { border-top-width: 1px; }
+    .space-y-4 > * + * { margin-top: 1rem; }
+    .p-0\.5 { padding: 0.125rem; }
+    .flex-shrink-0 { flex-shrink: 0; }
+    .transition-all { transition: all 0.3s ease; }
+    .transition-colors { transition: color 0.3s ease; }
+    .shadow-inner { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05); }
+    .select-none { user-select: none; }
+    .pointer-events-none { pointer-events: none; }
+    .z-10 { z-index: 10; }
+    .truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Grid for testimonials */
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    @media (min-width: 768px) {
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
     /* Subtle organic background lines and ambient rings */
     .bubble-ring {
       border-radius: 9999px;
