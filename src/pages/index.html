@@ -506,7 +506,7 @@
 </header>
 <!-- END: MainHeader -->
 <!-- Video Full Width Intro -->
-<div id="video-container" class="fixed inset-0 w-full h-screen z-40 bg-black">
+<div id="video-container" class="fixed inset-0 w-full h-screen z-40 bg-black" style="display: none;">
   <video
     id="intro-video"
     class="w-full h-full object-cover"
@@ -1553,7 +1553,15 @@
   const introVideo = document.getElementById('intro-video');
   const heroSection = document.getElementById('hero-code-section');
 
-  if (introVideo && videoContainer) {
+  // Show video only in production, hide in development
+  const isProduction = window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('127.');
+  if (!isProduction) {
+    videoContainer.style.display = 'none';
+  } else {
+    videoContainer.style.display = 'block';
+  }
+
+  if (introVideo && videoContainer && isProduction) {
     let brightnessStarted = false;
     let fadeOutStarted = false;
     const htmlEl = document.documentElement;
