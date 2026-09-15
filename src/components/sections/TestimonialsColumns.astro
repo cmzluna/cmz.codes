@@ -1,0 +1,145 @@
+---
+import TestimonialCard from "../ui/TestimonialCard.astro";
+
+interface Testimonial {
+  text: string;
+  name: string;
+  role: string;
+  accentColor: string;
+  initials: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    text: "Claudio has an exceptional eye for user interface details. In our React Native sprints, his problem-solving with map integrations and complex navigation was invaluable.",
+    name: "Christian D.",
+    role: "Full Stack Engineer",
+    accentColor: "brand-lavender",
+    initials: "CD",
+  },
+  {
+    text: "Collaborative, always ready to assist team members, and passionate about shipping clean, well-tested frontend components. A pleasure to build projects with!",
+    name: "Martin B.",
+    role: "Software Developer",
+    accentColor: "blue",
+    initials: "MB",
+  },
+  {
+    text: "His speed at mastering TypeScript and state management frameworks translated into robust features on our e-commerce demo applications.",
+    name: "Fernando C.",
+    role: "Backend Architect",
+    accentColor: "emerald",
+    initials: "FC",
+  },
+  {
+    text: "Claudio consistently delivered polished UI micro-interactions and ensured everything was fully responsive on all mobile viewports.",
+    name: "Juan C.",
+    role: "Frontend Peer",
+    accentColor: "purple",
+    initials: "JC",
+  },
+  {
+    text: "High empathy, clear communication, and steady focus on the end-user journey. Claudio is a great addition to any engineering team.",
+    name: "Paula N.",
+    role: "Product Designer",
+    accentColor: "rose",
+    initials: "PN",
+  },
+];
+
+const firstColumn = testimonials.slice(0, 2);
+const secondColumn = testimonials.slice(2, 4);
+const thirdColumn = testimonials.slice(4, 5);
+---
+
+<style>
+  @keyframes scroll-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  .testimonial-column {
+    animation: scroll-up linear infinite;
+  }
+
+  .testimonial-column--slow {
+    animation-duration: 15s;
+  }
+
+  .testimonial-column--medium {
+    animation-duration: 19s;
+  }
+
+  .testimonial-column--fast {
+    animation-duration: 17s;
+  }
+
+  .testimonial-column:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<section class="relative z-10 py-20" data-purpose="testimonials" id="testimonials">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        What people say
+      </h2>
+      <div class="w-20 h-1.5 bg-brand-lavender mx-auto rounded-full mb-4"></div>
+      <p class="text-slate-300">
+        What teammates, mentors, and collaborators say about working together.
+      </p>
+    </div>
+
+    <!-- Testimonials Columns -->
+    <div class="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[600px] overflow-hidden">
+      <!-- Column 1 -->
+      <div class="flex flex-col gap-6 w-full max-w-xs testimonial-column testimonial-column--slow">
+        {
+          [...new Array(2)].map((_, index) => (
+            <div key={index} class="flex flex-col gap-6">
+              {firstColumn.map((testimonial, i) => (
+                <TestimonialCard key={`${index}-${i}`} testimonial={testimonial} />
+              ))}
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Column 2 (hidden on mobile) -->
+      <div class="hidden md:flex flex-col gap-6 w-full max-w-xs testimonial-column testimonial-column--medium">
+        {
+          [...new Array(2)].map((_, index) => (
+            <div key={index} class="flex flex-col gap-6">
+              {secondColumn.map((testimonial, i) => (
+                <TestimonialCard key={`${index}-${i}`} testimonial={testimonial} />
+              ))}
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Column 3 (hidden on tablet and below) -->
+      <div class="hidden lg:flex flex-col gap-6 w-full max-w-xs testimonial-column testimonial-column--fast">
+        {
+          [...new Array(2)].map((_, index) => (
+            <div key={index} class="flex flex-col gap-6">
+              {thirdColumn.map((testimonial, i) => (
+                <TestimonialCard key={`${index}-${i}`} testimonial={testimonial} />
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ testimonials }}>
+  // Optional: Add interactivity if needed
+</script>
