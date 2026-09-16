@@ -651,7 +651,7 @@
 <div class="space-y-0.5 overflow-hidden">
 <div class="text-slate-500 text-[7.5px]">// SOLID: DIP &amp; SRP - Domain Hook</div>
 <div class="">
-<span class="text-purple-400 font-semibold">interface</span> <span class="text-amber-200">IGeoLocationService</span> {
+<span class="text-purple-400 font-semibold">interface</span> <span class="text-amber-200">IGeoLocationService</span> &#123;
             </div>
 <div class="pl-2 text-slate-400 text-[8px]">
               getCurrentCoords(): <span class="text-cyan-300">Promise&lt;Coords&gt;</span>;
@@ -659,7 +659,7 @@
 <div class="pl-2 text-slate-400 text-[8px]">
               watchPosition(cb: <span class="text-cyan-300">PosCallback</span>): <span class="text-cyan-300">Unsubscribe</span>;
             </div>
-<div class="text-slate-400">}</div>
+<div class="text-slate-400">&#125;</div>
 <div class="pt-0.5">
 <span class="text-purple-400 font-semibold">export const</span> <span class="text-blue-400">useNearbyHubs</span> = (
             </div>
@@ -668,7 +668,7 @@
             </div>
 <div class="pl-2 text-slate-400">
               repo: <span class="text-amber-200">IHubsRepository</span>
-            ) =&gt; {
+            ) =&gt; &#123;
             </div>
 <div class="pl-2 text-slate-400">
 <span class="text-purple-400">const</span> [hubs, setHubs] = <span class="text-cyan-300">useState</span>&lt;<span class="text-amber-200">HubEntity[]</span>&gt;([]);
@@ -681,12 +681,12 @@
 <span class="text-purple-400">const</span> translateY = <span class="text-cyan-300">useSharedValue</span>(0);
             </div>
 <div class="pl-2 text-slate-400">
-<span class="text-purple-400">const</span> pan = <span class="text-blue-300">Gesture</span>.<span class="text-amber-300">Pan</span>().<span class="text-blue-300">onChange</span>((e) =&gt; {
+<span class="text-purple-400">const</span> pan = <span class="text-blue-300">Gesture</span>.<span class="text-amber-300">Pan</span>().<span class="text-blue-300">onChange</span>((e) =&gt; &#123;
             </div>
 <div class="pl-4 text-emerald-300 text-[7.5px]">
 <span class="text-slate-400">'worklet';</span> translateY.value = <span class="text-amber-300">withSpring</span>(e.y);
             </div>
-<div class="pl-2 text-slate-400">});</div>
+<div class="pl-2 text-slate-400">&#125;);</div>
 </div>
 <div class="pt-1 border-t border-slate-800/80 flex items-center justify-between text-[8px] text-slate-400 font-mono">
 <span class="text-brand-lavenderLight flex items-center gap-1">
@@ -1050,15 +1050,16 @@
   
   .testimonials-marquee-container {
     overflow: hidden;
-    height: 600px;
+    height: 800px;
     position: relative;
   }
-  
+
   .testimonials-marquee-inner {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     animation: marqueeUp 45s linear infinite;
+    grid-auto-flow: dense;
   }
   
   .testimonials-marquee-container:hover .testimonials-marquee-inner {
