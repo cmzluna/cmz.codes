@@ -28,8 +28,8 @@
   --color-border-light: #3d494c;
 
   /* Typography */
-  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-sans: "Geist", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
 
   /* Spacing */
   --space-2xs: 0.25rem;

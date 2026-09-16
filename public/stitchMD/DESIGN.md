@@ -1,122 +1,122 @@
 ---
 name: Twilight Glass Developer Portfolio
 colors:
-  surface: '#fdf8ff'
-  surface-dim: '#ddd8e3'
-  surface-bright: '#fdf8ff'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f7f2fd'
-  surface-container: '#f1ecf7'
-  surface-container-high: '#ebe6f1'
-  surface-container-highest: '#e5e0eb'
-  on-surface: '#1c1b22'
-  on-surface-variant: '#494454'
-  inverse-surface: '#312f37'
-  inverse-on-surface: '#f4effa'
-  outline: '#7a7485'
-  outline-variant: '#cbc3d6'
-  surface-tint: '#6c3fce'
-  primary: '#693bca'
-  on-primary: '#ffffff'
-  primary-container: '#8257e5'
-  on-primary-container: '#fff9ff'
-  inverse-primary: '#d0bcff'
-  secondary: '#006398'
-  on-secondary: '#ffffff'
-  secondary-container: '#5bb8fe'
-  on-secondary-container: '#00476e'
-  tertiary: '#006847'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#00845a'
-  on-tertiary-container: '#eefff2'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#e9ddff'
-  primary-fixed-dim: '#d0bcff'
-  on-primary-fixed: '#23005c'
-  on-primary-fixed-variant: '#5420b5'
-  secondary-fixed: '#cce5ff'
-  secondary-fixed-dim: '#93ccff'
-  on-secondary-fixed: '#001d31'
-  on-secondary-fixed-variant: '#004b73'
-  tertiary-fixed: '#6ffbbe'
-  tertiary-fixed-dim: '#4edea3'
-  on-tertiary-fixed: '#002113'
-  on-tertiary-fixed-variant: '#005236'
-  background: '#fdf8ff'
-  on-background: '#1c1b22'
-  surface-variant: '#e5e0eb'
-  brand-dark: '#18101f'
-  brand-plum: '#20152d'
-  brand-plum-muted: '#382c47'
-  brand-lavender: '#9d7ec7'
-  brand-lavender-light: '#cfb9ea'
-  brand-accent: '#8257e5'
-  wood-surface: '#d2aa7b'
-  wood-shadow: '#b08b5f'
+  surface: "#fdf8ff"
+  surface-dim: "#ddd8e3"
+  surface-bright: "#fdf8ff"
+  surface-container-lowest: "#ffffff"
+  surface-container-low: "#f7f2fd"
+  surface-container: "#f1ecf7"
+  surface-container-high: "#ebe6f1"
+  surface-container-highest: "#e5e0eb"
+  on-surface: "#1c1b22"
+  on-surface-variant: "#494454"
+  inverse-surface: "#312f37"
+  inverse-on-surface: "#f4effa"
+  outline: "#7a7485"
+  outline-variant: "#cbc3d6"
+  surface-tint: "#6c3fce"
+  primary: "#693bca"
+  on-primary: "#ffffff"
+  primary-container: "#8257e5"
+  on-primary-container: "#fff9ff"
+  inverse-primary: "#d0bcff"
+  secondary: "#006398"
+  on-secondary: "#ffffff"
+  secondary-container: "#5bb8fe"
+  on-secondary-container: "#00476e"
+  tertiary: "#006847"
+  on-tertiary: "#ffffff"
+  tertiary-container: "#00845a"
+  on-tertiary-container: "#eefff2"
+  error: "#ba1a1a"
+  on-error: "#ffffff"
+  error-container: "#ffdad6"
+  on-error-container: "#93000a"
+  primary-fixed: "#e9ddff"
+  primary-fixed-dim: "#d0bcff"
+  on-primary-fixed: "#23005c"
+  on-primary-fixed-variant: "#5420b5"
+  secondary-fixed: "#cce5ff"
+  secondary-fixed-dim: "#93ccff"
+  on-secondary-fixed: "#001d31"
+  on-secondary-fixed-variant: "#004b73"
+  tertiary-fixed: "#6ffbbe"
+  tertiary-fixed-dim: "#4edea3"
+  on-tertiary-fixed: "#002113"
+  on-tertiary-fixed-variant: "#005236"
+  background: "#fdf8ff"
+  on-background: "#1c1b22"
+  surface-variant: "#e5e0eb"
+  brand-dark: "#18101f"
+  brand-plum: "#20152d"
+  brand-plum-muted: "#382c47"
+  brand-lavender: "#9d7ec7"
+  brand-lavender-light: "#cfb9ea"
+  brand-accent: "#8257e5"
+  wood-surface: "#d2aa7b"
+  wood-shadow: "#b08b5f"
 typography:
   display-hero:
     fontFamily: Plus Jakarta Sans
     fontSize: 4.5rem
-    fontWeight: '800'
-    lineHeight: '1.1'
+    fontWeight: "800"
+    lineHeight: "1.1"
     letterSpacing: -0.03em
   display-hero-mobile:
     fontFamily: Plus Jakarta Sans
     fontSize: 2.25rem
-    fontWeight: '800'
-    lineHeight: '1.15'
+    fontWeight: "800"
+    lineHeight: "1.15"
     letterSpacing: -0.02em
   headline-lg:
     fontFamily: Plus Jakarta Sans
     fontSize: 2.5rem
-    fontWeight: '800'
-    lineHeight: '1.2'
+    fontWeight: "800"
+    lineHeight: "1.2"
     letterSpacing: -0.025em
   headline-md:
     fontFamily: Plus Jakarta Sans
     fontSize: 1.875rem
-    fontWeight: '700'
-    lineHeight: '1.25'
+    fontWeight: "700"
+    lineHeight: "1.25"
     letterSpacing: -0.02em
   headline-sm:
     fontFamily: Plus Jakarta Sans
     fontSize: 1.25rem
-    fontWeight: '700'
-    lineHeight: '1.3'
+    fontWeight: "700"
+    lineHeight: "1.3"
   body-lg:
     fontFamily: Plus Jakarta Sans
     fontSize: 1.25rem
-    fontWeight: '500'
-    lineHeight: '1.6'
+    fontWeight: "500"
+    lineHeight: "1.6"
   body-md:
     fontFamily: Plus Jakarta Sans
     fontSize: 0.875rem
-    fontWeight: '400'
-    lineHeight: '1.6'
+    fontWeight: "400"
+    lineHeight: "1.6"
   body-sm:
     fontFamily: Plus Jakarta Sans
     fontSize: 0.75rem
-    fontWeight: '400'
-    lineHeight: '1.5'
+    fontWeight: "400"
+    lineHeight: "1.5"
   code-snippet:
     fontFamily: JetBrains Mono
     fontSize: 0.53125rem
-    fontWeight: '400'
-    lineHeight: '1.38'
+    fontWeight: "400"
+    lineHeight: "1.38"
   label-mono-sm:
     fontFamily: JetBrains Mono
     fontSize: 0.6875rem
-    fontWeight: '600'
-    lineHeight: '1.2'
+    fontWeight: "600"
+    lineHeight: "1.2"
     letterSpacing: 0.02em
   label-mono-xs:
     fontFamily: JetBrains Mono
     fontSize: 0.5625rem
-    fontWeight: '600'
-    lineHeight: '1.1'
+    fontWeight: "600"
+    lineHeight: "1.1"
 rounded:
   sm: 0.25rem
   DEFAULT: 0.5rem
@@ -139,9 +139,10 @@ spacing:
 
 ## Brand & Style
 
-This design system blends **Cosmic Glassmorphism** with an engineering-focused, tactile aesthetic. Tailored for senior engineering portfolios and technical showcase experiences, it evokes precision, modern craft, and architectural rigor without feeling sterile. 
+This design system blends **Cosmic Glassmorphism** with an engineering-focused, tactile aesthetic. Tailored for senior engineering portfolios and technical showcase experiences, it evokes precision, modern craft, and architectural rigor without feeling sterile.
 
 The aesthetic is characterized by:
+
 - **Atmospheric Depth:** Soft, illuminated twilight backdrops (`#ece7f2`) paired with orbital decorative linework, layered frosted glass panels, and deep twilight accents.
 - **Developer Craft:** Terminal-inspired badges, monospaced metadata, code blocks, and hardware skeuomorphic touches (workstation monitors, studio desk mat, and directional ambient lighting).
 - **Tactile Harmony:** Translucent surfaces featuring dual-layer specular highlights (`inset 0 1px 1px rgba(255,255,255,0.9)`), soft purple border reflections, and floating elements with gentle hovering physics.
@@ -187,6 +188,7 @@ Visual hierarchy is maintained via multi-layered semi-transparent surfaces, spec
 ## Shapes
 
 The design uses a balanced **Level 2 Roundedness** foundation:
+
 - **Cards & Modals:** `rounded-2xl` (`1rem` / 16px) to `rounded-[22px]` creates friendly, polished glass enclosures.
 - **Controls & Buttons:** Fully rounded `rounded-full` pills for primary actions, status indicators, and category filters.
 - **Hardware & Windows:** Handheld simulator interfaces feature `rounded-[24px]` external radii and `rounded-[18px]` inner screens with camera pinhole details.
@@ -195,22 +197,27 @@ The design uses a balanced **Level 2 Roundedness** foundation:
 ## Components
 
 ### 1. Buttons & CTAs
+
 - **Primary Button:** `rounded-full`, saturated violet background (`bg-[#8257e5]`), white text, bold tracking, with ambient color cast `shadow-lg shadow-purple-600/25`. Scales `hover:scale-105` on interaction.
 - **Secondary / Glass Button:** `rounded-full`, `bg-white/80` with border `border-2 border-purple-300`, text `#20152d`. Shifts border and text to `#8257e5` on hover.
 
 ### 2. Status Chips & Pill Badges
+
 - Constructed with `rounded-full px-3.5 py-1 text-xs font-semibold`.
 - Combines high-contrast pinging pulse dot (`animate-ping`) alongside clean monospaced or sans-serif contextual labels.
 
 ### 3. Glassmorphic Cards
+
 - Utilizes `.glass-card` classes with dual inner specular shine.
 - Standardized padding of `p-6` to `p-8`.
 - Contains distinct header badge, bold headline, lead text, tag list, and an integrated bottom action footer separated by `border-t border-purple-200/80`.
 
 ### 4. Technical Workstation Simulator
+
 - Dark IDE interface inside a simulated hardware monitor bezel (`bg-slate-950`).
 - Includes mock macOS-style window controls (`rose`, `amber`, `emerald` dots), breadcrumb tags, dual-column syntax viewer, and responsive mobile preview.
 
 ### 5. Testimonial Containers
+
 - Elevated glass panels featuring oversized translucent quotation watermarks (`text-7xl font-serif text-purple-200/60`).
 - Footer block combines circular gradient avatar ring with user details in monospaced secondary subtitles.

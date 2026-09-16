@@ -1,0 +1,29 @@
+---
+import TestimonialsColumn from "./TestimonialsColumn.astro";
+import { testimonials } from "../../data/testimonials";
+
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 11); // Remaining ones
+---
+
+<section class="relative z-10 py-20 bg-gradient-to-b from-[#120c1f]/70 via-[#150e24]/60 to-[#100a1b]/80 overflow-hidden" data-purpose="testimonials-section" id="techtimonials">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        Techtimonials
+      </h2>
+      <div class="w-20 h-1.5 bg-brand-lavender mx-auto rounded-full mb-4"></div>
+      <p class="text-slate-300">
+        What teammates, mentors, and collaborators say about working together.
+      </p>
+    </div>
+
+    <!-- Scrolling Columns Container -->
+    <div class="flex justify-center gap-6 mt-10 max-h-[740px] overflow-hidden relative" style="mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);">
+      <TestimonialsColumn testimonials={firstColumn} duration={25} />
+      <TestimonialsColumn testimonials={secondColumn} duration={32} class="hidden md:block" />
+      <TestimonialsColumn testimonials={thirdColumn} duration={29} class="hidden lg:block" />
+    </div>
+  </div>
+</section>

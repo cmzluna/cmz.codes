@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 const projectsCollection = defineCollection({
   schema: z.object({
@@ -17,7 +17,7 @@ const projectsCollection = defineCollection({
 const technologiesCollection = defineCollection({
   schema: z.object({
     name: z.string(),
-    category: z.enum(['frontend', 'mobile', 'backend', 'tools']),
+    category: z.enum(["frontend", "mobile", "backend", "tools"]),
     icon: z.string().optional(),
   }),
 });
