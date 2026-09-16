@@ -1536,6 +1536,17 @@
   const isProduction = window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('127.');
   if (!isProduction) {
     videoContainer.style.display = 'none';
+    // In development, show hero animations immediately
+    if (heroSection) {
+      heroSection.classList.add('show-animations');
+      heroSection.style.pointerEvents = 'auto';
+    }
+    // Show header immediately in development
+    const header = document.querySelector('header');
+    if (header) {
+      header.style.opacity = '1';
+      header.style.pointerEvents = 'auto';
+    }
   } else {
     videoContainer.style.display = 'block';
   }

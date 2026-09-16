@@ -257,6 +257,15 @@
       }
     }
 
+    /* Avatar theme switcher */
+    #avatar-image {
+      background-position: 0% center !important;
+    }
+
+    .dark #avatar-image {
+      background-position: 100% center !important;
+    }
+
     /* Hero Intro Animations */
     @keyframes slideInLeft {
       from {
@@ -477,8 +486,22 @@
 <header class="relative z-50 max-w-6xl mx-auto px-6 pt-6 pb-2 flex items-center justify-between" data-purpose="site-navigation">
 <!-- Theme Toggle Switch (Moon/Sun) matching reference icon in pill -->
 <div class="flex items-center">
-<button aria-label="Toggle Dark / Light mode" class="w-12 h-7 bg-brand-deepPurple/20 dark:bg-purple-950/70 border border-brand-purple/40 rounded-full p-1 flex items-center justify-between transition-colors shadow-inner focus:outline-none focus:ring-2 focus:ring-brand-lavender" id="theme-toggle" title="Toggle Dark / Light mode">
-<div class="w-5 h-5 rounded-full bg-brand-lavender dark:bg-amber-300 flex items-center justify-center transform transition-transform duration-300 translate-x-5 dark:translate-x-0 shadow" id="theme-knob">
+<button aria-label="Toggle Dark / Light mode" class="w-12 h-7 bg-brand-deepPurple/20 border border-brand-purple/40 rounded-full p-1 flex items-center justify-between transition-colors shadow-inner focus:outline-none focus:ring-2 focus:ring-brand-lavender" id="theme-toggle" title="Toggle Dark / Light mode" style="background-color: rgba(45, 31, 59, 0.2);">
+<div class="w-5 h-5 rounded-full flex items-center justify-center transform transition-transform duration-300 shadow" id="theme-knob" style="background-color: rgb(157, 126, 199); transform: translateX(20px);">
+<style>
+  .dark #theme-toggle {
+    background-color: rgba(75, 85, 99, 0.7) !important;
+  }
+
+  .dark #theme-knob {
+    background-color: rgb(251, 191, 36) !important;
+    transform: translateX(0px) !important;
+  }
+
+  #theme-knob {
+    transition: all 300ms ease-in-out;
+  }
+</style>
 <svg aria-hidden="true" class="lucide lucide-moon w-3.5 h-3.5 text-brand-dark block dark:block" data-lucide="moon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
 <svg aria-hidden="true" class="lucide lucide-sun w-3.5 h-3.5 text-brand-dark hidden" data-lucide="sun" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
 </div>
@@ -832,8 +855,8 @@
 <div class="w-full h-full rounded-full overflow-hidden flex items-center justify-center"
   style="
     background-image: url('/images/avatar/avatar.png');
-    background-size: auto 100%;
-    background-position: center;
+    background-size: 200% 100%;
+    background-position: 0% center;
     background-repeat: no-repeat;
     filter: drop-shadow(0 0 12px rgba(157, 126, 199, 0.6));
   "
@@ -1052,6 +1075,8 @@
     overflow: hidden;
     height: 800px;
     position: relative;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
   }
 
   .testimonials-marquee-inner {
@@ -1806,6 +1831,17 @@
   const isProduction = window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('127.');
   if (!isProduction) {
     videoContainer.style.display = 'none';
+    // In development, show hero animations immediately
+    if (heroSection) {
+      heroSection.classList.add('show-animations');
+      heroSection.style.pointerEvents = 'auto';
+    }
+    // Show header immediately in development
+    const devHeader = document.querySelector('header');
+    if (devHeader) {
+      devHeader.style.opacity = '1';
+      devHeader.style.pointerEvents = 'auto';
+    }
   } else {
     videoContainer.style.display = 'block';
   }
@@ -1907,16 +1943,25 @@
   }
 </script>
 <!-- Theme Toggle & Lucide Icon Script -->
-<script data-purpose="theme-toggle">
+<script>
   // Initialize Lucide icons
-  lucide.createIcons();
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 
   // Dynamic Year in footer
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
   // Dark/Light Mode Switcher logic
   const themeToggleBtn = document.getElementById('theme-toggle');
   const htmlEl = document.documentElement;
+
+  if (!themeToggleBtn) {
+    console.warn('Theme toggle button not found');
+  }
 
   const currentTheme = localStorage.getItem('theme') || 'dark';
 
@@ -1933,24 +1978,26 @@
     const avatarDiv = document.getElementById('avatar-image');
 
     if (htmlEl.classList.contains('dark')) {
-      moonIcon?.classList.remove('hidden');
-      sunIcon?.classList.add('hidden');
-      // Dark mode: show right side of avatar
+      if (moonIcon) moonIcon.classList.remove('hidden');
+      if (sunIcon) sunIcon.classList.add('hidden');
       if (avatarDiv) avatarDiv.style.backgroundPosition = 'right center';
     } else {
-      moonIcon?.classList.add('hidden');
-      sunIcon?.classList.remove('hidden');
-      // Light mode: show left side of avatar
+      if (moonIcon) moonIcon.classList.add('hidden');
+      if (sunIcon) sunIcon.classList.remove('hidden');
       if (avatarDiv) avatarDiv.style.backgroundPosition = 'left center';
     }
   }
 
   updateThemeDisplay();
 
-  themeToggleBtn.addEventListener('click', () => {
-    const isDark = htmlEl.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    updateThemeDisplay();
-  });
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isDark = htmlEl.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeDisplay();
+      console.log('Theme toggled to:', isDark ? 'dark' : 'light');
+    });
+  }
 </script>
 </body></html>
