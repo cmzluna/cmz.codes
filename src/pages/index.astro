@@ -1943,60 +1943,57 @@
 </script>
 <!-- Theme Toggle & Lucide Icon Script -->
 <script>
-  // Initialize Lucide icons
-  if (window.lucide) {
-    lucide.createIcons();
-  }
-
-  // Dynamic Year in footer
-  const yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-
-  // Dark/Light Mode Switcher logic
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const htmlEl = document.documentElement;
-
-  if (!themeToggleBtn) {
-    console.warn('Theme toggle button not found');
-  }
-
-  const currentTheme = localStorage.getItem('theme') || 'dark';
-
-  if (currentTheme === 'dark') {
-    htmlEl.classList.add('dark');
-  } else {
-    htmlEl.classList.remove('dark');
-  }
-
-  // Update icon display and avatar based on theme
-  function updateThemeDisplay() {
-    const moonIcon = document.querySelector('[data-lucide="moon"]');
-    const sunIcon = document.querySelector('[data-lucide="sun"]');
-    const avatarDiv = document.getElementById('avatar-image');
-
-    if (htmlEl.classList.contains('dark')) {
-      if (moonIcon) moonIcon.classList.remove('hidden');
-      if (sunIcon) sunIcon.classList.add('hidden');
-      if (avatarDiv) avatarDiv.style.backgroundPosition = 'right center';
-    } else {
-      if (moonIcon) moonIcon.classList.add('hidden');
-      if (sunIcon) sunIcon.classList.remove('hidden');
-      if (avatarDiv) avatarDiv.style.backgroundPosition = 'left center';
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Lucide icons
+    if (window.lucide) {
+      lucide.createIcons();
     }
-  }
 
-  updateThemeDisplay();
+    // Dynamic Year in footer
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const isDark = htmlEl.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateThemeDisplay();
-      console.log('Theme toggled to:', isDark ? 'dark' : 'light');
-    });
-  }
+    // Dark/Light Mode Switcher logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+
+    if (currentTheme === 'dark') {
+      htmlEl.classList.add('dark');
+    } else {
+      htmlEl.classList.remove('dark');
+    }
+
+    // Update icon display and avatar based on theme
+    function updateThemeDisplay() {
+      const moonIcon = document.querySelector('[data-lucide="moon"]');
+      const sunIcon = document.querySelector('[data-lucide="sun"]');
+      const avatarDiv = document.getElementById('avatar-image');
+
+      if (htmlEl.classList.contains('dark')) {
+        if (moonIcon) moonIcon.classList.remove('hidden');
+        if (sunIcon) sunIcon.classList.add('hidden');
+        if (avatarDiv) avatarDiv.style.backgroundPosition = 'right center';
+      } else {
+        if (moonIcon) moonIcon.classList.add('hidden');
+        if (sunIcon) sunIcon.classList.remove('hidden');
+        if (avatarDiv) avatarDiv.style.backgroundPosition = 'left center';
+      }
+    }
+
+    updateThemeDisplay();
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isDark = htmlEl.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateThemeDisplay();
+      });
+    }
+  });
 </script>
 </body></html>
